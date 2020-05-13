@@ -11,4 +11,4 @@ router.get('/register', userController.register)
 
 router.get('/login', userController.login)
 
-router.get('/login', userController.profile)
+router.get('/profile', userController.profile)
