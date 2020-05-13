@@ -66,19 +66,9 @@ const authenticate = async (req, res, next) => {
   }
 }
 
-const registerPage = async (req, res) => {
-  res.send('Register Page')
-}
-
-const loginPage = (req, res) => {
-  res.send('Login Page')
-}
-
 module.exports = {
   register,
-  registerPage,
   login,
-  loginPage,
   logout,
   authenticate
 }
