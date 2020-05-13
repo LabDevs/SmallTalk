@@ -13,4 +13,4 @@ router.get('/login', userController.login)
 
 router.get('/profile', userController.profile)
 
-module.exports = router;
+module.exports = router
