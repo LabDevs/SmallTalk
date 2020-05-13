@@ -4,10 +4,10 @@ const jwt = require('jsonwebtoken')
 
 const register = (req, res) => {
   try {
-    const { userName, password, avatar } = req.body
+    const { userName, password} = req.body
     const saltRounds = 8
     bcrypt.hash(password, saltRounds)
-      .then((hashedPassword) => User.create(userName, hashedPassword, avatar))
+      .then((hashedPassword) => User.create(userName, hashedPassword))
       .then(() => res.send('User successfully registered'))
   } catch (err) {
     console.log(err)
@@ -49,26 +49,8 @@ const logout = (req, res) => {
   res.redirect('/login')
 }
 
-const authenticate = async (req, res, next) => {
-  if (!req.cookies.userToken) return res.sendStatus(401)
-  try {
-    const payload = await jwt.verify(req.cookies.userToken, 'secret')
-    if (!payload) return res.sendStatus(403)
-
-    const { userName, password } = payload
-    const user = await User.getByUserName(userName)
-    const verify = await bcrypt.compare(password, user.password)
-    req.body.userId = user.user_id
-    if (verify) return next()
-  } catch (err) {
-    console.log(err)
-    return res.sendStatus(500)
-  }
-}
-
 module.exports = {
   register,
   login,
   logout,
-  authenticate
 }
