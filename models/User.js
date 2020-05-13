@@ -1,10 +1,10 @@
 const db = require('../db')
 
 class User {
-  static create (userName, password, avatar) {
-    const queryText = `INSERT INTO users (username,password,avatar)
+  static create (userName, password) {
+    const queryText = `INSERT INTO users (username,password)
     VALUES($1,$2,$3);`
-    return db.query(queryText, [userName, password, avatar])
+    return db.query(queryText, [userName, password])
   }
 
   static getByUserName (userName) {
