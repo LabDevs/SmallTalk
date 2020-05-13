@@ -1,9 +1,6 @@
 const express = require('express')
-
 const bodyParser = require('body-parser')
-
 const router = require('./routes/user')
-
 
 const app = express()
 const port = process.env.PORT || 3000
