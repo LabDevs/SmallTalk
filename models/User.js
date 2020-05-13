@@ -3,7 +3,7 @@ const db = require('../db')
 class User {
   static create (userName, password) {
     const queryText = `INSERT INTO users (username,password)
-    VALUES($1,$2,$3);`
+    VALUES($1,$2);`
     return db.query(queryText, [userName, password])
   }
 
