@@ -1,13 +1,13 @@
 const express = require('express')
 
 // change to correct file when needed , this folder doesn't exist yet
-const userController = require('../controller/user')
-
+const userController = require('../controllers/user')
+console.log(userController)
 const router = express.Router()
 
-// I assume we will be having login,register and profile pages
+// router.get('/register', userController.registerPage)
 
-router.get('/register', userController.register)
+router.post('/register', userController.register)
 
 router.get('/login', userController.login)
 
