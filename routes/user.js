@@ -1,7 +1,7 @@
 const express = require('express')
 
 // change to correct file when needed , this folder doesn't exist yet
-const userController = require('../controller/')
+const userController = require('../controller/user')
 
 const router = express.Router()
 
