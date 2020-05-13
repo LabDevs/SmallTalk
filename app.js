@@ -12,6 +12,10 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(router)
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(router)
+
 app.get('/', (req, res) => res.send('Hello World'))
 
 app.listen(port,hostName, () => console.log(`Listening on port ${port} `))
