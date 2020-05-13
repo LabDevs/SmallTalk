@@ -18,4 +18,4 @@ class User {
   }
 }
 
-module.export = User
+module.exports = User
