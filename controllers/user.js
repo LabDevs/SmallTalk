@@ -8,8 +8,7 @@ const register = (req, res) => {
   bcrypt
     .hash(password, saltRounds)
     .then(hashedPassword => User.create(username, hashedPassword))
-    .then(() => res.send(200).json({ message: 'User registered.' }))
-    .catch(() => res.send(500).json({ message: 'Cannot register user.' }))
+    .then(() => res.send('User successfully registered'))
 }
 
 const login = async (req, res) => {
@@ -17,12 +16,10 @@ const login = async (req, res) => {
   try {
     const user = await User.getByUserName(username)
 
-    // equivalent to res.status(404).send('Not Found')
     if (!user) return res.sendStatus(404)
 
     const verify = await bcrypt.compare(password, user.password)
 
-    // equivalent to res.status(404).send('Not Found')
     if (!verify) return res.sendStatus(403)
 
     const payload = {
@@ -37,7 +34,6 @@ const login = async (req, res) => {
       res.send('Logged In')
     })
   } catch (err) {
-    // equivalent to res.status(500).send('Internal Server Error')
     console.log(err)
     return res.sendStatus(500)
   }
