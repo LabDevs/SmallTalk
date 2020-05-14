@@ -12,4 +12,4 @@ app.use(router)
 
 app.get('/', (req, res) => res.send('Hello World'))
 
-app.listen(port,hostName, () => console.log(`Listening on port ${port} `))
+app.listen(port, () => console.log(`Listening on port ${port} `))
