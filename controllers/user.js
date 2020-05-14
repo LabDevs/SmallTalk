@@ -17,12 +17,10 @@ const login = async (req, res) => {
   try {
     const user = await User.getByUserName(username)
 
-    // equivalent to res.status(404).send('Not Found')
     if (!user) return res.sendStatus(404)
 
     const verify = await bcrypt.compare(password, user.password)
 
-    // equivalent to res.status(404).send('Not Found')
     if (!verify) return res.sendStatus(403)
 
     const payload = {
@@ -37,7 +35,6 @@ const login = async (req, res) => {
       res.sendStatus(200)
     })
   } catch (err) {
-    // equivalent to res.status(500).send('Internal Server Error')
     console.log(err)
     return res.sendStatus(500)
   }
