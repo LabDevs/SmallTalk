@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken')
 const register = (req, res) => {
   try {
     const { userName, password} = req.body
+    console.log(req.body)
     const saltRounds = 8
     bcrypt.hash(password, saltRounds)
       .then((hashedPassword) => User.create(userName, hashedPassword))
@@ -31,8 +32,7 @@ const login = async (req, res) => {
     const payload = {
       userName, password, userId: user.user_id, expiresIn: '2hr'
     }
-    // will change to a env variable just put this for testing
-    return jwt.sign(payload, 'secret', (err, encryptedPayload) => {
+    return jwt.sign(payload, process.env.JWT_KEY, (err, encryptedPayload) => {
       if (err) return res.sendStatus(500)
       res.cookie('userToken', encryptedPayload)
       res.send('Logged In')
