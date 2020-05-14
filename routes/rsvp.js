@@ -6,4 +6,4 @@ router.post('/rsvp', rsvpController.add)
 
 router.get('/rsvp/user', rsvpController.getByUser)
 
-router.module.exports = router
+module.exports = router
