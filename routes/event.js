@@ -2,7 +2,7 @@ const express = require('express')
 const eventController = require('../controllers/event')
 const router = express.Router()
 
-router.get('/api/categories/getEvents', eventController.getAllByCategory)
+router.get('/api/categories/:id', eventController.getAllByCategory)
 
 router.get('/api/getEvents', eventController.getAllByUser)
 
