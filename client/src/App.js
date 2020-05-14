@@ -1,11 +1,11 @@
 import React from "react";
-import { Navbar, Nav} from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
-  useParams
+  useParams,
 } from "react-router-dom";
 
 function App() {
@@ -21,13 +21,13 @@ function App() {
             alt="placeholder"
           />
         </Navbar.Brand>
-  
+
         <Nav className="mr.auto">
           <Link to="/home">Dash</Link>
           <Link to="/categories">Topics</Link>
         </Nav>
       </Navbar>
-        
+
       <Switch>
         <Route path="/:id" children={<RouteList />} />
       </Switch>
@@ -36,13 +36,13 @@ function App() {
 }
 
 // will refactor this to add more routes when needed
-function RouteList(){
-  let {id} = useParams();
+function RouteList() {
+  let { id } = useParams();
   return (
     <div>
       <p>Access to route id {id}</p>
     </div>
-    )
+  );
 }
 
 export default App;
