@@ -8,7 +8,8 @@ const register = (req, res) => {
   bcrypt
     .hash(password, saltRounds)
     .then(hashedPassword => User.create(username, hashedPassword))
-    .then(() => res.send('User successfully registered'))
+    .then(() => res.sendStatus(200))
+    .catch(() => res.sendStatus(500))
 }
 
 const login = async (req, res) => {
@@ -31,7 +32,7 @@ const login = async (req, res) => {
     return jwt.sign(payload, process.env.JWT_KEY, (err, encryptedPayload) => {
       if (err) return res.sendStatus(500)
       res.cookie('userToken', encryptedPayload)
-      res.send('Logged In')
+      res.sendStatus(200)
     })
   } catch (err) {
     console.log(err)

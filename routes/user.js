@@ -1,11 +1,11 @@
 const express = require('express')
-
-// change to correct file when needed , this folder doesn't exist yet
 const userController = require('../controllers/user')
 const router = express.Router()
 
 router.post('/register', userController.register)
 
 router.post('/login', userController.login)
+
+router.get('/logout' , userController.logout)
 
 module.exports = router
