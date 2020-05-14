@@ -4,7 +4,7 @@ const pool = new Pool({
   user: process.env.USER,
   host: process.env.HOST,
   database: process.env.DATABASE,
-  port: process.env.DBPORT
+  port: process.env.DB_PORT
 })
 
 module.exports = {
