@@ -25,7 +25,12 @@ const add = (req, res) => {
 
   Event.add(userId, categoryId, title, description)
     .then(() => res.status(200).json({ message: 'Successfully added.' }))
-    .catch(() => res.status(500).json({ message: 'Could not add event.' }))
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({
+        message: 'Could not add event.'
+      })
+    })
 }
 
 const update = (req, res) => {

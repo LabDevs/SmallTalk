@@ -5,11 +5,11 @@ const bcrypt = require('bcrypt')
 const authenticate = async (req, res, next) => {
   if (!req.cookies.userToken) return res.sendStatus(401)
   try {
-    const payload = await jwt.verify(req.cookies.userToken, 'secret')
+    const payload = await jwt.verify(req.cookies.userToken, process.env.JWT_KEY)
     if (!payload) return res.sendStatus(403)
 
-    const { userName, password } = payload
-    const user = await User.getByUserName(userName)
+    const { username, password } = payload
+    const user = await User.getByUserName(username)
     const verify = await bcrypt.compare(password, user.password)
     req.body.userId = user.user_id
     if (verify) return next()
@@ -19,4 +19,4 @@ const authenticate = async (req, res, next) => {
   }
 }
 
-module.export = authenticate
+module.exports = authenticate
