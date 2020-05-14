@@ -31,7 +31,6 @@ const login = async (req, res) => {
       userId: user.user_id,
       expiresIn: '2hr'
     }
-    // will change to a env variable just put this for testing
     return jwt.sign(payload, process.env.JWT_KEY, (err, encryptedPayload) => {
       if (err) return res.sendStatus(500)
       res.cookie('userToken', encryptedPayload)
