@@ -5,7 +5,6 @@ const router = require('./routes/user')
 
 const app = express()
 const port = process.env.PORT || 8000
-const hostName = process.env.HOST_NAME
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
