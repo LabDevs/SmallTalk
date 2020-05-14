@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt')
 
 const authenticate = async (req, res, next) => {
   if (!req.cookies.userToken) return res.sendStatus(401)
-  console.log(req.cookies.userToken)
   try {
     const payload = await jwt.verify(req.cookies.userToken, process.env.JWT_KEY)
     if (!payload) return res.sendStatus(403)
