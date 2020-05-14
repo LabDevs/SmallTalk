@@ -8,7 +8,6 @@ const eventRouter = require('./routes/event')
 
 const app = express()
 const port = process.env.PORT || 8000
-const hostName = process.env.HOST_NAME
 
 
 app.use(bodyParser.json())
@@ -21,4 +20,4 @@ app.use(eventRouter)
 
 app.get('/', (req, res) => res.send('Hello World'))
 
-app.listen(port,hostName, () => console.log(`Listening on port ${port} `))
+app.listen(port, () => console.log(`Listening on port ${port} `))
