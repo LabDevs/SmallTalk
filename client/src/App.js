@@ -1,15 +1,12 @@
-import React from 'react';
+import React from 'react'
+import CategoriesEventList from './CategoriesEventList'
 
-function App() {
+function App () {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Hello
-        </p>
-      </header>
+    <div className='App'>
+      <CategoriesEventList />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
