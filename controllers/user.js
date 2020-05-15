@@ -25,10 +25,10 @@ const login = async (req, res) => {
 
     const payload = {
       username,
-      password,
       userId: user.user_id,
       expiresIn: '2hr'
     }
+    console.log(payload)
     return jwt.sign(payload, process.env.JWT_KEY, (err, encryptedPayload) => {
       if (err) return res.sendStatus(500)
       res.cookie('userToken', encryptedPayload)
