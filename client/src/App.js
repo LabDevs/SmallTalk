@@ -12,8 +12,7 @@ import LoginForm from './Login'
 function App() {
   return (
     <Router>
-    <Route path="/login" children={<LoginForm />}
-          />
+    
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="#home">
           <img
@@ -26,13 +25,15 @@ function App() {
         </Navbar.Brand>
 
         <Nav className="mr.auto">
-          <Link to="/home">Dash</Link>
+          <Link to="/dash">Dash</Link>
           <Link to="/categories">Topics</Link>
         </Nav>
       </Navbar>
 
       <Switch>
-
+        <Route path="/login" children={<LoginForm />}
+          />
+        
       </Switch>
     </Router>
   );

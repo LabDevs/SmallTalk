@@ -1,47 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { Form, Button } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
 
-function LoginForm(){
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  
-  async function handleSubmit(e){
-    e.preventDefault()
-    console.log(username,password)
-    
-    const response = await requestMethod('POST','/login',{
-      "username":"username",
-      "password":"password"
+function LoginForm() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const userInfo = {
+    username: username,
+    password: password,
+  };
+
+  const handleSumbit = (e) => {
+    e.preventDefault();
+    console.log(username, password);
+    console.log(userInfo)
+    fetch("/api/login", {
+      method: "POST",
+      headers: {
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify(userInfo)
     })
-    console.log(response)
-  }
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
-    <div>
-      <form className="login" onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
-        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
-        
-        <label htmlFor="password">Password</label>
-        <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} />
-        
-        <input type="submit" value="submit" onClick={handleSubmit} />
-      </form>
-    </div>
-    )
+    <Form onSubmit={handleSumbit}>
+      <Form.Group controlId="formBasicEmail">
+        <Form.Label>Username</Form.Label>
+        <Form.Control
+          onChange={(e) => setUsername(e.target.value)}
+          type="text"
+          placeholder="Enter your username"
+
+        />
+      </Form.Group>
+      <Form.Group controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control
+          onChange={(e) => setPassword(e.target.value)}
+          type="password"
+          placeholder="Enter your password"
+        />
+      </Form.Group>
+      <Button onClick={handleSumbit} variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
+  );
 }
 
-const requestMethod = (method, url, data) => fetch(url, {
-  method,
-  body: JSON.stringify(data),
-  headers: data ? { 'content-type': 'application/json' } : {},
-}).then((response) => {
-  if (response.status >= 400) {
-    return response.json().catch((errResData) => {
-      const error = new Error('Something went wrong!');
-      error.data = errResData;
-      throw error;
-    });
-  }
-  return response;
-});
-
-export default LoginForm
+export default LoginForm;
