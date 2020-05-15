@@ -7,6 +7,7 @@ import {
   Link,
   useParams,
 } from "react-router-dom";
+import DashBoard from '../src/components/DashBoard';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
       <Switch>
         <Route path="/:id" children={<RouteList />} />
       </Switch>
+    <DashBoard />
     </Router>
   );
 }

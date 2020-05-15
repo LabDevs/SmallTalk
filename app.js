@@ -20,5 +20,9 @@ app.use(categoryRouter)
 app.use(eventRouter)
 
 app.get('/', (req, res) => res.send('Hello World'))
+app.get('/express_backend', (req, res) => {
+  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
+});
 
-app.listen(port, () => console.log(`Listening on port ${port} `))
+
+app.listen(port,process.env.HOST_NAME, () => console.log(`Listening on port ${port} `))

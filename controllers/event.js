@@ -10,7 +10,7 @@ const getAllByCategory = (req, res) => {
 
 const getAllByUser = (req, res) => {
   const { userId } = req.body
-
+  console.log(req.body)
   Event.getAllByUser(userId)
     .then(response => res.status(200).json(response))
     .catch(() =>
