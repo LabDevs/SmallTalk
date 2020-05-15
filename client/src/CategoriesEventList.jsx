@@ -1,39 +1,25 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { CardGroup, Card, Button } from 'react-bootstrap'
+import CategoriesContext from './contexts/CategoriesContext'
+import Event from './Event'
 
-const CategoriesEventList = () => {
+const CategoriesEventList = props => {
+  const { categoryEvents, setCategoryEvents } = useContext(CategoriesContext)
+
+  useEffect(() => {
+    async function getEventsByCategory () {
+      const response = fetch(`/api/categories/${1}`)
+      const json = await response.json()
+      setCategoryEvents(json)
+      console.log(categoryEvents)
+    }
+
+    getEventsByCategory()
+  }, [categoryEvents])
+
   return (
     <CardGroup className='cards'>
-      <Card className='text-center'>
-        <Card.Body>
-          <Card.Title>Special title treatment</Card.Title>
-          <Card.Text>
-            With supporting text below as a natural lead-in to additional
-            content.
-          </Card.Text>
-          <Button variant='primary'>RSVP</Button>
-        </Card.Body>
-      </Card>
-      <Card className='text-center'>
-        <Card.Body>
-          <Card.Title>Special title treatment</Card.Title>
-          <Card.Text>
-            With supporting text below as a natural lead-in to additional
-            content.
-          </Card.Text>
-          <Button variant='primary'>RSVP</Button>
-        </Card.Body>
-      </Card>
-      <Card className='text-center'>
-        <Card.Body>
-          <Card.Title>Special title treatment</Card.Title>
-          <Card.Text>
-            With supporting text below as a natural lead-in to additional
-            content.
-          </Card.Text>
-          <Button variant='primary'>RSVP</Button>
-        </Card.Body>
-      </Card>
+      {categoryEvents && categoryEvents.map(event => <Event event={event} />)}
     </CardGroup>
   )
 }
