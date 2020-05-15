@@ -12,6 +12,8 @@ import LoginForm from './Login'
 function App() {
   return (
     <Router>
+    <Route path="/login" children={<LoginForm />}
+          />
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="#home">
           <img
@@ -30,22 +32,21 @@ function App() {
       </Navbar>
 
       <Switch>
-        <Route path="/:id" children={<RouteList />}  />
-        <Route path="/login" children={<LoginForm />}
-          />
+
       </Switch>
     </Router>
   );
 }
 
 // will refactor this to add more routes when needed
-function RouteList() {
-  let { id } = useParams();
-  return (
-    <div>
-      <p>Access to route id {id}</p>
-    </div>
-  );
-}
+// function RouteList() {
+//   let { id } = useParams();
+//   return (
+//     <div>
+//       <p>Access to route id {id}</p>
+//     </div>
+//   );
+// }
 
+        // <Route path="/:id" children={<RouteList />}  />
 export default App;
