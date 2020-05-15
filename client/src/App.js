@@ -7,6 +7,7 @@ import {
   Link,
   useParams,
 } from "react-router-dom";
+import LoginForm from './Login'
 
 function App() {
   return (
@@ -29,7 +30,9 @@ function App() {
       </Navbar>
 
       <Switch>
-        <Route path="/:id" children={<RouteList />} />
+        <Route path="/:id" children={<RouteList />}  />
+        <Route path="/login" children={<LoginForm />}
+          />
       </Switch>
     </Router>
   );
