@@ -24,28 +24,41 @@ import React, { useState, useEffect } from "react";
 //   };
 
 function DashBoard() {
-  const [events, setEvents] = useState(null);
+  const [events, setEvent] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState(null);
-  // const [state, setState] = useState({ data: null });
-
-  // useEffect(() => {
-  //   expressBackend().then((server) => {
-  //     setState({ server: res.express });
-  //   }, []);
-  // });
+  
   useEffect(() => {
-    getEvents()
-      .then((event) => {
-        setIsLoading(true);
-        setEvents(event);
+    
+    async function getLogin(){
+      const loginURL ="/login";
+      const response = await getEvents(loginURL,'POST',{
+        "username":"paul1","password":"password1"
       })
-      .catch((err) => {
-        console.log(err);
-        err = "Sorry there was an error, please try again";
-        setErr(err);
-      });
-    setIsLoading(false);
+      console.log(response.json())
+        .then((event) =>{
+          setIsLoading(true)
+          setEvent(event)
+        })
+        .catch((err) =>{
+          console.log(err)
+          err ="Sorry there was an error, please try again"
+          setErr(err)
+        })
+        setIsLoading(false)
+    }
+    
+    // getEvents()
+    //   .then((event) => {
+    //     setIsLoading(true);
+    //     setEvents(event);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     err = "Sorry there was an error, please try again";
+    //     setErr(err);
+    //   });
+    // setIsLoading(false);
   }, []);
 
   return (
@@ -71,23 +84,19 @@ function DashBoard() {
   );
 }
 
-// async function expressBackend() {
-//   const url = "/express_backend";
-//   const response = await fetch(url);
-//   console.log(response);
-//   const data = response.json();
-//   console.log(data);
-//   return data;
-// }
+const getEvents = (method, url, data) => fetch(url, {
+  method,
+  body: JSON.stringify(data),
+  headers: {
+		  'Content-Type': 'application/json'
+  },
+})
+		  .catch((response) => {
+		    const error = new Error('Something went wrong');
+		    error.data = response;
+		    console.log(error);
+		    throw error;
+});
 
-async function getEvents() {
-  const url =
-    "https://cors-anywhere.herokuapp.com//http://localhost:8000/api/getEvents";
-  const url2 = "/api/getEvents";
-  const response = await fetch(url2);
-  console.log(response);
-  const data = response.json()
-  // console.log(data)
-}
 
 export default DashBoard;
