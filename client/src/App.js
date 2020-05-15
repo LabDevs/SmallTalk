@@ -9,8 +9,10 @@ import {
 } from 'react-router-dom'
 import CategoriesContextProvider from './contexts/CategoriesContextProvider'
 import CategoriesEventList from './CategoriesEventList'
+import Register from './Register'
+import Home from './Home'
 
-function App () {
+function App() {
   return (
     <Router>
       <Navbar bg='dark' variant='dark'>
@@ -25,30 +27,25 @@ function App () {
         </Navbar.Brand>
 
         <Nav className='mr.auto'>
-          <Link to='/home'>Dash</Link>
+          <Link to='/dash'>Dash</Link>
           <Link to='/categories'>Topics</Link>
         </Nav>
       </Navbar>
 
       <Switch>
-        <Route path='/:id' children={<RouteList />} />
+        <Route exact path='/'>
+          <Home />
+        </Route>
         <Route path='/categories/:id'>
           <CategoriesContextProvider>
             <CategoriesEventList />
           </CategoriesContextProvider>
         </Route>
+        <Route path='/register'>
+          <Register />
+        </Route>
       </Switch>
     </Router>
-  )
-}
-
-// will refactor this to add more routes when needed
-function RouteList () {
-  let { id } = useParams()
-  return (
-    <div>
-      <p>Access to route id {id}</p>
-    </div>
   )
 }
 

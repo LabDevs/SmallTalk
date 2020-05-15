@@ -15,3 +15,5 @@ const CategoriesContextProvider = ({ children }) => {
     </CategoriesContext.Provider>
   )
 }
+
+export default CategoriesContextProvider
