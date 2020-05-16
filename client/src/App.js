@@ -10,6 +10,7 @@ import CategoriesContextProvider from './contexts/CategoriesContextProvider'
 import CategoriesEventList from './components/CategoriesEventList'
 import Register from './components/Register'
 import Home from './components/Home'
+import AddEvent from './components/AddEvent'
 
 function App() {
   return (
@@ -35,13 +36,19 @@ function App() {
         <Route exact path='/'>
           <Home />
         </Route>
+        <Route path='/register'>
+          <Register />
+        </Route>
+        <Route path='/addEvent'>
+          <AddEvent />
+        </Route>
+        <Route path='/updateEvent'>
+          <UpdateEvent />
+        </Route>
         <Route path='/categories/:id'>
           <CategoriesContextProvider>
             <CategoriesEventList />
           </CategoriesContextProvider>
-        </Route>
-        <Route path='/register'>
-          <Register />
         </Route>
       </Switch>
     </Router>
