@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Nav } from 'react-bootstrap'
+// import { Navbar, Nav } from 'react-bootstrap'
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,12 +8,13 @@ import {
   Redirect,
   useParams,
 } from "react-router-dom";
-import LoginForm from './Login'
 import CategoriesContextProvider from './contexts/CategoriesContextProvider'
 import CategoriesEventList from './components/CategoriesEventList'
 import Register from './components/Register'
+import Login from './components/Login'
 import Home from './components/Home'
 import AddEvent from './components/AddEvent'
+import UpdateEvent from './components/UpdateEvent'
 
 function App() {
   return (
@@ -23,8 +24,9 @@ function App() {
           <RouteList/>
         </Route>
         <Route path="/api/login" >
-          <LoginForm />
+          <Login />
         </Route>
+        </Switch>
         
         <PrivateRoute path="/api/getEvents">
           <DashBoard />
@@ -50,6 +52,7 @@ function App() {
         </Route>
       </Switch>
     </Router>
+
   )
 }
 
@@ -71,6 +74,10 @@ function PrivateRoute({children}){
         to={{pathname:"/api/login"}}/>
     </Route>
     )
+}
+
+function DashBoard(){
+  return <h1>DashBoard</h1>
 }
 
 // <Navbar bg='dark' variant='dark'>
