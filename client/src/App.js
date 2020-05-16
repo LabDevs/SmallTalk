@@ -5,12 +5,11 @@ import {
   Switch,
   Route,
   Link,
-  useParams
 } from 'react-router-dom'
 import CategoriesContextProvider from './contexts/CategoriesContextProvider'
-import CategoriesEventList from './CategoriesEventList'
-import Register from './Register'
-import Home from './Home'
+import CategoriesEventList from './components/CategoriesEventList'
+import Register from './components/Register'
+import Home from './components/Home'
 
 function App() {
   return (

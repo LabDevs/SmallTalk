@@ -1,14 +1,16 @@
 import React, { useContext, useEffect } from 'react'
-import { CardGroup, Card, Button } from 'react-bootstrap'
+import { CardGroup } from 'react-bootstrap'
 import CategoriesContext from '../contexts/CategoriesContext'
 import Event from './Event'
 
-const CategoriesEventList = props => {
+const CategoriesEventList = (props) => {
   const { categoryEvents, setCategoryEvents } = useContext(CategoriesContext)
 
+  //This function will take in a categoryId, which will be provided by the Categories/Topics component as
+  //a prop since that component will be making a fetch request to get all categories, which includes the id.
   useEffect(() => {
     async function getEventsByCategory() {
-      const response = fetch(`/api/categories/${1}`)
+      const response = fetch(`/api/categories/${props.id}`)
       const json = await response.json()
       setCategoryEvents(json)
       console.log(categoryEvents)
@@ -19,7 +21,7 @@ const CategoriesEventList = props => {
 
   return (
     <CardGroup className='cards'>
-      {categoryEvents && categoryEvents.map(event => <Event event={event} />)}
+      {categoryEvents && categoryEvents.forEach(event => <Event event={event} />)}
     </CardGroup>
   )
 }
