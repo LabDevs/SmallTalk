@@ -1,48 +1,51 @@
-import React from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import React from 'react'
+import { Navbar, Nav } from 'react-bootstrap'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
-  useParams,
-} from "react-router-dom";
+} from 'react-router-dom'
+import CategoriesContextProvider from './contexts/CategoriesContextProvider'
+import CategoriesEventList from './components/CategoriesEventList'
+import Register from './components/Register'
+import Home from './components/Home'
 
 function App() {
   return (
     <Router>
-      <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">
+      <Navbar bg='dark' variant='dark'>
+        <Navbar.Brand href='#home'>
           <img
-            src="https://via.placeholder.com/150"
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-            alt="placeholder"
+            src='https://via.placeholder.com/150'
+            width='30'
+            height='30'
+            className='d-inline-block align-top'
+            alt='placeholder'
           />
         </Navbar.Brand>
 
-        <Nav className="mr.auto">
-          <Link to="/home">Dash</Link>
-          <Link to="/categories">Topics</Link>
+        <Nav className='mr.auto'>
+          <Link to='/dash'>Dash</Link>
+          <Link to='/categories'>Topics</Link>
         </Nav>
       </Navbar>
 
       <Switch>
-        <Route path="/:id" children={<RouteList />} />
+        <Route exact path='/'>
+          <Home />
+        </Route>
+        <Route path='/categories/:id'>
+          <CategoriesContextProvider>
+            <CategoriesEventList />
+          </CategoriesContextProvider>
+        </Route>
+        <Route path='/register'>
+          <Register />
+        </Route>
       </Switch>
     </Router>
-  );
+  )
 }
 
-// will refactor this to add more routes when needed
-function RouteList() {
-  let { id } = useParams();
-  return (
-    <div>
-      <p>Access to route id {id}</p>
-    </div>
-  );
-}
-
-export default App;
+export default App
