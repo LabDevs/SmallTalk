@@ -1,13 +1,20 @@
 import React from "react";
-import { Navbar, Nav } from "react-bootstrap";
+// import { Navbar, Nav } from 'react-bootstrap'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
+  Redirect,
   useParams,
 } from "react-router-dom";
-import DashBoard from '../src/components/DashBoard';
+import CategoriesContextProvider from "./contexts/CategoriesContextProvider";
+import CategoriesEventList from "./components/CategoriesEventList";
+import Register from "./components/Register";
+import Login from "./components/Login";
+import Home from "./components/Home";
+import AddEvent from "./components/AddEvent";
+import UpdateEvent from "./components/UpdateEvent";
 
 function App() {
   return (
@@ -24,26 +31,34 @@ function App() {
         </Navbar.Brand>
 
         <Nav className="mr.auto">
-          <Link to="/home">Dash</Link>
+          <Link to="/dash">Dash</Link>
           <Link to="/categories">Topics</Link>
         </Nav>
       </Navbar>
 
       <Switch>
-        <Route path="/:id" children={<RouteList />} />
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/register">
+          <Register />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/addEvent">
+          <AddEvent />
+        </Route>
+        <Route path="/updateEvent">
+          <UpdateEvent />
+        </Route>
+        <Route path="/categories/:id">
+          <CategoriesContextProvider>
+            <CategoriesEventList />
+          </CategoriesContextProvider>
+        </Route>
       </Switch>
-    <DashBoard />
     </Router>
-  );
-}
-
-// will refactor this to add more routes when needed
-function RouteList() {
-  let { id } = useParams();
-  return (
-    <div>
-      <p>Access to route id {id}</p>
-    </div>
   );
 }
 

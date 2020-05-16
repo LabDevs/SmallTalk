@@ -7,14 +7,14 @@ const authenticate = async (req, res, next) => {
   try {
     const payload = await jwt.verify(req.cookies.userToken, process.env.JWT_KEY)
     if (!payload) return res.sendStatus(403)
-    const { username,userId } = payload
+
+    const { username } = payload
     const user = await User.getByUserName(username)
-    console.log(user)
     req.body.userId = user.user_id
     if (user) return next()
   } catch (err) {
     console.log(err)
-    return res.sendStatus(401)
+    return res.sendStatus(500)
   }
 }
 
