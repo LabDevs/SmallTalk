@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 
 const register = (req, res) => {
   const { username, password } = req.body
+  console.log(username, password)
   const saltRounds = 8
   bcrypt
     .hash(password, saltRounds)
