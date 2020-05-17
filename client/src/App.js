@@ -36,15 +36,15 @@ function App () {
       </Navbar>
 
       <Switch>
-        <Route exact path='/'>
-          <Home />
-        </Route>
         <Route path='/register'>
           <Register />
         </Route>
         <Route path='/login'>
 
           <Login />
+        </Route>
+        <Route exact path='/'>
+          <Home />
         </Route>
 
         <Route path='/dash'>
