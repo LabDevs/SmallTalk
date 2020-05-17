@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Card, Button, Modal } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 import {
   Redirect
 } from 'react-router-dom'
