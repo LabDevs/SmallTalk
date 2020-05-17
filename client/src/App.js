@@ -5,8 +5,6 @@ import {
   Switch,
   Route,
   Link,
-  Redirect,
-  useParams,
 } from "react-router-dom";
 import CategoriesContextProvider from "./contexts/CategoriesContextProvider";
 import CategoriesEventList from "./components/CategoriesEventList";
@@ -32,7 +30,7 @@ function App() {
 
         <Nav className="mr.auto">
           <Link to="/dash">Dash</Link>
-          <Link to="/categories">Topics</Link>
+          <Link to="/categories">Categories</Link>
         </Nav>
       </Navbar>
 
