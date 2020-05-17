@@ -25,7 +25,6 @@ const login = async (req, res) => {
 
     const payload = {
       username,
-      password,
       userId: user.user_id,
       expiresIn: '2hr'
     }
