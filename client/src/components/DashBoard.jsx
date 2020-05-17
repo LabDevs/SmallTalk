@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import DashBoardEvent from './DashBoardEvent'
 
-function DashBoard (props) {
+function DashBoard() {
   const [events, setEvent] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [err, setErr] = useState(null)
@@ -30,15 +30,15 @@ function DashBoard (props) {
           <p>{err && err || '...Loading'}</p>
         </>
       ) : (
-        <>
-          {events &&
-            events.map((event) => {
-              return (
-                <DashBoardEvent key={event.event_id} event={event} />
-              )
-            })}
-        </>
-      )}
+          <>
+            {events &&
+              events.map((event) => {
+                return (
+                  <DashBoardEvent key={event.event_id} event={event} />
+                )
+              })}
+          </>
+        )}
     </div>
   )
 }
