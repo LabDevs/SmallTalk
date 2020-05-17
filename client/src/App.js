@@ -1,6 +1,7 @@
 import React from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
-import { BrowserRouter as Router, Switch, Route, Link, useParams} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom'
+import CategoryList from './CategoryList'
 
 function App () {
   return (

@@ -1,24 +1,17 @@
 import React from 'react'
-import Card from 'react-bootstrap/Card'
-import CardGroup from 'react-bootstrap/CardGroup'
-import Button from 'react-bootstrap/Button'
+import { Card, Button } from 'react-bootstrap'
 
-const CategoryCard = () => {
+const CategoryCard = ({id, name}) => {
   return (
     <div>
-      <CardGroup className='top-card-row'>
-      </CardGroup>
       <Card style={{ width: '18rem' }}>
         <Card.Img variant='top' src='https://via.placeholder.com/100' />
         <Card.Body>
           <Card.Title>
-            Beauty
+            {name}
           </Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of the card's content.
-          </Card.Text>
           <Button variant='info'>
-            Go somewhere
+            Event
           </Button>
         </Card.Body>
       </Card>

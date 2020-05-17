@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 
 app.use(userRouter)
-app.use(authenticate)
+// app.use(authenticate)
 app.use(categoryRouter)
 app.use(eventRouter)
 
