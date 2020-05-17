@@ -37,7 +37,7 @@ const UpdateEvent = (props) => {
   return (
     <div>
       <Modal show={props.show} onHide={props.handleClose}>
-        <Modal.Header closeButton></Modal.Header>
+        <Modal.Header closeButton>Update Your Event</Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group controlId='titleForm'>
@@ -57,17 +57,16 @@ const UpdateEvent = (props) => {
                 as='textarea' rows='3'
                 placeholder='Give a short description of your event!' />
             </Form.Group>
+
+            <Button
+              onClick={updateEvent}
+              variant='primary'
+              type='submit'
+            >
+              Update Event!
+              </Button>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button
-            onClick={updateEvent}
-            variant='primary'
-            type='submit'
-          >
-            Update Event!
-              </Button>
-        </Modal.Footer>
       </Modal>
         )}
     </div>
