@@ -6,6 +6,8 @@ import {
 import UpdateEvent from './UpdateEvent'
 
 const DashBoardEvent = (props) => {
+  const [show, setShow] = useState(false);
+
   const removeEvent = () => {
     fetch('/remove', {
       method: 'DELETE',
@@ -19,19 +21,6 @@ const DashBoardEvent = (props) => {
         console.log(err)
       })
   }
-
-  // const update = () => {
-  //   fetch('/update', {
-  //     method:'PUT',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({ eventId: props.event.event_id})
-  //   })
-  //     .then(() => {
-  //
-  //     })
-  // }
-  const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
