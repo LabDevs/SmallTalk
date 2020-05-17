@@ -34,6 +34,7 @@ const add = (req, res) => {
 
 const update = (req, res) => {
   const { eventId, userId, title, description } = req.body
+  console.log(eventId, userId, title, description)
 
   Event.update(eventId, userId, title, description)
     .then(() => res.status(200).json({ message: 'Successfully updated.' }))
@@ -50,8 +51,6 @@ const show = (req, res) => {
 
 const remove = (req, res) => {
   const { eventId, userId } = req.body
-  console.log(eventId, userId)
-
   Event.remove(eventId, userId)
     .then(() => res.status(200).json({ message: 'Successfully removed.' }))
     .catch(() => res.status(500).json({ message: 'Could not remove event.' }))

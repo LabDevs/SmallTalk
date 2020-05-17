@@ -4,15 +4,16 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-} from "react-router-dom";
-import CategoriesContextProvider from "./contexts/CategoriesContextProvider";
-import CategoriesEventList from "./components/CategoriesEventList";
-import Register from "./components/Register";
-import Login from "./components/Login";
-import Home from "./components/Home";
-import AddEvent from "./components/AddEvent";
-import UpdateEvent from "./components/UpdateEvent";
+  Link
+} from 'react-router-dom'
+import CategoriesContextProvider from './contexts/CategoriesContextProvider'
+import CategoriesEventList from './components/CategoriesEventList'
+import Register from './components/Register'
+import Login from './components/Login'
+import Home from './components/Home'
+import AddEvent from './components/AddEvent'
+import UpdateEvent from './components/UpdateEvent'
+import DashBoard from './components/DashBoard'
 
 function App () {
   return (
@@ -28,10 +29,9 @@ function App () {
           />
         </Navbar.Brand>
 
-
-        <Nav className="mr.auto">
-          <Link to="/dash">Dash</Link>
-          <Link to="/categories">Categories</Link>
+        <Nav className='mr.auto'>
+          <Link to='/dash'>Dash</Link>
+          <Link to='/categories'>Categories</Link>
         </Nav>
       </Navbar>
 
@@ -44,17 +44,17 @@ function App () {
         </Route>
         <Route path='/login'>
 
-            <Login />
+          <Login />
         </Route>
 
         <Route path='/dash'>
-            <DashBoard />
+          <DashBoard />
         </Route>
 
         <Route path='/updateEvent'>
           <UpdateEvent />
         </Route>
-        <Route path="/categories">
+        <Route path='/categories'>
           <CategoriesContextProvider>
             <CategoriesEventList />
           </CategoriesContextProvider>
@@ -64,8 +64,7 @@ function App () {
   )
 }
 
-
-        // <Route path='/addEvent'>
-        //   <AddEvent />
-        // </Route>
+// <Route path='/addEvent'>
+//   <AddEvent />
+// </Route>
 export default App

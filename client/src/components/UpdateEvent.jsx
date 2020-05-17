@@ -16,15 +16,21 @@ const UpdateEvent = (props) => {
     eventId: props.eventId,
     userId: userId
   }
+  console.log(props)
 
   const addEvent = (e) => {
     e.preventDefault()
     fetch('/update', {
-      method: 'POST',
+      method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(eventInfo)
     })
-      .then(() => setRedirect(true))
+      .then(() => {
+        setTitle(title)
+        setDescription(description)
+        // setRedirect(true)
+      })
+      // .then(() => setRedirect(true))
       .catch((err) => console.log(err))
   }
 

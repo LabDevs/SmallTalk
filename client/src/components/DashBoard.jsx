@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import DashBoardEvent from './DashBoardEvent'
 
 function DashBoard (props) {
   const [events, setEvent] = useState(null)
@@ -10,7 +11,6 @@ function DashBoard (props) {
     fetch('/api/getEvents')
       .then((res) => res.json())
       .then((event) => {
-        console.log(event)
         const newEvents = [...event]
         setEvent(newEvents)
         setIsLoading(false)
@@ -20,53 +20,27 @@ function DashBoard (props) {
         err = 'Sorry there was an error, please try again'
         setErr(err)
       })
-    
   }, [])
-  const userInfo ={
-    eventId: props.eventId
-  }
-  
-  const removeEvent = () => {
-    fetch('/remove/', {
-      method:'DELETE',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(userInfo)
-    })
-      .then(() =>{
-        console.log('Success')
-        // window.location.reload()
-      })
-      
-      .catch((err) =>{
-        console.log(err)
-      })
-  }
 
   return (
     <div>
       <h1>Hello</h1>
       {isLoading ? (
-        <h1>...Loading</h1>
+        <>
+          <p>{err && err || '...Loading'}</p>
+        </>
       ) : (
         <>
           {events &&
             events.map((event) => {
               return (
-              <DashBoardEvent event={event}/>
+                <DashBoardEvent key={event.event_id} event={event} />
               )
             })}
         </>
       )}
     </div>
   )
-
 }
-
-
-
-const editEvent = () =>{
-  
-}
-
 
 export default DashBoard
