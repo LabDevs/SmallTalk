@@ -9,6 +9,18 @@ const register = (req, res) => {
     .hash(password, saltRounds)
     .then(hashedPassword => User.create(username, hashedPassword))
     .then(() => res.sendStatus(200))
+    .then(() => {
+      const payload = {
+        username,
+        userId: user.user_id,
+        expiresIn: '2hr'
+      }
+      return jwt.sign(payload, process.env.JWT_KEY, (err, encryptedPayload) => {
+        if (err) return res.sendStatus(500)
+        res.cookie('userToken', encryptedPayload)
+        res.sendStatus(200)
+      })
+    })
     .catch(() => res.sendStatus(500))
 }
 

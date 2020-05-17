@@ -5,16 +5,14 @@ import {
   Switch,
   Route,
   Link,
-} from 'react-router-dom'
-import CategoriesContextProvider from './contexts/CategoriesContextProvider'
-import CategoriesEventList from './components/CategoriesEventList'
-import Register from './components/Register'
-import Login from './components/Login'
-import Home from './components/Home'
-import AddEvent from './components/AddEvent'
-import UpdateEvent from './components/UpdateEvent'
-// import UserContextProvider from './contexts/UserContextProvider'
-import DashBoard from './components/DashBoard'
+} from "react-router-dom";
+import CategoriesContextProvider from "./contexts/CategoriesContextProvider";
+import CategoriesEventList from "./components/CategoriesEventList";
+import Register from "./components/Register";
+import Login from "./components/Login";
+import Home from "./components/Home";
+import AddEvent from "./components/AddEvent";
+import UpdateEvent from "./components/UpdateEvent";
 
 function App () {
   return (
@@ -30,9 +28,10 @@ function App () {
           />
         </Navbar.Brand>
 
-        <Nav className='mr.auto'>
-          <Link to='/dash'>Dash</Link>
-          <Link to='/categories'>Topics</Link>
+
+        <Nav className="mr.auto">
+          <Link to="/dash">Dash</Link>
+          <Link to="/categories">Categories</Link>
         </Nav>
       </Navbar>
 
@@ -55,7 +54,7 @@ function App () {
         <Route path='/updateEvent'>
           <UpdateEvent />
         </Route>
-        <Route path='/categories/:id'>
+        <Route path="/categories">
           <CategoriesContextProvider>
             <CategoriesEventList />
           </CategoriesContextProvider>

@@ -53,7 +53,7 @@ const remove = (req, res) => {
   console.log(eventId, userId)
 
   Event.remove(eventId, userId)
-      .then(() => res.status(200).json({ message: 'Successfully removed.' }))
+    .then(() => res.status(200).json({ message: 'Successfully removed.' }))
     .catch(() => res.status(500).json({ message: 'Could not remove event.' }))
 }
 

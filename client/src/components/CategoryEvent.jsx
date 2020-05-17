@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
 
-const Event = (props) => {
+const CategoryEvent = (props) => {
   const [variant, setVariant] = useState('primary')
   const rsvpInfo = {
     userId: props.event.userId.toString(),
@@ -36,4 +36,4 @@ const Event = (props) => {
   )
 }
 
-export default Event
+export default CategoryEvent
