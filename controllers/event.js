@@ -10,7 +10,6 @@ const getAllByCategory = (req, res) => {
 
 const getAllByUser = (req, res) => {
   const { userId } = req.body
-  console.log(req.body)
   Event.getAllByUser(userId)
     .then(response => res.status(200).json(response))
     .catch(() =>
@@ -51,9 +50,10 @@ const show = (req, res) => {
 
 const remove = (req, res) => {
   const { eventId, userId } = req.body
+  console.log(eventId, userId)
 
   Event.remove(eventId, userId)
-    .then(() => res.staus(200).json({ message: 'Successfully removed.' }))
+      .then(() => res.status(200).json({ message: 'Successfully removed.' }))
     .catch(() => res.status(500).json({ message: 'Could not remove event.' }))
 }
 

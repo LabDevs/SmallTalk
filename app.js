@@ -11,7 +11,7 @@ const app = express()
 const port = process.env.PORT || 8000
 
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 
 app.use(userRouter)
@@ -21,4 +21,4 @@ app.use(eventRouter)
 
 app.get('/', (req, res) => res.send('Hello World'))
 
-app.listen(port,process.env.HOST_NAME, () => console.log(`Listening on port ${port} `))
+app.listen(port, process.env.HOST_NAME, () => console.log(`Listening on port ${port} `))

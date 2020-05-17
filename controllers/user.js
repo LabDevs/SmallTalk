@@ -30,9 +30,8 @@ const login = async (req, res) => {
     }
     return jwt.sign(payload, process.env.JWT_KEY, (err, encryptedPayload) => {
       if (err) return res.sendStatus(500)
+      res.cookie('userToken', encryptedPayload)
       res.status(200).json(encryptedPayload)
-      // res.cookie('userToken', encryptedPayload)
-      // res.sendStatus(200)
     })
   } catch (err) {
     console.log(err)

@@ -8,8 +8,8 @@ const Event = (props) => {
     eventId: props.event.eventId.toString()
   }
 
-  //eventId and userId will be provided by the CategoriesEventList component, since it's making a fetch
-  //request to the server to get events by category, and will be passed down to this component
+  // eventId and userId will be provided by the CategoriesEventList component, since it's making a fetch
+  // request to the server to get events by category, and will be passed down to this component
   const addRSVP = () => {
     fetch('/rsvp', {
       method: 'POST',
