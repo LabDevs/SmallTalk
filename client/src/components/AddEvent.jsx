@@ -61,7 +61,7 @@ const AddEvent = (props) => {
             <Form.Group controlId='exampleForm.ControlSelect1'>
               <Form.Label>Category</Form.Label>
               <Form.Control onChange={(e) => setCategoryId(e.target.value)} as='select'>
-                {categoryData && categoryData.map(category => <option value={category.category_id}>{category.name}</option>)}
+                {categoryData && categoryData.map(category => <option key={category.category_id} value={category.category_id}>{category.name}</option>)}
               </Form.Control>
             </Form.Group>
             <Button
@@ -74,7 +74,7 @@ const AddEvent = (props) => {
           </Form>
         </Modal.Body>
       </Modal>
-      )}
+      
     </div>
   )
 }
