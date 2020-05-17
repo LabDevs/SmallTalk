@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { CardGroup } from 'react-bootstrap'
 import CategoriesContext from '../contexts/CategoriesContext'
-import Event from './Event'
+import CategoryEvent from './CategoryEvent'
 
 const CategoriesEventList = (props) => {
   const { categoryEvents, setCategoryEvents } = useContext(CategoriesContext)
@@ -21,7 +21,7 @@ const CategoriesEventList = (props) => {
 
   return (
     <CardGroup className='cards'>
-      {categoryEvents && categoryEvents.forEach(event => <Event event={event} />)}
+      {categoryEvents && categoryEvents.forEach(event => <CategoryEvent event={event} />)}
     </CardGroup>
   )
 }
