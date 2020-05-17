@@ -52,7 +52,7 @@ function App() {
         <Route path="/updateEvent">
           <UpdateEvent />
         </Route>
-        <Route path="/categories/:id">
+        <Route path="/categories">
           <CategoriesContextProvider>
             <CategoriesEventList />
           </CategoriesContextProvider>
