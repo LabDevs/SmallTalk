@@ -57,9 +57,9 @@ const AddEvent = () => {
             <Form.Group controlId="exampleForm.ControlSelect1">
               <Form.Label>Category</Form.Label>
               <Form.Control onChange={(e) => setCategoryId(e.target.value)} as="select">
-                {categoryData && categoryData.forEach(category => {
+                {categoryData && categoryData.forEach(category =>(
                   <option value={category.category_id}>{category.name}</option>
-                })}
+                ))}
               </Form.Control>
             </Form.Group>
             <Button

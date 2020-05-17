@@ -9,7 +9,7 @@ const CategoryList = () => {
     const getCategories = async () => {
       const response = await fetch(`/api/categories`)
       const data = await response.json()
-      // setCategories(data)
+      setCategories(data)
       console.log(data)
     }
     getCategories()

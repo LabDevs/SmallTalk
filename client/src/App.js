@@ -1,6 +1,6 @@
 import React from 'react'
-// import { Navbar, Nav } from 'react-bootstrap'
-import { BrowserRouter as Router, Switch, Route, Link, Redirect, useParams} from 'react-router-dom'
+import { Navbar, Nav } from 'react-bootstrap'
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, useParams } from 'react-router-dom'
 import CategoriesContextProvider from './contexts/CategoriesContextProvider'
 import CategoriesEventList from './components/CategoriesEventList'
 import Register from './components/Register'
