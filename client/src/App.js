@@ -15,22 +15,16 @@ import Home from './components/Home'
 import UpdateEvent from './components/UpdateEvent'
 import DashBoard from './components/DashBoard'
 
-function App() {
+function App () {
   const logout = () => {
     fetch('/api/logout')
-      .then(response => {
-        if (response.status === 200) {
-          return <Redirect to='/login' />
-        }
-      })
-      .then(() => window.location.reload())
       .catch(err => console.log(err))
   }
 
   return (
     <Router>
       <Navbar bg='dark' variant='dark'>
-        <Navbar.Brand href='/'>
+        <Navbar.Brand>
           <img
             src='https://via.placeholder.com/150'
             width='30'
@@ -40,34 +34,34 @@ function App() {
           />
         </Navbar.Brand>
 
-        <Nav className='mr.auto'>
-          <Link to='/dash'>Dash</Link>
-          <Link to='/categories'>Categories</Link>
-        </Nav>
-        <Navbar.Collapse className="justify-content-end">
+        <Navbar.Collapse className='justify-content-end'>
           <Nav className='mr.auto'>
             {document.cookie ? (
-              <Button onClick={logout}>Logout</Button>
+              <>
+                <Nav className='mr.auto'>
+                  <Link to='/dash'>Dash</Link>
+                  <Link to='/categories'>Categories</Link>
+                  <Button onClick={logout} href='/login'>Logout</Button>
+                </Nav>
+              </>
             ) : (
-                <>
-                  <Link to='/login'>Login</Link>
-                  <Link to='/register'>Register</Link>
-                </>
-              )}
+              <>
+                <Link to='/login'>Login</Link>
+                <Link to='/register'>Register</Link>
+              </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
 
       <Switch>
-        <Route exact path='/'>
-          <Home />
-        </Route>
         <Route path='/register'>
           <Register />
         </Route>
         <Route path='/login'>
           <Login />
         </Route>
+        
         <Route path='/dash'>
           <DashBoard />
         </Route>
@@ -81,5 +75,6 @@ function App() {
     </Router>
   )
 }
+
 
 export default App

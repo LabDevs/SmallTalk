@@ -31,7 +31,6 @@ function DashBoard () {
 
   return (
     <div>
-      <h1>Hello</h1>
       <Button onClick={handleShow}>Add Event</Button>
       {show ? (
         <AddEvent show={show} handleClose={handleClose} />
@@ -51,12 +50,12 @@ function DashBoard () {
           )}
         </>
       )}
-      
-    <div>
-      <UpcomingEvents />
+
+      <div>
+        <UpcomingEvents />
+      </div>
     </div>
-    </div>
-    
+
   )
 }
 

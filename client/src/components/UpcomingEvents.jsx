@@ -47,7 +47,7 @@ function UpcomingEvents () {
                           dolore magna aliqua
                 </td>
               </tr>
-                  {upcomingEvents &&
+              {upcomingEvents &&
             upcomingEvents.map((event) => {
               return (
                 <tr key={event.event_id}>

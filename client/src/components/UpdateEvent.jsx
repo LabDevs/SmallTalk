@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react'
 import { Form, Button, Modal } from 'react-bootstrap'
-import UserContext from '../contexts/UserContext'
 
 const UpdateEvent = (props) => {
   // eventId should be passed down to this component from the dashboard, because that component is
