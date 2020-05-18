@@ -1,5 +1,5 @@
-const path = require('path');
-require('dotenv').config();
+const path = require('path')
+require('dotenv').config()
 
 module.exports = {
   development: {
@@ -9,7 +9,7 @@ module.exports = {
       port: process.env.DEV_DB_PORT,
       user: process.env.DEV_DB_USER,
       password: process.env.DEV_DB_PSWD,
-      database: process.env.DEV_DB_NAME,
+      database: process.env.DEV_DB_NAME
     }
   }
 }
