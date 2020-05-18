@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react'
 import { Form, Button, Modal } from 'react-bootstrap'
-import { Redirect } from 'react-router-dom'
 import UserContext from '../contexts/UserContext'
 
 const UpdateEvent = (props) => {

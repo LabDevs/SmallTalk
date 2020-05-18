@@ -11,7 +11,6 @@ import CategoriesEventList from './components/CategoriesEventList'
 import Register from './components/Register'
 import Login from './components/Login'
 import Home from './components/Home'
-import AddEvent from './components/AddEvent'
 import UpdateEvent from './components/UpdateEvent'
 import DashBoard from './components/DashBoard'
 
