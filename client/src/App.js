@@ -1,10 +1,11 @@
-import React from 'react'
-import { Navbar, Nav } from 'react-bootstrap'
+import React, { useState, useEffect, useContext } from 'react'
+import { Navbar, Nav, Button } from 'react-bootstrap'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from 'react-router-dom'
 import CategoriesContextProvider from './contexts/CategoriesContextProvider'
 import CategoriesEventList from './components/CategoriesEventList'
@@ -14,11 +15,22 @@ import Home from './components/Home'
 import UpdateEvent from './components/UpdateEvent'
 import DashBoard from './components/DashBoard'
 
-function App () {
+function App() {
+  const logout = () => {
+    fetch('/api/logout')
+      .then(response => {
+        if (response.status === 200) {
+          return <Redirect to='/login' />
+        }
+      })
+      .then(() => window.location.reload())
+      .catch(err => console.log(err))
+  }
+
   return (
     <Router>
       <Navbar bg='dark' variant='dark'>
-        <Navbar.Brand href='#home'>
+        <Navbar.Brand href='/'>
           <img
             src='https://via.placeholder.com/150'
             width='30'
@@ -32,27 +44,34 @@ function App () {
           <Link to='/dash'>Dash</Link>
           <Link to='/categories'>Categories</Link>
         </Nav>
+        <Navbar.Collapse className="justify-content-end">
+          <Nav className='mr.auto'>
+            {document.cookie ? (
+              <Button onClick={logout}>Logout</Button>
+            ) : (
+                <>
+                  <Link to='/login'>Login</Link>
+                  <Link to='/register'>Register</Link>
+                </>
+              )}
+          </Nav>
+        </Navbar.Collapse>
       </Navbar>
 
       <Switch>
+        <Route exact path='/'>
+          <Home />
+        </Route>
         <Route path='/register'>
           <Register />
         </Route>
         <Route path='/login'>
-
           <Login />
         </Route>
-        <Route exact path='/'>
-          <Home />
-        </Route>
-
         <Route path='/dash'>
           <DashBoard />
         </Route>
 
-        <Route path='/updateEvent'>
-          <UpdateEvent />
-        </Route>
         <Route path='/categories'>
           <CategoriesContextProvider>
             <CategoriesEventList />
@@ -63,7 +82,4 @@ function App () {
   )
 }
 
-// <Route path='/addEvent'>
-//   <AddEvent />
-// </Route>
 export default App

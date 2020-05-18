@@ -5,15 +5,13 @@ import UserContext from '../contexts/UserContext'
 const UpdateEvent = (props) => {
   // eventId should be passed down to this component from the dashboard, because that component is
   // getting all event info based on user, and each event should have an id attached to it.
-  const { userId } = useContext(UserContext)
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
 
   const eventInfo = {
     title: title.toString(),
     description: description.toString(),
-    eventId: props.eventId,
-    userId: userId
+    eventId: props.eventId
   }
   console.log(props.location)
   console.log(props)
