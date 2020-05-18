@@ -4,7 +4,7 @@ import AddEvent from './AddEvent'
 import { Button } from 'react-bootstrap'
 import UpcomingEvents from './UpcomingEvents'
 
-function DashBoard () {
+function DashBoard() {
   const [events, setEvent] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [err, setErr] = useState(null)
@@ -33,30 +33,26 @@ function DashBoard () {
     <div>
       <h1>Hello</h1>
       <Button onClick={handleShow}>Add Event</Button>
-      {show ? (
-        <AddEvent show={show} handleClose={handleClose} />
+      <AddEvent show={show} handleClose={handleClose} />
+      {isLoading ? (
+        <p> {err || '...Loading'}</p>
       ) : (
-        <>
-          {isLoading ? (
-            <p> {err || '...Loading'}</p>
-          ) : (
-            <>
-              {events &&
-                    events.map((event) => {
-                      return (
-                        <DashBoardEvent key={event.event_id} event={event} />
-                      )
-                    })}
-            </>
-          )}
-        </>
-      )}
-      
-    <div>
-      <UpcomingEvents />
+          <>
+            {events &&
+              events.map((event) => {
+                return (
+                  <DashBoardEvent key={event.event_id} event={event} />
+                )
+              })
+            }
+          </>
+        )}
+
+      <div>
+        <UpcomingEvents />
+      </div>
     </div>
-    </div>
-    
+
   )
 }
 

@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react'
 import { Form, Button, Modal } from 'react-bootstrap'
-import UserContext from '../contexts/UserContext'
 
 const UpdateEvent = (props) => {
   // eventId should be passed down to this component from the dashboard, because that component is
@@ -34,7 +33,7 @@ const UpdateEvent = (props) => {
   return (
     <div>
       <Modal show={props.show} onHide={props.handleClose}>
-        <Modal.Header closeButton>Update Your Event</Modal.Header>
+        <Modal.Header closeButton>Update Event</Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group controlId='titleForm'>
@@ -65,7 +64,6 @@ const UpdateEvent = (props) => {
           </Form>
         </Modal.Body>
       </Modal>
-        )}
     </div>
   )
 }
