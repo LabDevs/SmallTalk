@@ -11,14 +11,14 @@ const Login = () => {
     password: password
   }
 
-  const loginUser = (e) => {
+  const loginUser = e => {
     e.preventDefault()
     fetch('/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(userInfo)
     })
-      .then((res) => {
+      .then(res => {
         if (res.status === 200) {
           setRedirect(true)
         }
@@ -32,7 +32,7 @@ const Login = () => {
           return <p>Wrong Password </p>
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err)
       })
   }
@@ -46,7 +46,7 @@ const Login = () => {
           <Form.Group controlId='usernameForm'>
             <Form.Label>Username</Form.Label>
             <Form.Control
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={e => setUsername(e.target.value)}
               type='text'
               placeholder='Enter your unique username!'
             />
@@ -55,7 +55,7 @@ const Login = () => {
           <Form.Group controlId='passwordForm'>
             <Form.Label>Password</Form.Label>
             <Form.Control
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value)}
               type='password'
               placeholder='Enter your password!'
             />
