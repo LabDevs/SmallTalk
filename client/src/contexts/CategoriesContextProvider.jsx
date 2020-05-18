@@ -8,7 +8,8 @@ const CategoriesContextProvider = ({ children }) => {
     categoryEvents,
     setCategoryEvents,
     categories,
-  setCategories}
+    setCategories
+}
 
   return (
     <CategoriesContext.Provider value={value}>

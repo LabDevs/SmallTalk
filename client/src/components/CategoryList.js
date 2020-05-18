@@ -1,10 +1,9 @@
 import React, { useEffect, useContext } from 'react'
 import { Card, CardGroup, Button } from 'react-bootstrap'
-import CategoriesContext from './CategoryContext'
+import CategoriesContext from '../contexts/CategoriesContext'
 
 const CategoryList = () => {
   const { categories, setCategories } = useContext(CategoriesContext)
-  console.log(CategoriesContext)
 
   useEffect(() => {
     const getCategories = async () => {

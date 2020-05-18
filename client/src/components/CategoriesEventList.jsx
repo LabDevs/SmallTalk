@@ -10,7 +10,7 @@ const CategoriesEventList = (props) => {
   // a prop since that component will be making a fetch request to get all categories, which includes the id.
   useEffect(() => {
     async function getEventsByCategory() {
-      const response = fetch(`/api/categories/${props.id}`)
+      const response = await fetch(`/api/categories/${props.id}`)
       const json = await response.json()
       setCategoryEvents(json)
       console.log(categoryEvents)

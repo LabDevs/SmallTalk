@@ -65,7 +65,7 @@ const AddEvent = (props) => {
               <Form.Label>
                 Category
               </Form.Label>
-              <Form.Control onChange={;(e) => setCategoryId(e.target.value)} as='select'>
+              <Form.Control onChange={(e) => setCategoryId(e.target.value)} as='select'>
                 {categoryData && categoryData.map(category => <option key={category.category_id} value={category.category_id}>
                                                                 {category.name}
                                                               </option>)}
