@@ -18,5 +18,4 @@ describe('render App Component', () => {
   //   const el = screen.getByText('Add Event')
   //   expect(el).toHaveTextContent('Add Event')
   // })
-  
 })
