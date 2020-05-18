@@ -4,8 +4,8 @@ import { Card, Button } from 'react-bootstrap'
 const CategoryEvent = (props) => {
   const [variant, setVariant] = useState('primary')
   const rsvpInfo = {
-    userId: props.event.userId.toString(),
-    eventId: props.event.eventId.toString()
+    userId: props.event.userId,
+    eventId: props.event.eventId
   }
 
   // eventId and userId will be provided by the CategoriesEventList component, since it's making a fetch
