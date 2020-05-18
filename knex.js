@@ -10,6 +10,10 @@ module.exports = {
       user: process.env.DEV_DB_USER,
       password: process.env.DEV_DB_PSWD,
       database: process.env.DEV_DB_NAME,
+<<<<<<< HEAD
     }
   }
 }
+=======
+    },
+>>>>>>> Adds knex, fixes issue with modals
