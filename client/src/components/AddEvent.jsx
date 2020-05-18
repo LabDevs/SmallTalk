@@ -24,7 +24,7 @@ const AddEvent = (props) => {
   }
 
   useEffect(() => {
-    async function getCategories() {
+    async function getCategories () {
       try {
         const response = await fetch('/api/categories')
         const data = await response.json()
@@ -70,11 +70,11 @@ const AddEvent = (props) => {
               type='submit'
             >
               Add Event!
-          </Button>
+            </Button>
           </Form>
         </Modal.Body>
       </Modal>
-      
+
     </div>
   )
 }

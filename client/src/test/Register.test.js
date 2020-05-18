@@ -13,7 +13,7 @@ describe('render Login Component', () => {
     const el = screen.getByText('Password')
     expect(el).toHaveTextContent('Password')
   })
-  
+
   test('expect friendly text to be on the page', () => {
     render(<Register />)
     const el = screen.getByText('You will remain anonymous while using our app :)')
