@@ -4,6 +4,7 @@ import CategoriesContext from './CategoryContext'
 
 const CategoryList = () => {
   const { categories, setCategories } = useContext(CategoriesContext)
+  console.log(CategoriesContext)
 
   useEffect(() => {
     const getCategories = async () => {

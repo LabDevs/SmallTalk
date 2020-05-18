@@ -3,11 +3,12 @@ import CategoriesContext from './CategoriesContext'
 
 const CategoriesContextProvider = ({ children }) => {
   const [categoryEvents, setCategoryEvents] = useState([])
-
+  const [categories, setCategories] = useState([])
   const value = {
     categoryEvents,
-    setCategoryEvents
-  }
+    setCategoryEvents,
+    categories,
+  setCategories}
 
   return (
     <CategoriesContext.Provider value={value}>
