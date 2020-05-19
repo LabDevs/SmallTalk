@@ -20,7 +20,7 @@ function App () {
     fetch('/api/logout')
       .catch(err => console.log(err))
   }
-
+  //If you're going to put the nav's inside the ternary, then put it here too, so we don't end up not having a navbar
   return (
     <Router>
       <Navbar bg='dark' variant='dark'>
@@ -75,6 +75,10 @@ function App () {
     </Router>
   )
 }
+// Is there a particular reason why you're getting rid of this? If you're going to build the landing page, it might be useful to have it there for testing :)
+// <Route exact path='/'>
+//           <Home />
+//         </Route>
 
 
 export default App
