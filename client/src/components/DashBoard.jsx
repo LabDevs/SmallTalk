@@ -31,22 +31,25 @@ function DashBoard() {
 
   return (
     <div>
-      <h1>Hello</h1>
       <Button onClick={handleShow}>Add Event</Button>
-      <AddEvent show={show} handleClose={handleClose} />
-      {isLoading ? (
-        <p> {err || '...Loading'}</p>
+      {show ? (
+        <AddEvent show={show} handleClose={handleClose} />
       ) : (
-          <>
-            {events &&
-              events.map((event) => {
-                return (
-                  <DashBoardEvent key={event.event_id} event={event} />
-                )
-              })
-            }
-          </>
-        )}
+        <>
+          {isLoading ? (
+            <p> {err || '...Loading'}</p>
+          ) : (
+            <>
+              {events &&
+                    events.map((event) => {
+                      return (
+                        <DashBoardEvent key={event.event_id} event={event} />
+                      )
+                    })}
+            </>
+          )}
+        </>
+      )}
 
       <div>
         <UpcomingEvents />
