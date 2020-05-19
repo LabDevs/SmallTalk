@@ -11,6 +11,7 @@ exports.up = function (knex) {
       .inTable('users')
     table.string('title').notNullable()
     table.string('description').notNullable()
+    table.datetime('date')
   })
 }
 

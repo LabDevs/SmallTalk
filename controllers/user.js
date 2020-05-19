@@ -12,7 +12,7 @@ const register = (req, res) => {
     .then(() => {
       const payload = {
         username,
-        userId: user.user_id,
+        userId: user.id,
         expiresIn: '2hr'
       }
       return jwt.sign(payload, process.env.JWT_KEY, (err, encryptedPayload) => {
