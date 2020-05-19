@@ -12,14 +12,10 @@
 .eventTable {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   width: 20%;
 }
 
 .eventHeader {
   width: 100%;
-}
-
-.eventBody {
-  padding-left: 4.5%;
 }
