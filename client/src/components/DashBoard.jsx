@@ -4,7 +4,7 @@ import AddEvent from './AddEvent'
 import { Button } from 'react-bootstrap'
 import UpcomingEvents from './UpcomingEvents'
 
-function DashBoard () {
+function DashBoard() {
   const [events, setEvent] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [err, setErr] = useState(null)

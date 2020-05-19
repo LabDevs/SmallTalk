@@ -23,4 +23,4 @@ app.use(eventRouter)
 
 app.get('/', (req, res) => res.send('Hello World'))
 
-app.listen(port, process.env.HOST_NAME, () => console.log(`Listening on port ${port} `))
+app.listen(port, () => console.log(`Listening on port ${port} `))

@@ -24,7 +24,7 @@ const AddEvent = (props) => {
   }
 
   useEffect(() => {
-    async function getCategories () {
+    async function getCategories() {
       try {
         const response = await fetch('/api/categories')
         const data = await response.json()
@@ -42,7 +42,7 @@ const AddEvent = (props) => {
   return (
     <div>
       <Modal show={props.show} onHide={props.handleClose}>
-        <Modal.Header closeButton></Modal.Header>
+        <Modal.Header closeButton>Add Event</Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group controlId='titleForm'>

@@ -23,20 +23,17 @@ const DashBoardEvent = (props) => {
 
   return (
     <>
-      {show ? (
-        <UpdateEvent show={show} handleClose={handleClose} eventId={props.event.event_id} />
-      ) : (
-        <Card className='text-center'>
-          <Card.Body>
-            <Card.Title>{props.event.title}</Card.Title>
-            <Card.Text>
-              {props.event.description}
-            </Card.Text>
-            <Button onClick={handleShow}>Update Event</Button>
-            <Button onClick={removeEvent}>Delete Event</Button>
-          </Card.Body>
-        </Card>
-      )}
+      <UpdateEvent show={show} handleClose={handleClose} eventId={props.event.event_id} />
+      <Card className='text-center'>
+        <Card.Body>
+          <Card.Title>{props.event.title}</Card.Title>
+          <Card.Text>
+            {props.event.description}
+          </Card.Text>
+          <Button onClick={handleShow}>Update Event</Button>
+          <Button onClick={removeEvent}>Delete Event</Button>
+        </Card.Body>
+      </Card>
     </>
   )
 }
