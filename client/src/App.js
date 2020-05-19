@@ -1,24 +1,22 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React from 'react'
 import { Navbar, Nav, Button } from 'react-bootstrap'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
-  Redirect
 } from 'react-router-dom'
 import CategoriesContextProvider from './contexts/CategoriesContextProvider'
 import CategoriesEventList from './components/CategoriesEventList'
 import Register from './components/Register'
 import Login from './components/Login'
-import Home from './components/Home'
 import DashBoard from './components/DashBoard'
 
 function App () {
   const logout = () => {
     fetch('/api/logout').catch(err => console.log(err))
   }
-  //If you're going to put the nav's inside the ternary, then put it here too, so we don't end up not having a navbar
+  // If you're going to put the nav's inside the ternary, then put it here too, so we don't end up not having a navbar
   return (
     <Router>
       <Navbar bg='dark' variant='dark'>

@@ -32,6 +32,8 @@ const DashBoardEvent = props => {
         <Card.Body>
           <Card.Title>{props.event.title}</Card.Title>
           <Card.Text>{props.event.description}</Card.Text>
+          <Card.Title>{props.event.category}</Card.Title>
+          <Card.Title>{props.event.date}</Card.Title>
           <Button onClick={handleShow}>Update Event</Button>
           <Button onClick={removeEvent}>Delete Event</Button>
         </Card.Body>
