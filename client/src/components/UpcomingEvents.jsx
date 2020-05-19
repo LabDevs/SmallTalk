@@ -10,12 +10,12 @@ function UpcomingEvents () {
     function getRSVPEvents () {
       setIsLoading(true)
       fetch('/rsvp/user')
-        .then((res) => res.json())
-        .then((event) => {
+        .then(res => res.json())
+        .then(event => {
           const newEvents = [...event]
           setUpComingEvents(newEvents)
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err)
           err = 'Sorry there was an error, please try again'
           setErr(err)
@@ -42,23 +42,18 @@ function UpcomingEvents () {
               <tr>
                 <td>
                   <h3>Upcoming Events</h3>
-              Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua
                 </td>
               </tr>
               {upcomingEvents &&
-            upcomingEvents.map((event) => {
-              return (
-                <tr key={event.event_id}>
-                  <td>event {event.event_id}</td>
-                </tr>
-
-              )
-            })}
+                upcomingEvents.map(event => {
+                  return (
+                    <tr key={event.event_id}>
+                      <td>event {event.event_id}</td>
+                    </tr>
+                  )
+                })}
             </tbody>
           </Table>
-
         </>
       )}
     </>

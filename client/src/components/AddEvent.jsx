@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Button, Modal } from 'react-bootstrap'
 
-const AddEvent = (props) => {
+const AddEvent = props => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [categoryData, setCategoryData] = useState(null)
   const [categoryId, setCategoryId] = useState(null)
+  const [date, setDate] = useState(null)
   const eventInfo = {
     title: title,
     description: description,
-    categoryId: categoryId
+    categoryId: categoryId,
+    date: date
   }
 
-  const addEvent = (e) => {
+  const addEvent = e => {
     e.preventDefault()
     fetch('/add', {
       method: 'POST',
@@ -20,11 +22,11 @@ const AddEvent = (props) => {
       body: JSON.stringify(eventInfo)
     })
       .then(() => window.location.reload())
-      .catch((err) => console.log(err))
+      .catch(err => console.log(err))
   }
 
   useEffect(() => {
-    async function getCategories() {
+    async function getCategories () {
       try {
         const response = await fetch('/api/categories')
         const data = await response.json()
@@ -56,25 +58,44 @@ const AddEvent = (props) => {
 
             <Form.Group controlId='descriptionForm'>
               <Form.Label>Description</Form.Label>
-              <Form.Control onChange={e => setDescription(e.target.value)} as='textarea' rows='3' placeholder='Give a short description of your event!' />
+              <Form.Control
+                onChange={e => setDescription(e.target.value)}
+                as='textarea'
+                rows='3'
+                placeholder='Give a short description of your event!'
+              />
             </Form.Group>
-            <Form.Group controlId='exampleForm.ControlSelect1'>
+
+            <Form.Group controlId='categoryOptions'>
               <Form.Label>Category</Form.Label>
-              <Form.Control onChange={(e) => setCategoryId(e.target.value)} as='select'>
-                {categoryData && categoryData.map(category => <option key={category.category_id} value={category.category_id}>{category.name}</option>)}
+              <Form.Control
+                onChange={e => setCategoryId(e.target.value)}
+                as='select'
+              >
+                {categoryData &&
+                  categoryData.map(category => (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
               </Form.Control>
             </Form.Group>
-            <Button
-              onClick={addEvent}
-              variant='primary'
-              type='submit'
-            >
+
+            <Form.Group controlId='dateForm'>
+              <Form.Label>Date</Form.Label>
+              <Form.Control
+                onChange={e => setDate(e.target.value)}
+                type='datetime-local'
+                rows='3'
+              />
+            </Form.Group>
+
+            <Button onClick={addEvent} variant='primary' type='submit'>
               Add Event!
             </Button>
           </Form>
         </Modal.Body>
       </Modal>
-
     </div>
   )
 }
