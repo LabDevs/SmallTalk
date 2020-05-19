@@ -5,12 +5,13 @@ const jwt = require('jsonwebtoken')
 const register = async (req, res) => {
   try {
     const saltRounds = 8
-    const { username, password } = req.body
+    const { username, email, password } = req.body
     const encryptedPassword = await bcrypt.hash(password, saltRounds)
-    const user = await User.create(username, encryptedPassword)
+    const user = await User.create(username, email, encryptedPassword)
     const payload = {
       username,
-      userId: user.user_id,
+      email,
+      userId: user.id,
       expiresIn: '2hr'
     }
 

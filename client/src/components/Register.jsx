@@ -13,9 +13,15 @@ const Register = () => {
             placeholder='Enter a unique username!'
             name='username'
           />
-          <Form.Text className='text-muted'>
-                You will remain anonymous while using our app :)
-          </Form.Text>
+        </Form.Group>
+
+        <Form.Group controlId='emailForm'>
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            type='email'
+            placeholder='Enter your email!'
+            name='email'
+          />
         </Form.Group>
 
         <Form.Group controlId='passwordForm'>
@@ -26,11 +32,8 @@ const Register = () => {
             name='password'
           />
         </Form.Group>
-        <Button
-          variant='primary'
-          type='submit'
-        >
-              Submit
+        <Button variant='primary' type='submit'>
+          Submit
         </Button>
       </Form>
     </div>

@@ -6,10 +6,12 @@ const AddEvent = props => {
   const [description, setDescription] = useState('')
   const [categoryData, setCategoryData] = useState(null)
   const [categoryId, setCategoryId] = useState(null)
+  const [date, setDate] = useState(null)
   const eventInfo = {
     title: title,
     description: description,
-    categoryId: categoryId
+    categoryId: categoryId,
+    date: date
   }
 
   const addEvent = e => {
@@ -63,7 +65,8 @@ const AddEvent = props => {
                 placeholder='Give a short description of your event!'
               />
             </Form.Group>
-            <Form.Group controlId='exampleForm.ControlSelect1'>
+
+            <Form.Group controlId='categoryOptions'>
               <Form.Label>Category</Form.Label>
               <Form.Control
                 onChange={e => setCategoryId(e.target.value)}
@@ -77,6 +80,16 @@ const AddEvent = props => {
                   ))}
               </Form.Control>
             </Form.Group>
+
+            <Form.Group controlId='dateForm'>
+              <Form.Label>Date</Form.Label>
+              <Form.Control
+                onChange={e => setDate(e.target.value)}
+                type='datetime-local'
+                rows='3'
+              />
+            </Form.Group>
+
             <Button onClick={addEvent} variant='primary' type='submit'>
               Add Event!
             </Button>

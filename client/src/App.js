@@ -12,19 +12,17 @@ import CategoriesEventList from './components/CategoriesEventList'
 import Register from './components/Register'
 import Login from './components/Login'
 import Home from './components/Home'
-import UpdateEvent from './components/UpdateEvent'
 import DashBoard from './components/DashBoard'
 
 function App () {
   const logout = () => {
-    fetch('/api/logout')
-      .catch(err => console.log(err))
+    fetch('/api/logout').catch(err => console.log(err))
   }
   //If you're going to put the nav's inside the ternary, then put it here too, so we don't end up not having a navbar
   return (
     <Router>
       <Navbar bg='dark' variant='dark'>
-        <Navbar.Brand>
+        <Navbar.Brand href='/'>
           <img
             src='https://via.placeholder.com/150'
             width='30'
@@ -34,24 +32,30 @@ function App () {
           />
         </Navbar.Brand>
 
-        <Navbar.Collapse className='justify-content-end'>
-          <Nav className='mr.auto'>
-            {document.cookie ? (
-              <>
-                <Nav className='mr.auto'>
-                  <Link to='/dash'>Dash</Link>
-                  <Link to='/categories'>Categories</Link>
-                  <Button onClick={logout} href='/login'>Logout</Button>
-                </Nav>
-              </>
-            ) : (
-              <>
+        {document.cookie ? (
+          <>
+            <Nav className='mr.auto'>
+              <Link to='/dash'>Dash</Link>
+              <Link to='/categories'>Categories</Link>
+            </Nav>
+            <Navbar.Collapse className='justify-content-end'>
+              <Nav className='mr.auto'>
+                <Button onClick={logout} href='/login'>
+                  Logout
+                </Button>
+              </Nav>
+            </Navbar.Collapse>
+          </>
+        ) : (
+          <>
+            <Navbar.Collapse className='justify-content-end'>
+              <Nav className='mr.auto'>
                 <Link to='/login'>Login</Link>
                 <Link to='/register'>Register</Link>
-              </>
-            )}
-          </Nav>
-        </Navbar.Collapse>
+              </Nav>
+            </Navbar.Collapse>
+          </>
+        )}
       </Navbar>
 
       <Switch>
@@ -61,7 +65,7 @@ function App () {
         <Route path='/login'>
           <Login />
         </Route>
-        
+
         <Route path='/dash'>
           <DashBoard />
         </Route>
@@ -79,6 +83,5 @@ function App () {
 // <Route exact path='/'>
 //           <Home />
 //         </Route>
-
 
 export default App

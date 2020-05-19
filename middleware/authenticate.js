@@ -10,7 +10,7 @@ const authenticate = async (req, res, next) => {
 
     const { username } = payload
     const user = await User.getByUserName(username)
-    req.body.userId = user.user_id
+    req.body.userId = user.id
     if (user) return next()
   } catch (err) {
     console.log(err)

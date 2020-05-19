@@ -20,9 +20,10 @@ const getAllByUser = (req, res) => {
 }
 
 const add = (req, res) => {
-  const { userId, categoryId, title, description } = req.body
+  const { userId, categoryId, title, description, date } = req.body
+  console.log(userId, categoryId, title, description, date)
 
-  Event.add(userId, categoryId, title, description)
+  Event.add(userId, categoryId, title, description, date)
     .then(() => res.status(200).json({ message: 'Successfully added.' }))
     .catch(err => {
       console.log(err)
@@ -33,10 +34,9 @@ const add = (req, res) => {
 }
 
 const update = (req, res) => {
-  const { eventId, userId, title, description } = req.body
-  console.log(eventId, userId, title, description)
+  const { eventId, userId, categoryId, title, description, date } = req.body
 
-  Event.update(eventId, userId, title, description)
+  Event.update(eventId, userId, categoryId, title, description, date)
     .then(() => res.status(200).json({ message: 'Successfully updated.' }))
     .catch(() => res.status(500).json({ message: 'Could not add event.' }))
 }
