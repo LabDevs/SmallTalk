@@ -5,7 +5,7 @@ const AddEvent = props => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [categoryData, setCategoryData] = useState(null)
-  const [categoryId, setCategoryId] = useState(null)
+  const [categoryId, setCategoryId] = useState(1)
   const [date, setDate] = useState(null)
   const eventInfo = {
     title: title,
@@ -39,7 +39,7 @@ const AddEvent = props => {
     getCategories()
   }, [])
 
-  console.log(categoryData)
+  console.log(categoryId)
 
   return (
     <div>
@@ -73,11 +73,24 @@ const AddEvent = props => {
                 as='select'
               >
                 {categoryData &&
-                  categoryData.map(category => (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  ))}
+                  categoryData.map((category, i) => {
+                    if (i === 0) {
+                      return (
+                        <option
+                          key={category.id}
+                          value={category.id}
+                          selected='selected'
+                        >
+                          {category.name}
+                        </option>
+                      )
+                    }
+                    return (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
+                    )
+                  })}
               </Form.Control>
             </Form.Group>
 

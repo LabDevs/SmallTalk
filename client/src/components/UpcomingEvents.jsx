@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import Table from 'react-bootstrap/Table'
+import { Button, Card } from 'react-bootstrap'
 
-function UpcomingEvents () {
+function UpcomingEvents() {
   const [upcomingEvents, setUpComingEvents] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [err, setErr] = useState(null)
 
   useEffect(() => {
-    function getRSVPEvents () {
+    function getRSVPEvents() {
       setIsLoading(true)
       fetch('/rsvp/user')
         .then(res => res.json())
@@ -26,36 +26,26 @@ function UpcomingEvents () {
     setIsLoading(false)
   }, [])
 
+  console.log(upcomingEvents)
+
   return (
     <>
       {isLoading ? (
         <p> {err || '...Loading'}</p>
       ) : (
-        <>
-          <Table striped bordered hover variant='dark'>
-            <thead>
-              <tr>
-                <th>Events</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <h3>Upcoming Events</h3>
-                </td>
-              </tr>
-              {upcomingEvents &&
-                upcomingEvents.map(event => {
-                  return (
-                    <tr key={event.event_id}>
-                      <td>event {event.event_id}</td>
-                    </tr>
-                  )
-                })}
-            </tbody>
-          </Table>
-        </>
-      )}
+          <Card className='text-center eventTable'>
+            <Card.Header className='eventHeader'>Upcoming Events</Card.Header>
+            {upcomingEvents &&
+              upcomingEvents.map(event => {
+                return (
+                  <Card.Body className='eventBody'>
+                    <Card.Title>{event.title}</Card.Title>
+                    <Button>Chat!</Button>
+                  </Card.Body>
+                )
+              })}
+          </Card>
+        )}
     </>
   )
 }

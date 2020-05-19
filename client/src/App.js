@@ -1,25 +1,21 @@
 import React from 'react'
 import { Navbar, Nav, Button } from 'react-bootstrap'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import CategoriesContextProvider from './contexts/CategoriesContextProvider'
 import CategoriesEventList from './components/CategoriesEventList'
 import Register from './components/Register'
 import Login from './components/Login'
 import DashBoard from './components/DashBoard'
+import UpcomingEvents from './components/UpcomingEvents'
+import './index.css'
 
 function App () {
   const logout = () => {
     fetch('/api/logout').catch(err => console.log(err))
   }
-  // If you're going to put the nav's inside the ternary, then put it here too, so we don't end up not having a navbar
   return (
     <Router>
-      <Navbar bg='dark' variant='dark'>
+      <Navbar bg='light' variant='light'>
         <Navbar.Brand href='/'>
           <img
             src='https://via.placeholder.com/150'
@@ -55,6 +51,8 @@ function App () {
           </>
         )}
       </Navbar>
+
+      {document.cookie ? <UpcomingEvents /> : <></>}
 
       <Switch>
         <Route path='/register'>
