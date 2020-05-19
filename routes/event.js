@@ -10,7 +10,7 @@ router.post('/add', eventController.add)
 
 router.put('/update', eventController.update)
 
-router.get('/event/:id', eventController.show)
+router.get('/api/event', eventController.show)
 
 router.delete('/remove', eventController.remove)
 
