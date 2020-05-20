@@ -13,9 +13,8 @@ const add = (req, res) => {
 
 const getByUser = (req, res) => {
   const { userId } = req.body
-  console.log(userId)
   RSVP.getByUser(userId)
-    .then((res) => res.sendStatus(200).json(res))
+    .then(response => res.status(200).json(response))
     .catch((err) => {
       console.log(err)
       res.sendStatus(500)

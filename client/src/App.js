@@ -1,21 +1,23 @@
 import React from 'react'
-import { Navbar, Nav } from 'react-bootstrap'
-import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
+import { Navbar, Nav, Button } from 'react-bootstrap'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import CategoriesContextProvider from './contexts/CategoriesContextProvider'
 import CategoriesEventList from './components/CategoriesEventList'
 import CategoryList from './components/CategoryList'
 import Register from './components/Register'
 import Login from './components/Login'
-import Home from './components/Home'
-import AddEvent from './components/AddEvent'
-import UpdateEvent from './components/UpdateEvent'
 import DashBoard from './components/DashBoard'
+import UpcomingEvents from './components/UpcomingEvents'
+import './index.css'
 
 function App () {
+  const logout = () => {
+    fetch('/api/logout').catch(err => console.log(err))
+  }
   return (
     <Router>
-      <Navbar bg='dark' variant='dark'>
-        <Navbar.Brand href='#home'>
+      <Navbar bg='light' variant='light'>
+        <Navbar.Brand href='/'>
           <img
             src='https://via.placeholder.com/150'
             width='30'
@@ -23,13 +25,35 @@ function App () {
             className='d-inline-block align-top'
             alt='placeholder' />
         </Navbar.Brand>
-        <Nav className='mr.auto'>
-          <Link to='/dash'> Dash
-          </Link>
-          <Link to='/categories'> Categories
-          </Link>
-        </Nav>
+
+        {document.cookie ? (
+          <>
+            <Nav className='mr.auto'>
+              <Link to='/dash'>Dash</Link>
+              <Link to='/categories'>Categories</Link>
+            </Nav>
+            <Navbar.Collapse className='justify-content-end'>
+              <Nav className='mr.auto'>
+                <Button onClick={logout} href='/login'>
+                  Logout
+                </Button>
+              </Nav>
+            </Navbar.Collapse>
+          </>
+        ) : (
+          <>
+            <Navbar.Collapse className='justify-content-end'>
+              <Nav className='mr.auto'>
+                <Link to='/login'>Login</Link>
+                <Link to='/register'>Register</Link>
+              </Nav>
+            </Navbar.Collapse>
+          </>
+        )}
       </Navbar>
+
+      {document.cookie ? <UpcomingEvents /> : <></>}
+
       <Switch>
         <Route path='/register'>
           <Register />
@@ -37,15 +61,11 @@ function App () {
         <Route path='/login'>
           <Login />
         </Route>
-        <Route exact path='/'>
-          <Home />
-        </Route>
+
         <Route path='/dash'>
           <DashBoard />
         </Route>
-        <Route path='/updateEvent'>
-          <UpdateEvent />
-        </Route>
+
         <Route path='/categories'>
           <CategoriesContextProvider>
             <CategoryList />
@@ -55,8 +75,9 @@ function App () {
     </Router>
   )
 }
+// Is there a particular reason why you're getting rid of this? If you're going to build the landing page, it might be useful to have it there for testing :)
+// <Route exact path='/'>
+//           <Home />
+//         </Route>
 
-// <Route path='/addEvent'>
-//   <AddEvent />
-// </Route>
 export default App

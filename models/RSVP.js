@@ -7,7 +7,8 @@ class RSVP {
   }
 
   static getByUser (userId) {
-    const queryText = 'SELECT * FROM rsvp WHERE user_id=$1;'
+    const queryText =
+      'SELECT rsvp.id, rsvp.event_id, rsvp.user_id, events.title FROM rsvp JOIN events ON rsvp.event_id = events.id WHERE rsvp.user_id=$1;'
     return db.query(queryText, [userId]).then(response => response.rows)
   }
 }

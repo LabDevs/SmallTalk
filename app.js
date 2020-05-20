@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const userRouter = require('./routes/user')
 const authenticate = require('./middleware/authenticate')
+const rsvpRouter = require('./routes/rsvp')
 const eventRouter = require('./routes/event')
 const categoryRouter = require('./routes/category')
 
@@ -15,7 +16,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 
 app.use(userRouter)
-// app.use(authenticate)
+app.use(authenticate)
+app.use(rsvpRouter)
 app.use(categoryRouter)
 app.use(eventRouter)
 
