@@ -7,6 +7,7 @@ import Register from './components/Register'
 import Login from './components/Login'
 import DashBoard from './components/DashBoard'
 import UpcomingEvents from './components/UpcomingEvents'
+import VideoChat from './components/VideoChat'
 import './index.css'
 
 function App () {
@@ -65,6 +66,10 @@ function App () {
         <Route path='/dash'>
           <DashBoard />
         </Route>
+        
+        // <Route path='/videoChat'>
+        //   <VideoChat />
+        // </Route>
 
         <Route path='/categories'>
           <CategoriesContextProvider>
