@@ -6,10 +6,9 @@ import CategoriesEventList from './components/CategoriesEventList'
 import Register from './components/Register'
 import Login from './components/Login'
 import DashBoard from './components/DashBoard'
-import UpcomingEvents from './components/UpcomingEvents'
 import './index.css'
 
-function App () {
+function App() {
   const logout = () => {
     fetch('/api/logout').catch(err => console.log(err))
   }
@@ -41,18 +40,16 @@ function App () {
             </Navbar.Collapse>
           </>
         ) : (
-          <>
-            <Navbar.Collapse className='justify-content-end'>
-              <Nav className='mr.auto'>
-                <Link to='/login'>Login</Link>
-                <Link to='/register'>Register</Link>
-              </Nav>
-            </Navbar.Collapse>
-          </>
-        )}
+            <>
+              <Navbar.Collapse className='justify-content-end'>
+                <Nav className='mr.auto'>
+                  <Link to='/login'>Login</Link>
+                  <Link to='/register'>Register</Link>
+                </Nav>
+              </Navbar.Collapse>
+            </>
+          )}
       </Navbar>
-
-      {document.cookie ? <UpcomingEvents /> : <></>}
 
       <Switch>
         <Route path='/register'>

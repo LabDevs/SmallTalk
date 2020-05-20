@@ -1,16 +1,17 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import DashBoardEvent from './DashBoardEvent'
 import AddEvent from './AddEvent'
 import { Button } from 'react-bootstrap'
+import UpcomingEvents from './UpcomingEvents'
 
-function DashBoard () {
+function DashBoard() {
   const [events, setEvent] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [err, setErr] = useState(null)
   const [show, setShow] = useState(false)
 
-  const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
+  const handleClose = () => setShow(false)
 
   useEffect(() => {
     setIsLoading(true)
@@ -31,22 +32,18 @@ function DashBoard () {
   return (
     <div>
       <Button onClick={handleShow}>Add Event</Button>
-      {show ? (
-        <AddEvent show={show} handleClose={handleClose} />
+      <AddEvent show={show} handleClose={handleClose} />
+      {isLoading ? (
+        <p> {err || '...Loading'}</p>
       ) : (
-        <>
-          {isLoading ? (
-            <p> {err || '...Loading'}</p>
-          ) : (
-            <>
-              {events &&
-                events.map(event => {
-                  return <DashBoardEvent key={event.id} event={event} />
-                })}
-            </>
-          )}
-        </>
-      )}
+          <>
+            <UpcomingEvents />
+            {events &&
+              events.map(event => {
+                return <DashBoardEvent key={event.id} event={event} />
+              })}
+          </>
+        )}
     </div>
   )
 }
