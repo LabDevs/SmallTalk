@@ -2,7 +2,8 @@ import React from 'react'
 import { Navbar, Nav, Button } from 'react-bootstrap'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import CategoriesContextProvider from './contexts/CategoriesContextProvider'
-import CategoriesEventList from './components/CategoriesEventList'
+import CategoryPage from './components/CategoryPage'
+import CategoryList from './components/CategoryList'
 import Register from './components/Register'
 import Login from './components/Login'
 import DashBoard from './components/DashBoard'
@@ -66,9 +67,13 @@ function App () {
           <DashBoard />
         </Route>
 
+        <Route path='/categories/:categoryId'>
+          <CategoryPage />
+        </Route>
+
         <Route path='/categories'>
           <CategoriesContextProvider>
-            <CategoriesEventList />
+            <CategoryList />
           </CategoriesContextProvider>
         </Route>
       </Switch>
