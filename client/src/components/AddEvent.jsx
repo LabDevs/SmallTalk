@@ -48,14 +48,11 @@ const AddEvent = props => {
         <Modal.Body>
           <Form>
             <Form.Group controlId='titleForm'>
-              <Form.Label>Title</Form.Label>
-              <Form.Control
-                onChange={e => setTitle(e.target.value)}
-                type='text'
-                placeholder='What is your event about?'
-              />
+              <Form.Label>
+                Title
+              </Form.Label>
+              <Form.Control onChange={e => setTitle(e.target.value)} type='text' placeholder='What is your event about?' />
             </Form.Group>
-
             <Form.Group controlId='descriptionForm'>
               <Form.Label>Description</Form.Label>
               <Form.Control
