@@ -1,10 +1,10 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { CardGroup } from 'react-bootstrap'
 import CategoriesContext from '../contexts/CategoriesContext'
 import CategoryCard from '../components/CategoryCard'
-
+import CategoryEvent from '../components/CategoryEvent'
 const CategoryList = () => {
-  const { categories, setCategories, categoryId, setCategoryId, clicked, setClicked } = useContext(CategoriesContext)
+  const [categories, setCategories] = useState(null)
 
   useEffect(() => {
     const getCategories = async () => {
@@ -16,31 +16,17 @@ const CategoryList = () => {
     getCategories()
   }, [])
 
-  useEffect(() => {
-    const getCategoryId = async () => {
-      const response = await fetch(`/api/categories`)
-      const json = await response.json()
-      const id = json.map((category) => category.category_id)
-      setCategoryId(id)
-    }
-    getCategoryId()
-  }, [])
-
-  const clickHandler = (id) => {
-    console.log(`this button has been clicked ${id}`)
-    if (clicked === false) setClicked(true)
-  }
-
   return (
     <div className='categories'>
       <CardGroup>
-        {categories && categories.map((category) => (
-          < CategoryCard
-            key={category.category_id}
-            category={category}
-            clickHandler={clickHandler}
-          />
-         ))}
+        {categories &&
+          categories.map(category => (
+            <CategoryCard
+              key={category.id}
+              category={category}
+              id={category.id}
+            />
+          ))}
       </CardGroup>
     </div>
   )

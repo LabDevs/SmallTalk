@@ -2,7 +2,7 @@ import React from 'react'
 import { Navbar, Nav, Button } from 'react-bootstrap'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import CategoriesContextProvider from './contexts/CategoriesContextProvider'
-import CategoriesEventList from './components/CategoriesEventList'
+import CategoryPage from './components/CategoryPage'
 import CategoryList from './components/CategoryList'
 import Register from './components/Register'
 import Login from './components/Login'
@@ -23,7 +23,8 @@ function App () {
             width='30'
             height='30'
             className='d-inline-block align-top'
-            alt='placeholder' />
+            alt='placeholder'
+          />
         </Navbar.Brand>
 
         {document.cookie ? (
@@ -64,6 +65,10 @@ function App () {
 
         <Route path='/dash'>
           <DashBoard />
+        </Route>
+
+        <Route path='/categories/:categoryId'>
+          <CategoryPage />
         </Route>
 
         <Route path='/categories'>

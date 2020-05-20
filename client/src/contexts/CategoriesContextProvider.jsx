@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import CategoriesContext from './CategoriesContext'
 
 const CategoriesContextProvider = ({ children }) => {
-  const [categoryEvents, setCategoryEvents] = useState([])
-  const [categories, setCategories] = useState([])
-  const [categoryId, setCategoryId] = useState([])
+  const [categoryEvents, setCategoryEvents] = useState(null)
+  const [categories, setCategories] = useState([null])
+  const [categoryId, setCategoryId] = useState(null)
   const [clicked, setClicked] = useState(false)
   const value = {
     categoryEvents,
@@ -12,10 +12,8 @@ const CategoriesContextProvider = ({ children }) => {
     categories,
     setCategories,
     categoryId,
-    setCategoryId,
-    clicked,
-    setClicked
-}
+    setCategoryId
+  }
 
   return (
     <CategoriesContext.Provider value={value}>
