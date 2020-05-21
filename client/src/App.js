@@ -7,6 +7,8 @@ import CategoryList from './components/CategoryList'
 import Register from './components/Register'
 import Login from './components/Login'
 import DashBoard from './components/DashBoard'
+import UpcomingEvents from './components/UpcomingEvents'
+import VideoChat from './components/VideoChat'
 import './index.css'
 import { Anchor, Box, Header, Nav, Image } from 'grommet'
 
@@ -103,6 +105,10 @@ function App () {
         <Route path='/dash'>
           <DashBoard />
         </Route>
+        
+        <Route path='/videoChat'>
+          <VideoChat />
+        </Route>
 
         <Route path='/categories/:categoryId'>
           <CategoryPage />
@@ -117,9 +123,6 @@ function App () {
     </Router>
   )
 }
-// Is there a particular reason why you're getting rid of this? If you're going to build the landing page, it might be useful to have it there for testing :)
-// <Route exact path='/'>
-//           <Home />
-//         </Route>
+
 
 export default App
