@@ -2,15 +2,17 @@ import React from 'react'
 import { Navbar, Nav, Button } from 'react-bootstrap'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import CategoriesContextProvider from './contexts/CategoriesContextProvider'
-import CategoriesEventList from './components/CategoriesEventList'
+import CategoryPage from './components/CategoryPage'
+import CategoryList from './components/CategoryList'
 import Register from './components/Register'
 import Login from './components/Login'
 import DashBoard from './components/DashBoard'
 import UpcomingEvents from './components/UpcomingEvents'
 import VideoChat from './components/VideoChat'
 import './index.css'
+import UpcomingEvents from './components/UpcomingEvents'
 
-function App () {
+function App() {
   const logout = () => {
     fetch('/api/logout').catch(err => console.log(err))
   }
@@ -42,15 +44,15 @@ function App () {
             </Navbar.Collapse>
           </>
         ) : (
-          <>
-            <Navbar.Collapse className='justify-content-end'>
-              <Nav className='mr.auto'>
-                <Link to='/login'>Login</Link>
-                <Link to='/register'>Register</Link>
-              </Nav>
-            </Navbar.Collapse>
-          </>
-        )}
+            <>
+              <Navbar.Collapse className='justify-content-end'>
+                <Nav className='mr.auto'>
+                  <Link to='/login'>Login</Link>
+                  <Link to='/register'>Register</Link>
+                </Nav>
+              </Navbar.Collapse>
+            </>
+          )}
       </Navbar>
 
       {document.cookie ? <UpcomingEvents /> : <></>}
@@ -71,9 +73,13 @@ function App () {
           <VideoChat />
         </Route>
 
+        <Route path='/categories/:categoryId'>
+          <CategoryPage />
+        </Route>
+
         <Route path='/categories'>
           <CategoriesContextProvider>
-            <CategoriesEventList />
+            <CategoryList />
           </CategoriesContextProvider>
         </Route>
       </Switch>

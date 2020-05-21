@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Card, Button } from 'react-bootstrap'
 
-const CategoryEvent = (props) => {
+const CategoryEvent = props => {
+  console.log(props)
   const [variant, setVariant] = useState('primary')
   const rsvpInfo = {
     userId: props.event.userId,
@@ -15,11 +16,9 @@ const CategoryEvent = (props) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(rsvpInfo)
+    }).catch(err => {
+      console.log(err)
     })
-      .catch((err) => {
-        console.log(err)
-      })
-
     setVariant('secondary')
   }
 
@@ -27,10 +26,10 @@ const CategoryEvent = (props) => {
     <Card id={props.event.id} className='text-center'>
       <Card.Body>
         <Card.Title>{props.event.title}</Card.Title>
-        <Card.Text>
-          {props.event.description}
-        </Card.Text>
-        <Button onClick={addRSVP} variant={variant}>RSVP</Button>
+        <Card.Text>{props.event.description}</Card.Text>
+        <Button onClick={addRSVP} variant={variant}>
+          RSVP
+        </Button>
       </Card.Body>
     </Card>
   )

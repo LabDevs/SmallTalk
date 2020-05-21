@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Form, Button } from 'react-bootstrap'
-import { Redirect } from 'react-router-dom'
 
 const Register = () => {
   return (
