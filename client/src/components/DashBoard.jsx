@@ -32,6 +32,7 @@ function DashBoard () {
     <div>
       <Button primary gap='medium' onClick={handleShow} label='Add Event' />
       <AddEvent show={show} handleClose={handleClose} />
+      <UpcomingEvents />
       {isLoading ? (
         <p> {err || '...Loading'}</p>
       ) : (
