@@ -7,11 +7,8 @@ import CategoryList from './components/CategoryList'
 import Register from './components/Register'
 import Login from './components/Login'
 import DashBoard from './components/DashBoard'
-<<<<<<< HEAD
-=======
-import UpcomingEvents from './components/UpcomingEvents'
->>>>>>> 687a0db07d493424a39b7c015545ec19af01ef1c
 import './index.css'
+import UpcomingEvents from './components/UpcomingEvents'
 
 function App() {
   const logout = () => {
