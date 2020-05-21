@@ -56,7 +56,13 @@ function App () {
       </Navbar> */}
 
       <Header background='light-1' pad='medium'>
-        <Box direction='row' align='center' gap='small'>
+        <Box
+          direction='row'
+          responsive='true'
+          width='large'
+          align='center'
+          gap='small'
+        >
           <Link to='/'>
             <Image src='https://via.placeholder.com/50' fit='contain' />
           </Link>
@@ -65,8 +71,10 @@ function App () {
               <Anchor className='navLink' href='/dash'>
                 Dashboard
               </Anchor>
-              <Anchor href='/categories'>Categories</Anchor>
-              <Anchor alignSelf='stretch' href='/upcomingEvents'>
+              <Anchor className='navLink' href='/categories'>
+                Categories
+              </Anchor>
+              <Anchor className='navLink' href='/upcomingEvents'>
                 Upcoming Events
               </Anchor>
             </>
@@ -105,7 +113,7 @@ function App () {
         <Route path='/dash'>
           <DashBoard />
         </Route>
-        
+
         <Route path='/videoChat'>
           <VideoChat />
         </Route>
@@ -123,6 +131,5 @@ function App () {
     </Router>
   )
 }
-
 
 export default App
