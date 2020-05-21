@@ -21,6 +21,7 @@ const Video = styled.video`
   height: 50%;
 `;
 
+
 function VideoChat() {
   const [yourID, setYourID] = useState("");
   const [users, setUsers] = useState({});
@@ -35,8 +36,9 @@ function VideoChat() {
   const socket = useRef();
 
   useEffect(() => {
-    socket.current = io.connect("/");
+    socket.current = io.connect("/videoChat");
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
+      console.log(stream)
       setStream(stream);
       if (userVideo.current) {
         userVideo.current.srcObject = stream;

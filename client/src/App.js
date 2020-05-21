@@ -67,9 +67,9 @@ function App () {
           <DashBoard />
         </Route>
         
-        // <Route path='/videoChat'>
-        //   <VideoChat />
-        // </Route>
+        <Route path='/videoChat'>
+          <VideoChat />
+        </Route>
 
         <Route path='/categories'>
           <CategoriesContextProvider>
@@ -80,9 +80,6 @@ function App () {
     </Router>
   )
 }
-// Is there a particular reason why you're getting rid of this? If you're going to build the landing page, it might be useful to have it there for testing :)
-// <Route exact path='/'>
-//           <Home />
-//         </Route>
+
 
 export default App
