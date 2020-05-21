@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import DashBoardEvent from './DashBoardEvent'
 import AddEvent from './AddEvent'
 import { Button } from 'grommet'
-import UpcomingEvents from './UpcomingEvents'
 
 function DashBoard () {
   const [events, setEvent] = useState(null)
@@ -33,7 +32,6 @@ function DashBoard () {
     <div>
       <Button primary gap='medium' onClick={handleShow} label='Add Event' />
       <AddEvent show={show} handleClose={handleClose} />
-      <UpcomingEvents />
       {isLoading ? (
         <p> {err || '...Loading'}</p>
       ) : (
