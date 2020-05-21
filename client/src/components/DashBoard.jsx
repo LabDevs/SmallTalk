@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import DashBoardEvent from './DashBoardEvent'
 import AddEvent from './AddEvent'
+import UpcomingEvents from './UpcomingEvents'
 import { Button } from 'grommet'
 
 function DashBoard () {
