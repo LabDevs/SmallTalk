@@ -77,17 +77,17 @@ function App () {
               <Anchor className='navLink' href='/upcomingEvents'>
                 Upcoming Events
               </Anchor>
+              <Anchor onClick={logout} className='navLink' href='/logout'>
+                Logout
+              </Anchor>
             </>
           ) : (
             <></>
           )}
         </Box>
         <Nav direction='row'>
-          {document.cookies ? (
+          {document.cookie ? (
             <>
-              <Anchor className='navLink' href='/logout'>
-                Logout
-              </Anchor>
             </>
           ) : (
             <>
