@@ -48,7 +48,7 @@ exports.seed = function (knex) {
         {
           id: 6,
           category_id: 1,
-          user_id: 2,
+          user_id: 3,
           title: 'How are you dealing with COVID',
           description: 'Small Talk',
           date: '2020-10-2 03:33:00-04'
