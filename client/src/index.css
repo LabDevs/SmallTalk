@@ -26,3 +26,12 @@
   align-items: center;
   margin-top: 3%;
 }
+
+.navLink {
+  margin-right: 10%;
+}
+
+.sideBar {
+  width: 15%;
+  height: 100%;
+}
