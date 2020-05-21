@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 35%;
 }
 
 .eventTable {
@@ -27,8 +28,12 @@
   margin-top: 3%;
 }
 
+.loginButton {
+  padding-left: 90%;
+}
+
 .navLink {
-  margin-right: 10%;
+  margin: 0 5% 0 3%;
 }
 
 .sideBar {

@@ -66,6 +66,9 @@ function App () {
                 Dashboard
               </Anchor>
               <Anchor href='/categories'>Categories</Anchor>
+              <Anchor alignSelf='stretch' href='/upcomingEvents'>
+                Upcoming Events
+              </Anchor>
             </>
           ) : (
             <></>

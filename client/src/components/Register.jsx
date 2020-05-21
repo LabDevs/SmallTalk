@@ -4,32 +4,43 @@ import { FormField, TextInput, Button, Anchor } from 'grommet'
 
 const Login = () => {
   return (
-    <div>
-      <Form action='/api/register' method='post'>
-        <FormField label='Username'>
+    <div className='loginForm'>
+      <h1>Register</h1>
+
+      <Form action='/api/login' method='post'>
+        <FormField className='loginField' label='Username'>
           <TextInput
             type='text'
-            placeholder='Enter a username!'
+            placeholder='Enter your username!'
             name='username'
           />
         </FormField>
 
-        <FormField label='Email'>
-          <TextInput type='email' placeholder='Enter an email!' name='email' />
+        <FormField className='loginField' label='Email'>
+          <TextInput
+            type='email'
+            placeholder='Enter your email!'
+            name='email'
+          />
         </FormField>
 
-        <FormField label='Password'>
+        <FormField className='loginField' label='Password'>
           <TextInput
             type='password'
-            placeholder='Enter a password!'
+            placeholder='Enter your password!'
             name='password'
           />
         </FormField>
 
-        <Button primary type='submit' label='Submit' />
+        <Button
+          margin={{ left: 'large', bottom: 'medium', top: 'small' }}
+          primary
+          type='submit'
+          label='Submit'
+        />
       </Form>
 
-      <Anchor href='/login'>Have an account?</Anchor>
+      <Anchor href='/login'>Already have an account?</Anchor>
     </div>
   )
 }
