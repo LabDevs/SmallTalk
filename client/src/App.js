@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Nav, Button } from 'react-bootstrap'
+// import { Navbar, Nav, Button } from 'react-bootstrap'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import CategoriesContextProvider from './contexts/CategoriesContextProvider'
 import CategoryPage from './components/CategoryPage'
@@ -8,15 +8,15 @@ import Register from './components/Register'
 import Login from './components/Login'
 import DashBoard from './components/DashBoard'
 import './index.css'
-import UpcomingEvents from './components/UpcomingEvents'
+import { Anchor, Box, Header, Nav, Image } from 'grommet'
 
-function App() {
+function App () {
   const logout = () => {
     fetch('/api/logout').catch(err => console.log(err))
   }
   return (
     <Router>
-      <Navbar bg='light' variant='light'>
+      {/* <Navbar bg='light' variant='light'>
         <Navbar.Brand href='/'>
           <img
             src='https://via.placeholder.com/150'
@@ -51,9 +51,43 @@ function App() {
               </Navbar.Collapse>
             </>
           )}
-      </Navbar>
+      </Navbar> */}
 
-      {document.cookie ? <UpcomingEvents /> : <></>}
+      <Header background='light-1' pad='medium'>
+        <Box direction='row' align='center' gap='small'>
+          <Link to='/'>
+            <Image src='https://via.placeholder.com/50' fit='contain' />
+          </Link>
+          {document.cookie ? (
+            <>
+              <Anchor className='navLink' href='/dash'>
+                Dashboard
+              </Anchor>
+              <Anchor href='/categories'>Categories</Anchor>
+            </>
+          ) : (
+            <></>
+          )}
+        </Box>
+        <Nav direction='row'>
+          {document.cookies ? (
+            <>
+              <Anchor className='navLink' href='/logout'>
+                Logout
+              </Anchor>
+            </>
+          ) : (
+            <>
+              <Anchor className='navLink' href='/login'>
+                Login
+              </Anchor>
+              <Anchor className='navLink' href='/register'>
+                Register
+              </Anchor>
+            </>
+          )}
+        </Nav>
+      </Header>
 
       <Switch>
         <Route path='/register'>

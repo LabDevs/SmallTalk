@@ -1,42 +1,37 @@
 import React from 'react'
-import { Form, Button } from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
+import { FormField, TextInput, Button, Anchor } from 'grommet'
 
-const Register = () => {
+const Login = () => {
   return (
     <div>
       <Form action='/api/register' method='post'>
-        <Form.Group controlId='usernameForm'>
-          <Form.Label>Username</Form.Label>
-          <Form.Control
+        <FormField label='Username'>
+          <TextInput
             type='text'
-            placeholder='Enter a unique username!'
+            placeholder='Enter a username!'
             name='username'
           />
-        </Form.Group>
+        </FormField>
 
-        <Form.Group controlId='emailForm'>
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type='email'
-            placeholder='Enter your email!'
-            name='email'
-          />
-        </Form.Group>
+        <FormField label='Email'>
+          <TextInput type='email' placeholder='Enter an email!' name='email' />
+        </FormField>
 
-        <Form.Group controlId='passwordForm'>
-          <Form.Label>Password</Form.Label>
-          <Form.Control
+        <FormField label='Password'>
+          <TextInput
             type='password'
             placeholder='Enter a password!'
             name='password'
           />
-        </Form.Group>
-        <Button variant='primary' type='submit'>
-          Submit
-        </Button>
+        </FormField>
+
+        <Button primary type='submit' label='Submit' />
       </Form>
+
+      <Anchor href='/login'>Have an account?</Anchor>
     </div>
   )
 }
 
-export default Register
+export default Login

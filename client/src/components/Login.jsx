@@ -1,31 +1,31 @@
 import React from 'react'
-import { Form, Button } from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
+import { FormField, TextInput, Button, Anchor } from 'grommet'
 
 const Login = () => {
   return (
     <div>
       <Form action='/api/login' method='post'>
-        <Form.Group controlId='usernameForm'>
-          <Form.Label>Username</Form.Label>
-          <Form.Control
+        <FormField label='Username'>
+          <TextInput
             type='text'
-            placeholder='Enter your unique username!'
+            placeholder='Enter your username!'
             name='username'
           />
-        </Form.Group>
+        </FormField>
 
-        <Form.Group controlId='passwordForm'>
-          <Form.Label>Password</Form.Label>
-          <Form.Control
+        <FormField label='Password'>
+          <TextInput
             type='password'
             placeholder='Enter your password!'
             name='password'
           />
-        </Form.Group>
-        <Button type='submit'>
-          Submit
-        </Button>
+        </FormField>
+
+        <Button primary type='submit' label='Submit' />
       </Form>
+
+      <Anchor href='/register'>Haven't made an account yet?</Anchor>
     </div>
   )
 }

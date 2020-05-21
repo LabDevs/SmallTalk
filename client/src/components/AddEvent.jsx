@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Form, Button, Modal } from 'react-bootstrap'
+import { Form, Modal } from 'react-bootstrap'
+import { Button } from 'grommet'
 
 const AddEvent = props => {
   const [title, setTitle] = useState('')
@@ -26,7 +27,7 @@ const AddEvent = props => {
   }
 
   useEffect(() => {
-    async function getCategories() {
+    async function getCategories () {
       try {
         const response = await fetch('/api/categories')
         const data = await response.json()
@@ -39,8 +40,6 @@ const AddEvent = props => {
     getCategories()
   }, [])
 
-  console.log(categoryId)
-
   return (
     <div>
       <Modal show={props.show} onHide={props.handleClose}>
@@ -48,10 +47,12 @@ const AddEvent = props => {
         <Modal.Body>
           <Form>
             <Form.Group controlId='titleForm'>
-              <Form.Label>
-                Title
-              </Form.Label>
-              <Form.Control onChange={e => setTitle(e.target.value)} type='text' placeholder='What is your event about?' />
+              <Form.Label>Title</Form.Label>
+              <Form.Control
+                onChange={e => setTitle(e.target.value)}
+                type='text'
+                placeholder='What is your event about?'
+              />
             </Form.Group>
             <Form.Group controlId='descriptionForm'>
               <Form.Label>Description</Form.Label>
