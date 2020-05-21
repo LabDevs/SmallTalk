@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import DashBoardEvent from './DashBoardEvent'
 import AddEvent from './AddEvent'
 import { Button } from 'grommet'
-import UpcomingEvents from './UpcomingEvents'
 
 function DashBoard () {
   const [events, setEvent] = useState(null)
