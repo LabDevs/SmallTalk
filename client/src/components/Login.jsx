@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Form, Button } from 'react-bootstrap'
-import { Redirect } from 'react-router-dom'
 
 const Login = () => {
   return (
@@ -23,8 +22,8 @@ const Login = () => {
             name='password'
           />
         </Form.Group>
-        <Button variant='primary' type='submit'>
-            Submit
+        <Button type='submit'>
+          Submit
         </Button>
       </Form>
     </div>

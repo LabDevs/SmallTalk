@@ -26,7 +26,7 @@ const AddEvent = props => {
   }
 
   useEffect(() => {
-    async function getCategories () {
+    async function getCategories() {
       try {
         const response = await fetch('/api/categories')
         const data = await response.json()
