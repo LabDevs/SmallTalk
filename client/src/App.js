@@ -10,7 +10,7 @@ import DashBoard from './components/DashBoard'
 import UpcomingEvents from './components/UpcomingEvents'
 import VideoChat from './components/VideoChat'
 import './index.css'
-import UpcomingEvents from './components/UpcomingEvents'
+
 
 function App() {
   const logout = () => {
