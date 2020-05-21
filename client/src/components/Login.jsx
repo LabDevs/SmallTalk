@@ -4,9 +4,11 @@ import { FormField, TextInput, Button, Anchor } from 'grommet'
 
 const Login = () => {
   return (
-    <div>
+    <div className='loginForm'>
+      <h1>Login</h1>
+
       <Form action='/api/login' method='post'>
-        <FormField label='Username'>
+        <FormField className='loginField' label='Username'>
           <TextInput
             type='text'
             placeholder='Enter your username!'
@@ -14,7 +16,7 @@ const Login = () => {
           />
         </FormField>
 
-        <FormField label='Password'>
+        <FormField className='loginField' label='Password'>
           <TextInput
             type='password'
             placeholder='Enter your password!'
@@ -22,7 +24,12 @@ const Login = () => {
           />
         </FormField>
 
-        <Button primary type='submit' label='Submit' />
+        <Button
+          margin={{ left: 'large', bottom: 'medium', top: 'small' }}
+          primary
+          type='submit'
+          label='Submit'
+        />
       </Form>
 
       <Anchor href='/register'>Haven't made an account yet?</Anchor>
