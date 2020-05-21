@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import DashBoardEvent from './DashBoardEvent'
 import AddEvent from './AddEvent'
-import { Button } from 'react-bootstrap'
+import { Button } from 'grommet'
+import UpcomingEvents from './UpcomingEvents'
 
-function DashBoard() {
+function DashBoard () {
   const [events, setEvent] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [err, setErr] = useState(null)
@@ -30,24 +31,25 @@ function DashBoard() {
 
   return (
     <div>
-      <Button onClick={handleShow}>Add Event</Button>
+      <Button primary gap='medium' onClick={handleShow} label='Add Event' />
       <AddEvent show={show} handleClose={handleClose} />
+      <UpcomingEvents />
       {isLoading ? (
         <p> {err || '...Loading'}</p>
       ) : (
-          <>
-            {isLoading ? (
-              <p> {err || '...Loading'}</p>
-            ) : (
-                <>
-                  {events &&
-                    events.map(event => {
-                      return <DashBoardEvent key={event.id} event={event} />
-                    })}
-                </>
-              )}
-          </>
-        )}
+        <>
+          {isLoading ? (
+            <p> {err || '...Loading'}</p>
+          ) : (
+            <>
+              {events &&
+                events.map(event => {
+                  return <DashBoardEvent key={event.id} event={event} />
+                })}
+            </>
+          )}
+        </>
+      )}
     </div>
   )
 }
