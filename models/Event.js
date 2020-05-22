@@ -1,9 +1,12 @@
 const db = require('../db')
 
 class Event {
-  static getAllByCategory (categoryId) {
-    const queryText = 'SELECT * FROM events WHERE id=$1;'
-    return db.query(queryText, [categoryId]).then(response => response.rows)
+  static getAllByCategory (categoryId, userId) {
+    const queryText =
+      'SELECT * FROM events WHERE category_id=$1 AND user_id!=$2;'
+    return db
+      .query(queryText, [categoryId, userId])
+      .then(response => response.rows)
   }
 
   static getAllByUser (userId) {
