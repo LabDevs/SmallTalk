@@ -9,54 +9,17 @@ import Login from './components/Login'
 import DashBoard from './components/DashBoard'
 import Home from './components/Home'
 import Logo from './logo.png'
-import UpcomingEvents from './components/UpcomingEvents'
 import VideoChat from './components/VideoChat'
 import './index.css'
 import { Anchor, Box, Header, Nav, Image } from 'grommet'
+import UpcomingEvents from './components/UpcomingEvents'
 
-function App () {
+function App() {
   const logout = () => {
-    fetch('/api/logout').catch(err => console.log(err))
+    fetch('/api/logout').catch((err) => console.log(err))
   }
   return (
     <Router>
-      {/* <Navbar bg='light' variant='light'>
-        <Navbar.Brand href='/'>
-          <img
-            src='https://via.placeholder.com/150'
-            width='30'
-            height='30'
-            className='d-inline-block align-top'
-            alt='placeholder'
-          />
-        </Navbar.Brand>
-
-        {document.cookie ? (
-          <>
-            <Nav className='mr.auto'>
-              <Link to='/dash'>Dash</Link>
-              <Link to='/categories'>Categories</Link>
-            </Nav>
-            <Navbar.Collapse className='justify-content-end'>
-              <Nav className='mr.auto'>
-                <Button onClick={logout} href='/login'>
-                  Logout
-                </Button>
-              </Nav>
-            </Navbar.Collapse>
-          </>
-        ) : (
-            <>
-              <Navbar.Collapse className='justify-content-end'>
-                <Nav className='mr.auto'>
-                  <Link to='/login'>Login</Link>
-                  <Link to='/register'>Register</Link>
-                </Nav>
-              </Navbar.Collapse>
-            </>
-          )}
-      </Navbar> */}
-
       <Header background='light-1' pad='medium'>
         <Box
           direction='row'
@@ -85,9 +48,14 @@ function App () {
           )}
         </Box>
         <Nav direction='row'>
-          {document.cookies ? (
+          {document.cookie ? (
             <>
-              <Anchor className='navLink' href='/logout'>
+              <Anchor
+                href='/login'
+                color='brand'
+                className='navLink'
+                onClick={() => logout()}
+              >
                 Logout
               </Anchor>
             </>
@@ -125,6 +93,10 @@ function App () {
 
         <Route path='/categories/:categoryId'>
           <CategoryPage />
+        </Route>
+
+        <Route path='/upcomingEvents'>
+          <UpcomingEvents />
         </Route>
 
         <Route path='/categories'>

@@ -7,7 +7,12 @@ const Home = () => {
       <section className='introBody'>
         <aside className='sideText'>
           <h1>Welcome to SmallTalk</h1>
-          <p>SmallTalk will allow you to </p>
+          <p>
+            SmallTalk Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Numquam, veniam consectetur adipisci maxime ad mollitia libero
+            obcaecati iste minima eligendi ipsum dolore doloremque! Pariatur,
+            necessitatibus vero! Numquam veritatis magnam optio.
+          </p>
         </aside>
 
         <img src={People} className='people' />

@@ -4,7 +4,7 @@ import AddEvent from './AddEvent'
 import { Button } from 'grommet'
 import UpcomingEvents from './UpcomingEvents'
 
-function DashBoard () {
+function DashBoard() {
   const [events, setEvent] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [err, setErr] = useState(null)
@@ -16,13 +16,13 @@ function DashBoard () {
   useEffect(() => {
     setIsLoading(true)
     fetch('/api/getEvents')
-      .then(res => res.json())
-      .then(event => {
+      .then((res) => res.json())
+      .then((event) => {
         const newEvents = [...event]
         setEvent(newEvents)
         setIsLoading(false)
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err)
         err = 'Sorry there was an error, please try again'
         setErr(err)
@@ -43,7 +43,7 @@ function DashBoard () {
           ) : (
             <>
               {events &&
-                events.map(event => {
+                events.map((event) => {
                   return <DashBoardEvent key={event.id} event={event} />
                 })}
             </>

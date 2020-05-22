@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Sidebar, Button, Nav } from 'grommet'
+import { Box, Button, Heading } from 'grommet'
 
 function UpcomingEvents () {
   const [upcomingEvents, setUpComingEvents] = useState(null)
@@ -45,17 +45,43 @@ function UpcomingEvents () {
         //       )
         //     })}
         // </Card>
-        <Sidebar
-          className='sideBar'
-          background='brand'
-          round='small'
-          header='Upcoming Events'
-        >
-          <Nav gap='small'>
-            <Button label='hello' hoverIndicator />
-            <Button label='there' hoverIndicator />
-          </Nav>
-        </Sidebar>
+        <>
+          <Heading
+            className='upcomingEventHeader'
+            textAlign='center'
+            responsive='true'
+            label='Your Upcoming Events'
+          >
+            Your Upcoming Events
+          </Heading>
+          {upcomingEvents &&
+            upcomingEvents.map(event => {
+              return (
+                <Box
+                  responsive='true'
+                  className='upcomingEventCard'
+                  direction='column'
+                  align='center'
+                  alignSelf='center'
+                  background='light'
+                  border={{ color: 'gray' }}
+                  round='small'
+                  header='Upcoming Events'
+                  pad='medium'
+                >
+                  <h2>{event.title}</h2>
+                  <Button
+                    className='upcomingEventsButton'
+                    size='medium'
+                    responsive='true'
+                    primary
+                    gap='small'
+                    label='Chat!'
+                  />
+                </Box>
+              )
+            })}
+        </>
       )}
     </>
   )

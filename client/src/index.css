@@ -36,9 +36,16 @@
   margin: 0 1% 0 1%;
 }
 
-.sideBar {
-  width: 15%;
+.upcomingEventCard {
+  margin-left: 30%;
+  width: 40%;
   height: 100%;
+  margin-top: 4%;
+}
+
+.upcomingEventHeader {
+  margin-left: 8%;
+  margin-top: 2%;
 }
 
 .logo {
@@ -67,4 +74,8 @@
 }
 .instructionBody {
   border: black;
+}
+
+h1 {
+  padding-top: 20%;
 }
