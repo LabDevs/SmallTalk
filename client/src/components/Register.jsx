@@ -2,12 +2,12 @@ import React from 'react'
 import { Form } from 'react-bootstrap'
 import { FormField, TextInput, Button, Anchor } from 'grommet'
 
-const Login = () => {
+const Register = () => {
   return (
     <div className='loginForm'>
       <h1>Register</h1>
 
-      <Form action='/api/login' method='post'>
+      <Form action='/api/register' method='post'>
         <FormField className='loginField' label='Username'>
           <TextInput
             type='text'
@@ -45,4 +45,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Register
