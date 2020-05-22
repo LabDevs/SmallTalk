@@ -30,6 +30,7 @@
     "pg": "^8.2.0",
     "socket.io": "^2.3.0",
     "socket.io-p2p": "^2.2.0",
-    "socket.io-p2p-server": "^1.2.0"
+    "socket.io-p2p-server": "^1.2.0",
+    "react-router": "^5.2.0"
   }
 }
