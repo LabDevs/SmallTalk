@@ -8,7 +8,7 @@ exports.seed = function (knex) {
         {
           id: 1,
           category_id: 2,
-          user_id: 2,
+          user_id: 1,
           title: 'Fortnite',
           description: 'Whats your highest kills on solo ?',
           date: '2020-10-19 04:44:00-04'

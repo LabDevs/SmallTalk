@@ -10,7 +10,6 @@ const categoryRouter = require('./routes/category')
 const app = require('express')()
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
-const p2p = require('socket.io-p2p-server').Server
 const port = process.env.PORT || 8000
 
 app.use(bodyParser.json())
@@ -22,12 +21,12 @@ app.use(authenticate)
 app.use(rsvpRouter)
 app.use(categoryRouter)
 app.use(eventRouter)
-io.use(p2p)
+
 
 io.on('connection', (socket) => {
-  socket.on('peer-msg', (data) => {
-    console.log('Message from Peer: %s', data)
-    socket.broadcast.emit('peer-msg', data)
+  socket.on('signal', (data) => {
+    console.log('Signal from Peer', socket.id)
+    socket.broadcast.emit('signal', data)
   })
 
   // socket.on('go-rivate', (data) => {
@@ -38,4 +37,4 @@ io.on('connection', (socket) => {
 
 app.get('/', (req, res) => res.send('Hello World'))
 
-server.listen(port, () => console.log(`Listening on port ${port} `))
+server.listen(port,process.env.HOST_NAME, () => console.log(`Listening on port ${port} `))
