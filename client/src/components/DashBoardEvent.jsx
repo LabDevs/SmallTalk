@@ -39,14 +39,14 @@ const DashBoardEvent = ({ event }) => {
 
       <Box
         responsive='true'
-        className='upcomingEventCard'
+        className='dashboardEventCard'
         direction='column'
         align='center'
         alignSelf='center'
         background='light'
         border={{ color: 'gray' }}
         round='small'
-        header='Upcoming Events'
+        header='Your Events'
         pad='medium'
       >
         <Heading level='2' textAlign='start' responsive='true'>

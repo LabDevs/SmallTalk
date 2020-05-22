@@ -50,6 +50,12 @@
   margin-left: 30%;
 }
 
+.dashboardEventCard {
+  width: 40%;
+  height: 100%;
+  margin-top: 4%;
+}
+
 .upcomingEventHeader {
   margin-left: 8%;
   margin-top: 2%;
