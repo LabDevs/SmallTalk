@@ -15,7 +15,6 @@ const UpdateEvent = props => {
     date: date,
     eventId: props.eventId
   }
-  console.log(categoryId)
 
   const updateEvent = e => {
     e.preventDefault()
@@ -41,8 +40,6 @@ const UpdateEvent = props => {
 
     getCategories()
   }, [])
-
-  console.log(categoryData)
 
   return (
     <div>

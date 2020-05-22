@@ -60,7 +60,7 @@ const AddEvent = props => {
                 onChange={e => setDescription(e.target.value)}
                 as='textarea'
                 rows='3'
-                placeholder='Give a short description of your event!'
+                placeholder='Give a description of your event!'
               />
             </Form.Group>
 
@@ -101,9 +101,14 @@ const AddEvent = props => {
               />
             </Form.Group>
 
-            <Button onClick={addEvent} variant='primary' type='submit'>
-              Add Event!
-            </Button>
+            <Button
+              onClick={addEvent}
+              primary
+              responsive='true'
+              size='small'
+              type='submit'
+              label='Add Event!'
+            />
           </Form>
         </Modal.Body>
       </Modal>

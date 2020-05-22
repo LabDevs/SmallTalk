@@ -4,10 +4,13 @@
 
 .eventCard {
   width: 30%;
+}
+
+.dashboard {
+  margin-top: 2%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 35%;
 }
 
 .eventTable {
@@ -36,14 +39,27 @@
   margin: 0 1% 0 1%;
 }
 
+.login {
+  margin-left: 20%;
+}
+
 .upcomingEventCard {
-  margin-left: 30%;
   width: 40%;
   height: 100%;
   margin-top: 4%;
+  margin-left: 30%;
 }
 
 .upcomingEventHeader {
   margin-left: 8%;
   margin-top: 2%;
+}
+
+.eventButtons {
+  display: inline-block;
+}
+
+#emptyHeading {
+  margin-top: 12%;
+  margin-left: 28.5%;
 }
