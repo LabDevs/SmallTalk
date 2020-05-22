@@ -46,7 +46,6 @@ const login = async (req, res) => {
       if (err) return res.sendStatus(500)
       res.cookie('userToken', encryptedPayload)
       res.redirect('/dash')
-      // res.status(200).json(encryptedPayload)
     })
   } catch (err) {
     console.log(err)
