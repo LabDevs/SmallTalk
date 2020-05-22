@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
-import io from 'socket.io-client';
+import P2P from 'socket.io-p2p'
+import io from 'socket.io-client'
 
-// import SimplePeer from 'simple-peer';
-// import Peer from "simple-peer";
+// import SimplePeer from 'simple-peer'
+
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -23,19 +24,18 @@ const Video = styled.video`
   height: 50%;
 `;
 
+const socket = io()
+const opts = {autoUpgrade: true, numClients: 2}
+
+const p2p= new P2P(socket,opts, () => console.log('Peers'))
 
 function VideoChat() {
-  // const [yourID, setYourID] = useState("");
-  // const [users, setUsers] = useState({});
   const [stream, setStream] = useState();
-  // const [receivingCall, setReceivingCall] = useState(false);
-  // const [caller, setCaller] = useState("");
-  // const [callerSignal, setCallerSignal] = useState();
-  // const [callAccepted, setCallAccepted] = useState(false);
+  const [text, setText] = useState('')
 
   const userVideo = useRef();
   const partnerVideo = useRef();
-  const socket = useRef();
+  // const socket = useRef();
 
   const getVideo = () => {
     socket.current = io.connect("/videoChat");
@@ -45,92 +45,27 @@ function VideoChat() {
       if (userVideo.current) {
         userVideo.current.srcObject = stream;
       }
-    }).then((io) => {
-      
-      io.emit('join', 'test')
-      io.on('ready',)
     })
-    
+  }
+
+  
+  useEffect(() => {
+    p2p.on('peer-msg',  (data) =>{
+      console.log('From a peer %s', data);
+    })
+  
+    socket.on('server-event', (data) =>{
+      console.log(data)
+      // socket.emit('client-res', 'This better work')
+    })
+  },[])
+  
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    socket.emit('peer-msg',text)
   }
   
-  const callUser = () => {
-    console.log('hope its working')
-  }
-
-    // socket.current.on("yourID", (id) => {
-    //   setYourID(id);
-    // })
-    // socket.current.on("allUsers", (users) => {
-    //   setUsers(users);
-    // })
-
-    // socket.current.on("Paul Calling", (data) => {
-    //   setReceivingCall(true)
-    //   setCaller(data.from)
-    //   setCallerSignal(data.signal)
-      
-    // })
-  // }, []);
-
-  // function callPeer(id) {
-  //   const peer = new Peer({
-  //     initiator: true,
-  //     trickle: false,
-  //     // config: {
-
-  //       // iceServers: [
-  //       //     {
-  //       //         urls: "stun:numb.viagenie.ca",
-  //       //         username: "sultan1640@gmail.com",
-  //       //         credential: "98376683"
-  //       //     },
-  //       //     {
-  //       //         urls: "turn:numb.viagenie.ca",
-  //       //         username: "sultan1640@gmail.com",
-  //       //         credential: "98376683"
-  //       //     }
-  //       // ]
-  //   // },
-  //     stream: stream,
-  //   });
-
-  //   peer.on("signal", data => {
-  //     socket.current.emit("callUser", { userToCall: id, signalData: data, from: yourID })
-  //   })
-
-  //   peer.on("stream", stream => {
-  //     if (partnerVideo.current) {
-  //       partnerVideo.current.srcObject = stream;
-  //     }
-  //   });
-
-  //   socket.current.on("callAccepted", signal => {
-  //     setCallAccepted(true);
-  //     peer.signal(signal);
-  //   })
-
-  // }
-
-
-  // function acceptCall() {
-  //   setCallAccepted(true);
-  //   const peer = new Peer({
-  //     initiator: false,
-  //     trickle: false,
-  //     stream: stream,
-  //   });
-  //   peer.on("signal", data => {
-  //     socket.current.emit("acceptCall", { signal: data, to: caller })
-  //   })
-
-  //   peer.on("stream", stream => {
-  //     partnerVideo.current.srcObject = stream;
-  //   });
-
-  //   peer.signal(callerSignal)
-     
-  // }
-
+ 
   let UserVideo;
   if (stream) {
     UserVideo = (
@@ -138,22 +73,6 @@ function VideoChat() {
     );
   }
 
-  // let PartnerVideo;
-  // if (callAccepted) {
-  //   PartnerVideo = (
-  //     <Video playsInline ref={partnerVideo} autoPlay />
-  //   );
-  // }
-
-  // let incomingCall;
-  // if (receivingCall) {
-  //   incomingCall = (
-  //     <div>
-  //       <h1>{caller} is calling you</h1>
-  //       <button onClick={acceptCall}>Accept</button>
-  //     </div>
-  //   )
-  // }
   return (
     <Container>
       <Row>
@@ -164,7 +83,11 @@ function VideoChat() {
         <video id="local-video" height="150" autoPlay></video>
         <video id="remote-video" height="150" autoPlay></video>
         <button onClick={getVideo} id="get-video">Get Video</button>
-        <button id="call" onClick={callUser} disabled="disabled">Call</button>
+        <button id="call"  disabled="disabled">Call</button>
+        <form>
+          <input type='text' onChange= {(e) => setText(e.target.value)} />
+          <button onClick={handleSubmit}>Submit</button>
+        </form>
     </div>
     </Container>
   );

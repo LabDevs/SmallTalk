@@ -28,6 +28,8 @@
     "knex": "^0.21.1",
     "nodemon": "^2.0.4",
     "pg": "^8.2.0",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "socket.io-p2p": "^2.2.0",
+    "socket.io-p2p-server": "^1.2.0"
   }
 }
