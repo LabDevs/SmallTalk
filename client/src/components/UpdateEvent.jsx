@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Form, Button, Modal } from 'react-bootstrap'
+import { Form, Modal } from 'react-bootstrap'
+import { Button } from 'grommet'
 
 const UpdateEvent = props => {
   const [title, setTitle] = useState('')
@@ -90,9 +91,14 @@ const UpdateEvent = props => {
               />
             </Form.Group>
 
-            <Button onClick={updateEvent} variant='primary' type='submit'>
-              Update Event!
-            </Button>
+            <Button
+              onClick={updateEvent}
+              size='small'
+              primary
+              responsive='true'
+              type='submit'
+              label='Update Event!'
+            />
           </Form>
         </Modal.Body>
       </Modal>
