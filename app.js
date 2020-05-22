@@ -22,7 +22,6 @@ app.use(rsvpRouter)
 app.use(categoryRouter)
 app.use(eventRouter)
 
-
 io.on('connection', (socket) => {
   socket.on('signal', (data) => {
     console.log('Signal from Peer', socket.id)
@@ -37,4 +36,4 @@ io.on('connection', (socket) => {
 
 app.get('/', (req, res) => res.send('Hello World'))
 
-server.listen(port,process.env.HOST_NAME, () => console.log(`Listening on port ${port} `))
+server.listen(port, () => console.log(`Listening on port ${port} `))
