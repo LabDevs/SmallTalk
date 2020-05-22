@@ -7,6 +7,8 @@ import CategoryList from './components/CategoryList'
 import Register from './components/Register'
 import Login from './components/Login'
 import DashBoard from './components/DashBoard'
+import Home from './components/Home'
+import Logo from './logo.png'
 import UpcomingEvents from './components/UpcomingEvents'
 import VideoChat from './components/VideoChat'
 import './index.css'
@@ -64,7 +66,7 @@ function App () {
           gap='small'
         >
           <Link to='/'>
-            <Image src='https://via.placeholder.com/50' fit='contain' />
+            <Image src={Logo} fit='contain' className='logo' />
           </Link>
           {document.cookie ? (
             <>
@@ -103,6 +105,9 @@ function App () {
       </Header>
 
       <Switch>
+        <Route path='/home'>
+          <Home />
+        </Route>
         <Route path='/register'>
           <Register />
         </Route>
