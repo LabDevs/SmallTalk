@@ -7,7 +7,6 @@ const rsvpRouter = require('./routes/rsvp')
 const eventRouter = require('./routes/event')
 const categoryRouter = require('./routes/category')
 
-
 const app = require('express')()
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
@@ -25,22 +24,17 @@ app.use(categoryRouter)
 app.use(eventRouter)
 io.use(p2p)
 
-
-io.on('connection', (socket) =>{
-  
+io.on('connection', (socket) => {
   socket.on('peer-msg', (data) => {
     console.log('Message from Peer: %s', data)
     socket.broadcast.emit('peer-msg', data)
   })
-  
+
   // socket.on('go-rivate', (data) => {
   //   console.log('Message from peer: %s', data);
   //   socket.broadcast.emit('peer-msg', data)
   // })
-  
 })
-
-
 
 app.get('/', (req, res) => res.send('Hello World'))
 
