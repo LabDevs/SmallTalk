@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Navbar, Nav, Button } from 'react-bootstrap'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import CategoriesContextProvider from './contexts/CategoriesContextProvider'
 import CategoryPage from './components/CategoryPage'
@@ -53,7 +52,7 @@ function App() {
               <Anchor
                 href='/login'
                 color='brand'
-                className='navLink'
+                id='login'
                 onClick={() => logout()}
               >
                 Logout
