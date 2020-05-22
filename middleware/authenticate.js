@@ -6,7 +6,6 @@ const authenticate = async (req, res, next) => {
   if (!req.cookies.userToken) return res.sendStatus(401)
   try {
     const payload = await jwt.verify(req.cookies.userToken, process.env.JWT_KEY)
-    console.log(payload)
     if (!payload) return res.sendStatus(403)
 
     const { username } = payload

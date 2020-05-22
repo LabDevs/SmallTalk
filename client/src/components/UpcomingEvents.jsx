@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Box, Button, Heading } from 'grommet'
 
 function UpcomingEvents () {
-  const [upcomingEvents, setUpComingEvents] = useState(null)
+  const [upcomingEvents, setUpComingEvents] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [err, setErr] = useState(null)
 
@@ -33,18 +33,6 @@ function UpcomingEvents () {
       {isLoading ? (
         <p> {err || '...Loading'}</p>
       ) : (
-        // <Card className='text-center eventTable'>
-        //   <Card.Header className='eventHeader'>Upcoming Events</Card.Header>
-        //   {upcomingEvents &&
-        //     upcomingEvents.map(event => {
-        //       return (
-        //         <Card.Body className='eventBody'>
-        //           <Card.Title>{event.title}</Card.Title>
-        //           <Button>Chat!</Button>
-        //         </Card.Body>
-        //       )
-        //     })}
-        // </Card>
         <>
           <Heading
             className='upcomingEventHeader'
@@ -81,6 +69,13 @@ function UpcomingEvents () {
                 </Box>
               )
             })}
+          {upcomingEvents.length === 0 ? (
+            <Heading level='3' id='emptyHeading' textAlign='center'>
+              Hm...looks empty. Why not RSVP to an event?
+            </Heading>
+          ) : (
+            <></>
+          )}
         </>
       )}
     </>

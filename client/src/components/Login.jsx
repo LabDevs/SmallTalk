@@ -2,7 +2,6 @@ import React from 'react'
 import { Form } from 'react-bootstrap'
 import { FormField, TextInput, Button, Anchor } from 'grommet'
 
-
 const Login = () => {
   return (
     <div className='loginForm'>

@@ -101,9 +101,14 @@ const AddEvent = props => {
               />
             </Form.Group>
 
-            <Button onClick={addEvent} variant='primary' type='submit'>
-              Add Event!
-            </Button>
+            <Button
+              onClick={addEvent}
+              size='small'
+              primary
+              responsive='true'
+              type='submit'
+              label='Add Event'
+            />
           </Form>
         </Modal.Body>
       </Modal>
