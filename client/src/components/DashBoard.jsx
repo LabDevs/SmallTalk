@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import DashBoardEvent from './DashBoardEvent'
 import AddEvent from './AddEvent'
-<<<<<<< HEAD
-import { Button } from 'grommet'
-import UpcomingEvents from './UpcomingEvents'
-=======
 import { Box, Button, Heading } from 'grommet'
->>>>>>> ab41c676f8cf3fc4c4238dff99af334cd7963c2f
 
 function DashBoard() {
   const [events, setEvent] = useState(null)
@@ -34,29 +29,6 @@ function DashBoard() {
   }, [])
 
   return (
-<<<<<<< HEAD
-    <div>
-      <Button primary gap='medium' onClick={handleShow} label='Add Event' />
-      <AddEvent show={show} handleClose={handleClose} />
-      <UpcomingEvents />
-      {isLoading ? (
-        <p> {err || '...Loading'}</p>
-      ) : (
-        <>
-          {isLoading ? (
-            <p> {err || '...Loading'}</p>
-          ) : (
-            <>
-              {events &&
-                events.map((event) => {
-                  return <DashBoardEvent key={event.id} event={event} />
-                })}
-            </>
-          )}
-        </>
-      )}
-    </div>
-=======
     <>
       <Box className='dashboard'>
         <Heading
@@ -81,14 +53,13 @@ function DashBoard() {
         ) : (
           <Box>
             {events &&
-              events.map(event => {
+              events.map((event) => {
                 return <DashBoardEvent key={event.id} event={event} />
               })}
           </Box>
         )}
       </Box>
     </>
->>>>>>> ab41c676f8cf3fc4c4238dff99af334cd7963c2f
   )
 }
 
