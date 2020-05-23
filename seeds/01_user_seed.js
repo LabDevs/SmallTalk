@@ -5,7 +5,7 @@ exports.seed = function (knex) {
   return knex('users')
     .del()
     .then(function () {
-      //Encrypts the password
+      // Encrypts the password
       const saltRounds = 8
       return bcrypt.hash(process.env.SEED_PASS, saltRounds)
     })

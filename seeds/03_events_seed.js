@@ -21,7 +21,7 @@ exports.seed = function (knex) {
         },
         {
           category_id: 4,
-          user_id: 1,
+          user_id: 2,
           title: 'Favorite NBA team',
           description: 'Houston Rockets',
           date: '2020-10-5 01:12:00-04'
@@ -35,14 +35,14 @@ exports.seed = function (knex) {
         },
         {
           category_id: 2,
-          user_id: 2,
+          user_id: 3,
           title: 'Best COD?',
           description: 'BO3',
           date: '2020-10-3 10:29:00-04'
         },
         {
           category_id: 1,
-          user_id: 3,
+          user_id: 4,
           title: 'How are you dealing with COVID',
           description: 'Small Talk',
           date: '2020-10-2 03:33:00-04'

@@ -11,13 +11,6 @@ const theme = {
       family: 'Roboto',
       size: '18px',
       height: '20px'
-    },
-    colors: {
-      green: '#C2FFD9',
-      blue: '#51E5FF',
-      lightPink: '#FDC5F5',
-      salmon: '#FFA69E',
-      yellow: '#F2F230'
     }
   }
 }
