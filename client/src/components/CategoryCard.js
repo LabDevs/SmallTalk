@@ -1,21 +1,27 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { Card, Button } from 'react-bootstrap'
-import CategoriesEventList from './CategoryPage'
-import CategoriesContext from '../contexts/CategoriesContext'
-import { Link } from 'react-router-dom'
+import React from 'react'
+import { Box, Text } from 'grommet'
 
 const CategoryCard = props => {
   return (
     <div>
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant='top' src='https://via.placeholder.com/100' />
-        <Card.Body>
-          <Card.Title>{props.category.name}</Card.Title>
-          <Link to={`/categories/${props.category.id}`}>
-            <Button variant='info'>See Events</Button>
-          </Link>
-        </Card.Body>
-      </Card>
+      <Box direction='row' justify='space-around' align='center' pad='large'>
+        <Box
+          border
+          pad='large'
+          align='center'
+          alignContent='center'
+          round
+          background={{ color: `${props.color}` }}
+          margin={{ left: 'medium' }}
+          gap='medium'
+          hoverIndicator
+          onClick={() =>
+            window.location.replace(`/categories/${props.category.id}`)
+          }
+        >
+          <Text textAlign='end'>{props.category.name}</Text>
+        </Box>
+      </Box>
     </div>
   )
 }

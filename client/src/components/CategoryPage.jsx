@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { CardGroup } from 'react-bootstrap'
-import CategoriesContext from '../contexts/CategoriesContext'
 import CategoryEvent from './CategoryEvent'
 import { useParams } from 'react-router-dom'
 
