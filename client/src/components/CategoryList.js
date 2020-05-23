@@ -7,7 +7,7 @@ const CategoryList = () => {
 
   useEffect(() => {
     const getCategories = async () => {
-      const response = await fetch(`/api/categories`)
+      const response = await fetch('/api/categories')
       const data = await response.json()
       setCategories(data)
       console.log(data)
