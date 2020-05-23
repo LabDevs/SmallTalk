@@ -16,7 +16,7 @@ exports.seed = function (knex) {
         {
           id: 2,
           category_id: 3,
-          user_id: 2,
+          user_id: 1,
           title: 'Best Products?',
           description: 'I need my hair to grow',
           date: '2020-10-19 11:50:00-04'
@@ -40,7 +40,7 @@ exports.seed = function (knex) {
         {
           id: 5,
           category_id: 2,
-          user_id: 2,
+          user_id: 3,
           title: 'Best COD?',
           description: 'BO3',
           date: '2020-10-3 10:29:00-04'
@@ -48,7 +48,7 @@ exports.seed = function (knex) {
         {
           id: 6,
           category_id: 1,
-          user_id: 2,
+          user_id: 4,
           title: 'How are you dealing with COVID',
           description: 'Small Talk',
           date: '2020-10-2 03:33:00-04'
