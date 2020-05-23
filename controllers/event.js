@@ -24,7 +24,6 @@ const getAllByUser = (req, res) => {
 
 const add = (req, res) => {
   const { userId, categoryId, title, description, date } = req.body
-  console.log(userId, categoryId, title, description, date)
 
   Event.add(userId, categoryId, title, description, date)
     .then(() => res.status(200).json({ message: 'Successfully added.' }))

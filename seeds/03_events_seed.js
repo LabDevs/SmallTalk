@@ -6,7 +6,6 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex('events').insert([
         {
-          id: 1,
           category_id: 2,
           user_id: 1,
           title: 'Fortnite',
@@ -14,7 +13,6 @@ exports.seed = function (knex) {
           date: '2020-10-19 04:44:00-04'
         },
         {
-          id: 2,
           category_id: 3,
           user_id: 1,
           title: 'Best Products?',
@@ -22,7 +20,6 @@ exports.seed = function (knex) {
           date: '2020-10-19 11:50:00-04'
         },
         {
-          id: 3,
           category_id: 4,
           user_id: 1,
           title: 'Favorite NBA team',
@@ -30,7 +27,6 @@ exports.seed = function (knex) {
           date: '2020-10-5 01:12:00-04'
         },
         {
-          id: 4,
           category_id: 5,
           user_id: 2,
           title: 'Favorite Food?',
@@ -38,7 +34,6 @@ exports.seed = function (knex) {
           date: '2020-10-4 05:10:00-04'
         },
         {
-          id: 5,
           category_id: 2,
           user_id: 2,
           title: 'Best COD?',
@@ -46,7 +41,6 @@ exports.seed = function (knex) {
           date: '2020-10-3 10:29:00-04'
         },
         {
-          id: 6,
           category_id: 1,
           user_id: 3,
           title: 'How are you dealing with COVID',
