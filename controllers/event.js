@@ -1,7 +1,10 @@
 const Event = require('../models/Event')
 
 const getAllByCategory = (req, res) => {
-  Event.getAllByCategory()
+  const { categoryId } = req.params
+  const { userId } = req.body
+
+  Event.getAllByCategory(categoryId, userId)
     .then(response => res.status(200).json(response))
     .catch(() =>
       res.status(500).json({ message: 'Could not get all events by category.' })
