@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/User')
-const bcrypt = require('bcrypt')
 
 const authenticate = async (req, res, next) => {
   if (!req.cookies.userToken) return res.sendStatus(401)
