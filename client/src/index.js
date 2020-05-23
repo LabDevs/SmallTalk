@@ -3,17 +3,17 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Grommet } from 'grommet';
+import { Grommet } from 'grommet'
 
 const theme = {
   global: {
     font: {
       family: 'Roboto',
       size: '18px',
-      height: '20px',
-    },
-  },
-};
+      height: '20px'
+    }
+  }
+}
 
 ReactDOM.render(
   <React.StrictMode>
