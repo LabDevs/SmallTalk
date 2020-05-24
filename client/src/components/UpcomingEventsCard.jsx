@@ -37,6 +37,7 @@ const UpcomingEventsCard = ({ event }) => {
         primary
         gap='small'
         label='Chat!'
+        href='/videoChat'
       />
       <Button
         className='upcomingEventsButton'

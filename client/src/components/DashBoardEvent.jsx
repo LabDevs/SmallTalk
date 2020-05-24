@@ -86,14 +86,6 @@ const DashBoardEvent = ({ event }) => {
             responsive='true'
             primary
             gap='small'
-            label='Start Event'
-          />
-          <Button
-            className='upcomingEventsButton'
-            size='medium'
-            responsive='true'
-            primary
-            gap='small'
             label='Start Small Talk'
             href='/videochat#1'
           />
