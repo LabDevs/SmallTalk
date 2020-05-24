@@ -45,7 +45,7 @@ const UpdateEvent = props => {
   return (
     <div>
       <Modal show={props.show} onHide={props.handleClose}>
-        <Modal.Header closeButton>Update Event</Modal.Header>
+        <Modal.Header closeButton>Update SmallTalk</Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group controlId='titleForm'>
@@ -53,7 +53,7 @@ const UpdateEvent = props => {
               <Form.Control
                 onChange={e => setTitle(e.target.value)}
                 type='text'
-                placeholder='What is your event about?'
+                placeholder='What is your SmallTalk about?'
               />
             </Form.Group>
 
@@ -63,7 +63,7 @@ const UpdateEvent = props => {
                 onChange={e => setDescription(e.target.value)}
                 as='textarea'
                 rows='3'
-                placeholder='Give a short description of your event!'
+                placeholder='Give a short description of your SmallTalk!'
               />
             </Form.Group>
 
@@ -97,7 +97,8 @@ const UpdateEvent = props => {
               primary
               responsive='true'
               type='submit'
-              label='Update Event!'
+              label='Update SmallTalk'
+              color='#6AB8E0'
             />
           </Form>
         </Modal.Body>
