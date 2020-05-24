@@ -8,7 +8,7 @@ const Login = () => {
       <h1>Login</h1>
 
       <Form action='/api/login' method='post'>
-        <FormField className='loginField' label='Username'>
+        <FormField required className='loginField' label='Username'>
           <TextInput
             type='text'
             placeholder='Enter your username!'
@@ -16,7 +16,7 @@ const Login = () => {
           />
         </FormField>
 
-        <FormField className='loginField' label='Password'>
+        <FormField required className='loginField' label='Password'>
           <TextInput
             type='password'
             placeholder='Enter your password!'

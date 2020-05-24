@@ -8,7 +8,7 @@ class RSVP {
 
   static getByUser (userId) {
     const queryText =
-      'SELECT rsvp.id, rsvp.event_id, rsvp.user_id, events.title FROM rsvp JOIN events ON rsvp.event_id = events.id WHERE rsvp.user_id=$1;'
+      'SELECT rsvp.id, rsvp.event_id, rsvp.user_id, events.title, events.description, events.date, categories.name FROM rsvp JOIN events ON rsvp.event_id = events.id JOIN categories ON events.category_id = categories.id WHERE rsvp.user_id=$1;'
     return db.query(queryText, [userId]).then(response => response.rows)
   }
 
