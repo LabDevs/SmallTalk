@@ -67,7 +67,7 @@ const DashBoardEvent = ({ event }) => {
             primary
             gap='small'
             label='Update Event'
-            onClick={handleShow}
+            onClick={removeEvent}
             margin={{ bottom: 'small' }}
           />
           <Button

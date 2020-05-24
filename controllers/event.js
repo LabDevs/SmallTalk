@@ -48,7 +48,7 @@ const show = (req, res) => {
 
   Event.show(eventId)
     .then(response => res.status(200).json(response))
-    .catch(() => res.staus(500).json({ message: 'Cannot show event.' }))
+    .catch(() => res.status(500).json({ message: 'Cannot show event.' }))
 }
 
 const remove = (req, res) => {

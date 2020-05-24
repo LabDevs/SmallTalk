@@ -9,6 +9,7 @@ exports.up = function (knex) {
       .integer('user_id')
       .references('id')
       .inTable('users')
+      .onDelete('CASCADE')
     table.string('title').notNullable()
     table.string('description').notNullable()
     table.datetime('date')

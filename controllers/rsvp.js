@@ -20,7 +20,19 @@ const getByUser = (req, res) => {
     })
 }
 
+const remove = (req, res) => {
+  const { eventId, userId } = req.body
+  console.log(eventId, userId)
+  RSVP.remove(eventId, userId)
+    .then(() => res.status(200).json({ message: 'Removed RSVP.' }))
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({ message: 'Could not remove RSVP.' })
+    })
+}
+
 module.exports = {
   add,
-  getByUser
+  getByUser,
+  remove
 }
