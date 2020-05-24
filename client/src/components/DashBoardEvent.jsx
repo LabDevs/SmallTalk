@@ -34,19 +34,20 @@ const DashBoardEvent = ({ event }) => {
   const handleShow = () => setShow(true)
 
   return (
-    <>
+    <Box>
       <UpdateEvent show={show} handleClose={handleClose} eventId={event.id} />
 
       <Box
         responsive='true'
-        className='dashboardEventCard'
+        // className='dashboardEventCard'
         direction='column'
         align='center'
         alignSelf='center'
         background='light'
-        border={{ color: 'gray' }}
-        round='small'
+        border={{ color: '#C6F6D5', size: 'medium' }}
+        round='xsmall'
         header='Your Events'
+        width='80%'
         pad='medium'
       >
         <Heading level='2' textAlign='start' responsive='true'>
@@ -69,6 +70,7 @@ const DashBoardEvent = ({ event }) => {
             label='Update Event'
             onClick={removeEvent}
             margin={{ bottom: 'small' }}
+            color='#39b2ab'
           />
           <Button
             className='upcomingEventsButton'
@@ -79,6 +81,7 @@ const DashBoardEvent = ({ event }) => {
             label='Delete Event'
             onClick={removeEvent}
             margin={{ bottom: 'small' }}
+            color='#39b2ab'
           />
           <Button
             className='upcomingEventsButton'
@@ -87,10 +90,11 @@ const DashBoardEvent = ({ event }) => {
             primary
             gap='small'
             label='Start Event'
+            color='#39b2ab'
           />
         </Box>
       </Box>
-    </>
+    </Box>
   )
 }
 

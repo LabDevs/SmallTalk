@@ -45,7 +45,7 @@ function UpcomingEvents () {
           </Heading>
           {upcomingEvents &&
             upcomingEvents.map(event => {
-              return <UpcomingEventsCard event={event} />
+              return <UpcomingEventsCard key={event.id} event={event} />
             })}
           {upcomingEvents.length === 0 ? (
             <Heading level='3' id='emptyHeading' textAlign='center'>

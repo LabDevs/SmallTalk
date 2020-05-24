@@ -12,9 +12,9 @@ class RSVP {
     return db.query(queryText, [userId]).then(response => response.rows)
   }
 
-  static remove (userId, eventId) {
-    const queryText = 'DELETE FROM rsvp WHERE user_id=$1 AND event_id=$2;'
-    return db.query(queryText, [userId, eventId])
+  static cancel (rsvpId) {
+    const queryText = 'DELETE FROM rsvp WHERE id=$1;'
+    return db.query(queryText, [rsvpId])
   }
 }
 

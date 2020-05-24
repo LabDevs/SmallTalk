@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import DashBoardEvent from './DashBoardEvent'
 import AddEvent from './AddEvent'
-import { Box, Button, Heading } from 'grommet'
+import { Box, Button, Heading, Grid } from 'grommet'
 
 function DashBoard () {
   const [events, setEvent] = useState(null)
@@ -47,18 +47,22 @@ function DashBoard () {
         />
         <AddEvent id='addEvent' show={show} handleClose={handleClose} />
       </Box>
-      <Box>
-        {isLoading ? (
-          <p> {err || '...Loading'}</p>
-        ) : (
-          <Box>
-            {events &&
-              events.map(event => {
-                return <DashBoardEvent key={event.id} event={event} />
-              })}
-          </Box>
-        )}
-      </Box>
+      {isLoading ? (
+        <p> {err || '...Loading'}</p>
+      ) : (
+        <Grid
+          rows={'medium'}
+          columns={['auto', '1/2']}
+          gap='small'
+          responsive='true'
+          align='center'
+        >
+          {events &&
+            events.map(event => {
+              return <DashBoardEvent key={event.id} event={event} />
+            })}
+        </Grid>
+      )}
     </>
   )
 }

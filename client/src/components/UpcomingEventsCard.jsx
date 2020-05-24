@@ -2,17 +2,15 @@ import React from 'react'
 import { Box, Button } from 'grommet'
 
 const UpcomingEventsCard = ({ event }) => {
-  console.log(event)
-
-  const rsvpInfo = {
-    eventid: event.event_id
-  }
   const removeRSVP = () => {
     fetch('/rsvp/remove', {
       method: 'DELETE',
-      body: JSON.stringify(rsvpInfo)
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ rsvpId: event.id })
     })
-      .then(() => window.location.reload())
+      .then(() => {
+        window.location.reload()
+      })
       .catch(err => console.log(err))
   }
 
