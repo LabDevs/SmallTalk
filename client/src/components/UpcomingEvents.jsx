@@ -59,5 +59,4 @@ function UpcomingEvents () {
     </>
   )
 }
-
 export default UpcomingEvents
