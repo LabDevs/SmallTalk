@@ -86,7 +86,8 @@ const DashBoardEvent = ({ event }) => {
             responsive='true'
             primary
             gap='small'
-            label='Start Event'
+            label='Start Small Talk'
+            href='/videochat#1'
           />
         </Box>
       </Box>

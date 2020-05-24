@@ -6,7 +6,7 @@ import CategoryList from './components/CategoryList'
 import Register from './components/Register'
 import Login from './components/Login'
 import DashBoard from './components/DashBoard'
-import VideoChat from './components/VideoChat'
+import VideoChatTwo from './components/VideoChatTwo'
 import './index.css'
 import { Anchor, Box, Header, Nav, Image } from 'grommet'
 import UpcomingEvents from './components/UpcomingEvents'
@@ -82,7 +82,7 @@ function App () {
         </Route>
 
         <Route path='/videoChat'>
-          <VideoChat />
+          <VideoChatTwo />
         </Route>
 
         <Route path='/categories/:categoryId'>
