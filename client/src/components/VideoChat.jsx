@@ -24,6 +24,9 @@ const Video = styled.video`
 `
 
 const socket = io()
+// socket.emit('video-room','games')
+
+console.log({socket})
 
 function VideoChat () {
   const [stream, setStream] = useState()

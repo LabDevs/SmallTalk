@@ -23,15 +23,19 @@ app.use(categoryRouter)
 app.use(eventRouter)
 
 io.on('connection', (socket) => {
+  
+  
   socket.on('signal', (data) => {
     console.log('Signal from Peer', socket.id)
     socket.broadcast.emit('signal', data)
   })
-
-  // socket.on('go-rivate', (data) => {
-  //   console.log('Message from peer: %s', data);
-  //   socket.broadcast.emit('peer-msg', data)
+  
+  // socket.to('video-room', (room) => {
+  //   console.log('video-room', room)
+  //   socket.room = room
+  //   socket.join(room)
   // })
+  
 })
 
 app.get('/', (req, res) => res.send('Hello World'))

@@ -65,6 +65,7 @@ function UpcomingEvents () {
                     primary
                     gap='small'
                     label='Chat!'
+                    href='/videochat'
                   />
                 </Box>
               )

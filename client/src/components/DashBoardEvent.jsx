@@ -79,6 +79,15 @@ const DashBoardEvent = ({ event }) => {
             label='Delete Event'
             onClick={removeEvent}
           />
+          <Button
+            className='upcomingEventsButton'
+            size='medium'
+            responsive='true'
+            primary
+            gap='small'
+            label='Start Small Talk'
+            href='/videochat#1'
+          />
         </Box>
       </Box>
     </>
