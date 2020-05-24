@@ -81,7 +81,7 @@ function App () {
           <DashBoard />
         </Route>
 
-        <Route path='/videoChat'>
+        <Route path='/videoRoom'>
           <VideoChatTwo />
         </Route>
 

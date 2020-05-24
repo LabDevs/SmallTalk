@@ -22,45 +22,46 @@ app.use(rsvpRouter)
 app.use(categoryRouter)
 app.use(eventRouter)
 
-const users = {};
+const users = {}
 
 io.on('connection', socket => {
-    console.log('socket connected',socket.id)
-    if (!users[socket.id]) {
-        users[socket.id] = socket.id;
-    }
-    socket.emit("yourID", socket.id);
-    io.sockets.emit("allUsers", users);
-    socket.on('disconnect', () => {
-        delete users[socket.id];
-    })
+  console.log('socket connected', socket.id)
+  if (!users[socket.id]) {
+    users[socket.id] = socket.id
+  }
+  socket.emit('yourID', socket.id)
+  io.sockets.emit('allUsers', users)
+  socket.on('disconnect', () => {
+    delete users[socket.id]
+  })
 
-    socket.on("callUser", (data) => {
-      console.log('user calling', data)
-        io.to(data.userToCall).emit('hey', {signal: data.signalData, from: data.from});
-    })
+  socket.on('callUser', (data) => {
+    io.to(data.userToCall).emit('hey', { signal: data.signalData, from: data.from })
+  })
 
-    socket.on("acceptCall", (data) => {
-      console.log('accepting call', data)
-        io.to(data.to).emit('callAccepted', data.signal);
-    })
-});
-
+  socket.on('acceptCall', (data) => {
+    io.to(data.to).emit('callAccepted', data.signal)
+  })
+  
+  socket.on('disconnect', (data) => {
+    console.log('user left', data )
+    // socket.brodcast.emit('user left', data)
+  })
+})
 
 // io.on('connection', (socket) => {
-  
-  
+
 //   socket.to('video-room', (room) => {
 //     console.log('video-room', room)
 //     socket.room = room
 //     socket.join(room)
 //   })
-  
+
 //   socket.on('signal', (data) => {
 //     console.log('Signal from Peer', socket.id)
 //     io.to(socket.room).emit('signal', data)
 //   })
-  
+
 // })
 
 app.get('/', (req, res) => res.send('Hello World'))

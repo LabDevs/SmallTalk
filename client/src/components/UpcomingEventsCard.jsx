@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Button } from 'grommet'
+import { Link } from 'react-router-dom'
 
 const UpcomingEventsCard = ({ event }) => {
   console.log(event)
@@ -30,24 +31,16 @@ const UpcomingEventsCard = ({ event }) => {
       pad='medium'
     >
       <h2>{event.title}</h2>
-      <Button
-        className='upcomingEventsButton'
-        size='medium'
-        responsive='true'
-        primary
-        gap='small'
-        label='Chat!'
-        href='/videoChat'
-      />
-      <Button
-        className='upcomingEventsButton'
-        size='medium'
-        responsive='true'
-        primary
-        gap='small'
-        label='Un-RSVP'
-        onClick={removeRSVP}
-      />
+      <Link to='/videoRoom'>
+        <Button
+          className='upcomingEventsButton'
+          size='medium'
+          responsive='true'
+          primary
+          gap='small'
+          label='Chat!'
+        />
+      </Link>
     </Box>
   )
 }

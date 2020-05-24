@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-// import './App.css';
+import { Button, Box, Heading, Text } from 'grommet'
 import io from "socket.io-client";
 import SimplePeer from 'simple-peer'
 import styled from "styled-components";
@@ -59,6 +59,11 @@ function VideoChatTwo() {
       setReceivingCall(true);
       setCaller(data.from);
       setCallerSignal(data.signal);
+    })
+    
+    socket.on("disconnect", (data) =>{
+      // console.log('user left', data)
+      // socket.emit('user left', data)
     })
   }, []);
 
@@ -126,7 +131,9 @@ function VideoChatTwo() {
     incomingCall = (
       <div>
         <h1>{caller} is calling you</h1>
-        <button onClick={acceptCall}>Accept</button>
+        <Button onClick={acceptCall}>
+          Accept
+        </Button>
       </div>
     )
   }
@@ -142,7 +149,9 @@ function VideoChatTwo() {
             return null;
           }
           return (
-            <button onClick={() => callPeer(key)}>Call {key}</button>
+            <Button onClick={() => callPeer(key)}>
+            Call {key}
+            </Button>
           );
         })}
       </Row>

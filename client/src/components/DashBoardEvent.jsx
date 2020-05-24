@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import UpdateEvent from './UpdateEvent'
 import { Button, Box, Heading, Text } from 'grommet'
+import { Link } from 'react-router-dom'
 
 const DashBoardEvent = ({ event }) => {
   const [show, setShow] = useState(false)
@@ -80,15 +81,16 @@ const DashBoardEvent = ({ event }) => {
             onClick={removeEvent}
             margin={{ bottom: 'small' }}
           />
-          <Button
-            className='upcomingEventsButton'
-            size='medium'
-            responsive='true'
-            primary
-            gap='small'
-            label='Start Small Talk'
-            href='/videochat#1'
-          />
+          <Link to='/videoRoom'>
+            <Button
+              className='upcomingEventsButton'
+              size='medium'
+              responsive='true'
+              primary
+              gap='small'
+              label='Start Small Talk'
+            />
+          </Link>
         </Box>
       </Box>
     </>
