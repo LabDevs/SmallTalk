@@ -7,18 +7,17 @@ const CategoryCard = props => {
       <Box direction='row' justify='space-around' align='center' pad='large'>
         <Box
           border
-          pad='large'
+          pad='xlarge'
           align='center'
           alignContent='center'
           round
-          background={{ color: `${props.color}` }}
-          margin={{ left: 'medium' }}
           gap='medium'
           hoverIndicator
           onClick={() =>
             window.location.replace(`/categories/${props.category.id}`)
           }
         >
+          {props.icon}
           <Text textAlign='end'>{props.category.name}</Text>
         </Box>
       </Box>

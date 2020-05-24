@@ -67,7 +67,7 @@ const DashBoardEvent = ({ event }) => {
             primary
             gap='small'
             label='Update Event'
-            onClick={handleShow}
+            onClick={removeEvent}
             margin={{ bottom: 'small' }}
           />
           <Button
@@ -78,6 +78,15 @@ const DashBoardEvent = ({ event }) => {
             gap='small'
             label='Delete Event'
             onClick={removeEvent}
+            margin={{ bottom: 'small' }}
+          />
+          <Button
+            className='upcomingEventsButton'
+            size='medium'
+            responsive='true'
+            primary
+            gap='small'
+            label='Start Event'
           />
         </Box>
       </Box>
