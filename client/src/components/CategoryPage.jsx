@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { CardGroup } from 'react-bootstrap'
 import CategoryEvent from './CategoryEvent'
 import { useParams } from 'react-router-dom'
+import { Grid, Box, Heading, Stack } from 'grommet'
 
 const CategoryPage = () => {
   const { categoryId } = useParams()
-  const [categoryEvents, setCategoryEvents] = useState(null)
+  const [categoryEvents, setCategoryEvents] = useState([])
+  const [categoryName, setCategoryName] = useState('')
 
   // This function will take in a categoryId, which will be provided by the Categories/Topics component as
   // a prop since that component will be making a fetch request to get all categories, which includes the id.
@@ -14,16 +15,34 @@ const CategoryPage = () => {
       const response = await fetch(`/api/categories/${categoryId}`)
       const json = await response.json()
       setCategoryEvents(json)
-      console.log(categoryEvents)
+      setCategoryName(json[0].name)
     }
     getEventsByCategory()
   }, [])
 
+  console.log(categoryEvents)
+
   return (
-    <CardGroup className='cards'>
-      {categoryEvents &&
-        categoryEvents.map(event => <CategoryEvent event={event} />)}
-    </CardGroup>
+    <Box>
+      <Box>
+        <Heading color='#444444' id='categoryHeader' text-align='center'>
+          {categoryName}
+        </Heading>
+      </Box>
+
+      <Box direction='column'>
+        <Grid
+          rows={'medium'}
+          columns={['auto', '1/2']}
+          gap='small'
+          responsive='true'
+          align='center'
+        >
+          {categoryEvents &&
+            categoryEvents.map(event => <CategoryEvent event={event} />)}
+        </Grid>
+      </Box>
+    </Box>
   )
 }
 
