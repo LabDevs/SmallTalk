@@ -35,10 +35,10 @@ function VideoChatTwo() {
 
   const userVideo = useRef();
   const partnerVideo = useRef();
-  // const socket = useRef();
+
 
   useEffect(() => {
-    // socket = io.connect("/videoChat");
+
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
       setStream(stream);
       if (userVideo.current) {
@@ -49,6 +49,7 @@ function VideoChatTwo() {
     socket.on("yourID", (id) => {
       console.log(id)
       setYourID(id);
+
     })
     socket.on("allUsers", (users) => {
       setUsers(users);
@@ -65,7 +66,14 @@ function VideoChatTwo() {
       // console.log('user left', data)
       // socket.emit('user left', data)
     })
+    function getUsers(){
+      fetch('/api/users')
+        .then(res => console.log(res))
+    }
+    
+    getUsers()
   }, []);
+  
 
   function callPeer(id) {
     const peer = new SimplePeer({
@@ -92,6 +100,8 @@ function VideoChatTwo() {
     })
 
   }
+  
+
 
   function acceptCall() {
     setCallAccepted(true);

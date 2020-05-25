@@ -25,7 +25,13 @@ app.use(eventRouter)
 const users = {}
 
 io.on('connection', socket => {
-  console.log('socket connected', socket.id)
+  
+  socket.on('video-room', (room) =>{
+    console.log('user has join video room', rrom)
+    socket.join(room)
+  })
+  
+  
   if (!users[socket.id]) {
     users[socket.id] = socket.id
   }
@@ -66,4 +72,4 @@ io.on('connection', socket => {
 
 app.get('/', (req, res) => res.send('Hello World'))
 
-server.listen(port, () => console.log(`Listening on port ${port} `))
+server.listen(port,process.env.HOST_NAME, () => console.log(`Listening on port ${port} `))
