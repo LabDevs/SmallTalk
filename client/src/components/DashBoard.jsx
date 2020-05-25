@@ -7,7 +7,6 @@ import { Spinner } from 'react-bootstrap'
 function DashBoard () {
   const [events, setEvent] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-  const [err, setErr] = useState(null)
   const [show, setShow] = useState(false)
 
   const handleShow = () => setShow(true)
@@ -24,8 +23,6 @@ function DashBoard () {
       })
       .catch(err => {
         console.log(err)
-        err = 'Sorry there was an error, please try again'
-        setErr(err)
       })
   }, [])
 
