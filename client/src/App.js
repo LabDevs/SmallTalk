@@ -7,7 +7,7 @@ import Register from './components/Register'
 import Login from './components/Login'
 import DashBoard from './components/DashBoard'
 import Home from './components/Home'
-import Logo from './logo.png'
+import Logo from './navy-logo.png'
 import VideoChat from './components/VideoChat'
 import './index.css'
 import { Anchor, Box, Header, Nav, Image } from 'grommet'
@@ -27,7 +27,7 @@ function App() {
           align='center'
           gap='small'
         >
-          <Link to='/'>
+          <Link to='/home'>
             <Image src={Logo} fit='contain' className='logo' />
           </Link>
           {document.cookie ? (

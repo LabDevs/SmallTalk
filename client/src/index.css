@@ -1,5 +1,6 @@
-body {
-  padding-bottom: 3%;
+body * {
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
 }
 
 .cards {
@@ -69,6 +70,9 @@ body {
   width: 150px;
 }
 
+.logo-text {
+  color: #17539d;
+}
 .sideText {
   display: inline-block;
   padding-left: 10%;
@@ -79,18 +83,15 @@ body {
   width: 60%;
 }
 
-.introBody,
+.top-row,
 .sideText {
   background-color: rgb(211, 235, 249);
 }
 
-.introBody {
+.top-row {
   height: 140%;
   color: white;
   display: flex;
-}
-.instructionBody {
-  border: black;
 }
 
 h1 {
@@ -103,4 +104,37 @@ h1 {
 #emptyHeading {
   margin-top: 12%;
   margin-left: 28.5%;
+}
+
+.middle-row {
+  display: flex;
+  margin: 7%;
+  text-align: center;
+}
+
+.iconCard {
+  width: 40%;
+  /* border: 1px solid black; */
+  padding: 5%;
+}
+
+.userIcon,
+.searchIcon,
+.chatIcon {
+  padding-bottom: 10%;
+}
+
+b {
+  color: #17539d;
+}
+
+.cardContent > p {
+  padding-top: 5%;
+}
+
+.middle-row-title {
+  text-align: center;
+  padding-top: 12%;
+  font-size: 80px;
+  color: #17539d;
 }
