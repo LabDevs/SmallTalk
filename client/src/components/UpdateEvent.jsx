@@ -8,6 +8,7 @@ const UpdateEvent = props => {
   const [categoryData, setCategoryData] = useState(null)
   const [categoryId, setCategoryId] = useState(null)
   const [date, setDate] = useState(null)
+  const [event, setEvent] = useState('')
 
   const eventInfo = {
     title: title,
@@ -29,7 +30,7 @@ const UpdateEvent = props => {
   }
 
   useEffect(() => {
-    async function getCategories () {
+    async function getCategories() {
       try {
         const response = await fetch('/api/categories')
         const data = await response.json()
@@ -39,8 +40,25 @@ const UpdateEvent = props => {
       }
     }
 
+    async function getEventById() {
+      try {
+        const response = await fetch(`/api/event/${props.eventId}`)
+        const data = await response.json()
+        setEvent(data)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
     getCategories()
+    getEventById()
   }, [])
+
+  const stringDate = event.date
+    ? event.date.slice(0, event.date.length - 1)
+    : ''
+
+  console.log(event)
 
   return (
     <div>
@@ -54,6 +72,7 @@ const UpdateEvent = props => {
                 onChange={e => setTitle(e.target.value)}
                 type='text'
                 placeholder='What is your SmallTalk about?'
+                value={event.title}
               />
             </Form.Group>
 
@@ -64,6 +83,7 @@ const UpdateEvent = props => {
                 as='textarea'
                 rows='3'
                 placeholder='Give a short description of your SmallTalk!'
+                value={event.description}
               />
             </Form.Group>
 
@@ -74,11 +94,16 @@ const UpdateEvent = props => {
                 as='select'
               >
                 {categoryData &&
-                  categoryData.map(category => (
-                    <option key={category.id} value={category.id}>
+                  categoryData.map(category => {
+                    if (event.category_id === category.id) {
+                      return (<option selected key={category.id} value={category.id}>
+                        {category.name}
+                      </option>)
+                    }
+                    return (<option key={category.id} value={category.id}>
                       {category.name}
-                    </option>
-                  ))}
+                    </option>)
+                  })}
               </Form.Control>
             </Form.Group>
 
@@ -88,6 +113,7 @@ const UpdateEvent = props => {
                 onChange={e => setDate(e.target.value)}
                 type='datetime-local'
                 rows='3'
+                value={stringDate ? stringDate : null}
               />
             </Form.Group>
 

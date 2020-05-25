@@ -50,7 +50,7 @@ const UpcomingEventsCard = ({ event }) => {
     //   </Box>
     // )
 
-    <Box>
+    <Box responsive='true'>
       <Box
         responsive='true'
         direction='column'
@@ -65,8 +65,9 @@ const UpcomingEventsCard = ({ event }) => {
         width='90%'
       >
         <Grid
+          responsive='true'
           rows={['auto', 'xxsmall', 'xxsmall', 'auto']}
-          columns={['small', 'small', 'small']}
+          columns={['auto', 'auto', 'auto']}
           areas={[
             { name: 'category', start: [2, 0], end: [2, 0] },
             { name: 'header', start: [0, 0], end: [1, 1] },
@@ -86,17 +87,17 @@ const UpcomingEventsCard = ({ event }) => {
               {event.title}
             </Heading>
           </Box>
-          <Box gridArea='category'>
+          <Box responsive='true' gridArea='category'>
             <Heading textAlign='end' margin={{ vertical: 'xsmall' }} level='4'>
               {event.name}
             </Heading>
           </Box>
-          <Box gridArea='time'>
+          <Box responsive='true' gridArea='time'>
             <Text size='large' textAlign='center' margin={{ vertical: 'auto' }}>
               {new Date(event.date).toLocaleString()}
             </Text>
           </Box>
-          <Box gridArea='desc'>
+          <Box responsive='true' gridArea='desc'>
             <Text
               size='medium'
               margin={{ vertical: 'auto' }}

@@ -35,7 +35,7 @@ const DashBoardEvent = ({ event }) => {
   const handleShow = () => setShow(true)
 
   return (
-    <Box>
+    <Box responsive='true'>
       <UpdateEvent show={show} handleClose={handleClose} eventId={event.id} />
 
       <Box
@@ -52,8 +52,9 @@ const DashBoardEvent = ({ event }) => {
         width='90%'
       >
         <Grid
-          rows={['auto', 'xsmall', 'xxsmall', 'auto']}
-          columns={['small', 'small', 'small']}
+          responsive='true'
+          rows={['xxsmall', 'xsmall', 'xxsmall', 'auto']}
+          columns={['auto', 'auto', 'auto']}
           areas={[
             { name: 'category', start: [2, 0], end: [2, 0] },
             { name: 'header', start: [0, 0], end: [1, 1] },
@@ -73,7 +74,7 @@ const DashBoardEvent = ({ event }) => {
               {event.title}
             </Heading>
           </Box>
-          <Box gridArea='category'>
+          <Box responsive='true' gridArea='category'>
             <Heading textAlign='end' margin={{ vertical: 'xsmall' }} level='4'>
               {categoryName.name}
             </Heading>
@@ -83,7 +84,7 @@ const DashBoardEvent = ({ event }) => {
               {new Date(event.date).toLocaleString()}
             </Text>
           </Box>
-          <Box gridArea='desc'>
+          <Box responsive='true' gridArea='desc'>
             <Text
               size='medium'
               margin={{ vertical: 'auto' }}
@@ -94,11 +95,12 @@ const DashBoardEvent = ({ event }) => {
           </Box>
           <Box
             gridArea='buttons'
+            responsive='true'
             gap='medium'
             margin={{ top: 'large', left: '13%' }}
             direction='row'
           >
-            <Box>
+            <Box responsive='true'>
               <Button
                 responsive='true'
                 label='Update'

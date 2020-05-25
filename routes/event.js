@@ -14,4 +14,6 @@ router.get('/api/event', eventController.show)
 
 router.delete('/remove', eventController.remove)
 
+router.get('/api/event/:eventId', eventController.getById)
+
 module.exports = router

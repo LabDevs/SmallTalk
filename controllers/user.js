@@ -53,10 +53,9 @@ const login = async (req, res) => {
   }
 }
 
-// If it helps, perhaps you can first await the cookie to be cleared, then redirect the user
-const logout = (req, res) => {
-  res.clearCookie('userToken')
-  res.clearCookie('io')
+const logout = async (req, res) => {
+  await res.clearCookie('userToken')
+  await res.clearCookie('io')
   res.redirect('/login')
 }
 
