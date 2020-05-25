@@ -6,6 +6,6 @@ router.post('/rsvp', rsvpController.add)
 
 router.get('/rsvp/user', rsvpController.getByUser)
 
-router.delete('/rsvp/remove', rsvpController.remove)
+router.delete('/rsvp/remove', rsvpController.cancel)
 
 module.exports = router

@@ -1,48 +1,133 @@
-import React from 'react'
-import { Box, Button } from 'grommet'
+import React, { useState, useEffect } from 'react'
+import UpdateEvent from './UpdateEvent'
+import { Button, Grid, Box, Heading, Text } from 'grommet'
 import { Link } from 'react-router-dom'
 
-const UpcomingEventsCard = ({ event }) => {
-  console.log(event)
+const DashBoardEvent = ({ event }) => {
+  const [show, setShow] = useState(false)
+  const [categoryName, setCategoryName] = useState('')
 
-  const rsvpInfo = {
-    eventid: event.event_id
-  }
-  const removeRSVP = () => {
-    fetch('/rsvp/remove', {
+  const removeEvent = () => {
+    fetch('/remove', {
       method: 'DELETE',
-      body: JSON.stringify(rsvpInfo)
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ eventId: event.id })
     })
-      .then(() => window.location.reload())
-      .catch(err => console.log(err))
+      .then(() => {
+        window.location.reload()
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
+
+  useEffect(() => {
+    async function getCategoryName () {
+      const response = await fetch(`/api/categoryId/${event.category_id}`)
+      const name = await response.json()
+      setCategoryName(name)
+    }
+
+    getCategoryName()
+  }, [])
+
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   return (
-    <Box
-      responsive='true'
-      className='upcomingEventCard'
-      direction='column'
-      align='center'
-      alignSelf='center'
-      background='light'
-      border={{ color: 'gray' }}
-      round='small'
-      header='Upcoming Events'
-      pad='medium'
-    >
-      <h2>{event.title}</h2>
-      <Link to='/videoRoom'>
-        <Button
-          className='upcomingEventsButton'
-          size='medium'
-          responsive='true'
-          primary
-          gap='small'
-          label='Chat!'
-        />
-      </Link>
+    <Box>
+      <UpdateEvent show={show} handleClose={handleClose} eventId={event.id} />
+
+      <Box
+        responsive='true'
+        direction='column'
+        align='center'
+        alignSelf='center'
+        background='#D3EBF9'
+        border={{ color: '#17539D', size: 'medium' }}
+        round='xsmall'
+        header='Your Events'
+        pad='medium'
+        margin={{ top: '10%' }}
+        width='90%'
+      >
+        <Grid
+          rows={['auto', 'xsmall', 'xxsmall', 'auto']}
+          columns={['small', 'small', 'small']}
+          areas={[
+            { name: 'category', start: [2, 0], end: [2, 0] },
+            { name: 'header', start: [0, 0], end: [1, 1] },
+            { name: 'time', start: [0, 1], end: [2, 1] },
+            { name: 'desc', start: [0, 2], end: [2, 2] },
+            { name: 'buttons', start: [0, 3], end: [2, 3] }
+          ]}
+        >
+          <Box responsive='true' gridArea='header'>
+            <Heading
+              alignSelf='start'
+              textAlign='start'
+              level='2'
+              responsive='true'
+              margin={{ top: 'small' }}
+            >
+              {event.title}
+            </Heading>
+          </Box>
+          <Box gridArea='category'>
+            <Heading textAlign='end' margin={{ vertical: 'xsmall' }} level='4'>
+              {categoryName.name}
+            </Heading>
+          </Box>
+          <Box gridArea='time'>
+            <Text size='large' textAlign='center' margin={{ vertical: 'auto' }}>
+              {new Date(event.date).toLocaleString()}
+            </Text>
+          </Box>
+          <Box gridArea='desc'>
+            <Text
+              size='medium'
+              margin={{ vertical: 'auto' }}
+              textAlign='center'
+            >
+              {event.description}
+            </Text>
+          </Box>
+          <Box
+            gridArea='buttons'
+            gap='medium'
+            margin={{ top: 'large', left: '13%' }}
+            direction='row'
+          >
+            <Box>
+              <Button
+                responsive='true'
+                label='Update'
+                onClick={handleShow}
+                color='#6AB8E0'
+              />
+            </Box>
+            <Box>
+              <Button
+                responsive='true'
+                label='Delete'
+                onClick={removeEvent}
+                color='#6AB8E0'
+              />
+            </Box>
+            <Link to='/videoroom'>
+              <Button
+                size='medium'
+                responsive='true'
+                primary
+                label='Start SmallTalk'
+                color='#6AB8E0'
+              />
+            </Link>
+          </Box>
+        </Grid>
+      </Box>
     </Box>
   )
 }
 
-export default UpcomingEventsCard
+export default DashBoardEvent

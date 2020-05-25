@@ -17,7 +17,7 @@ body {
   align-items: center;
 }
 
-.eventTable {
+/* .eventTable {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,7 +26,7 @@ body {
 
 .eventHeader {
   width: 100%;
-}
+} */
 
 .loginForm {
   display: flex;
@@ -54,11 +54,6 @@ body {
   margin-left: 30%;
 }
 
-.dashboardEventCard {
-  width: 40%;
-  margin-top: 4%;
-}
-
 .upcomingEventHeader {
   margin-left: 8%;
   margin-top: 2%;
@@ -68,7 +63,23 @@ body {
   display: inline-block;
 }
 
-#emptyHeading {
+.emptyHeading {
   margin-top: 12%;
   margin-left: 28.5%;
+}
+
+.loading {
+  margin-left: 49%;
+  margin-top: 10%;
+}
+
+#emptyHeadingDash {
+  margin-left: 28.5%;
+  margin-top: 8%;
+}
+
+#categoryHeader {
+  margin-left: 43.1%;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }

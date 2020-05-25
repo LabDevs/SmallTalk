@@ -43,7 +43,7 @@ const AddEvent = props => {
   return (
     <div>
       <Modal show={props.show} onHide={props.handleClose}>
-        <Modal.Header closeButton>Add Event</Modal.Header>
+        <Modal.Header closeButton>Create SmallTalk</Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group controlId='titleForm'>
@@ -51,7 +51,7 @@ const AddEvent = props => {
               <Form.Control
                 onChange={e => setTitle(e.target.value)}
                 type='text'
-                placeholder='What is your event about?'
+                placeholder='What is your SmallTalk about?'
               />
             </Form.Group>
             <Form.Group controlId='descriptionForm'>
@@ -60,7 +60,7 @@ const AddEvent = props => {
                 onChange={e => setDescription(e.target.value)}
                 as='textarea'
                 rows='3'
-                placeholder='Give a short description of your event!'
+                placeholder='Give a short description of your SmallTalk!'
               />
             </Form.Group>
 
@@ -103,11 +103,12 @@ const AddEvent = props => {
 
             <Button
               onClick={addEvent}
+              color='#6AB8E0'
               size='small'
               primary
               responsive='true'
               type='submit'
-              label='Add Event'
+              label='Create SmallTalk'
             />
           </Form>
         </Modal.Body>

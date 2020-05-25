@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import UpdateEvent from './UpdateEvent'
+<<<<<<< HEAD
 import { Button, Box, Heading, Text } from 'grommet'
+=======
+import { Button, Grid, Box, Heading, Text } from 'grommet'
+>>>>>>> 3ca58e036d34674f7d364eac8c0a48fafa33229f
 import { Link } from 'react-router-dom'
 
 const DashBoardEvent = ({ event }) => {
@@ -35,21 +39,23 @@ const DashBoardEvent = ({ event }) => {
   const handleShow = () => setShow(true)
 
   return (
-    <>
+    <Box>
       <UpdateEvent show={show} handleClose={handleClose} eventId={event.id} />
 
       <Box
         responsive='true'
-        className='dashboardEventCard'
         direction='column'
         align='center'
         alignSelf='center'
-        background='light'
-        border={{ color: 'gray' }}
-        round='small'
+        background='#D3EBF9'
+        border={{ color: '#17539D', size: 'medium' }}
+        round='xsmall'
         header='Your Events'
         pad='medium'
+        margin={{ top: '10%' }}
+        width='90%'
       >
+<<<<<<< HEAD
         <Heading level='2' textAlign='start' responsive='true'>
           {event.title}
         </Heading>
@@ -92,8 +98,84 @@ const DashBoardEvent = ({ event }) => {
             />
           </Link>
         </Box>
+=======
+        <Grid
+          rows={['auto', 'xsmall', 'xxsmall', 'auto']}
+          columns={['small', 'small', 'small']}
+          areas={[
+            { name: 'category', start: [2, 0], end: [2, 0] },
+            { name: 'header', start: [0, 0], end: [1, 1] },
+            { name: 'time', start: [0, 1], end: [2, 1] },
+            { name: 'desc', start: [0, 2], end: [2, 2] },
+            { name: 'buttons', start: [0, 3], end: [2, 3] }
+          ]}
+        >
+          <Box responsive='true' gridArea='header'>
+            <Heading
+              alignSelf='start'
+              textAlign='start'
+              level='2'
+              responsive='true'
+              margin={{ top: 'small' }}
+            >
+              {event.title}
+            </Heading>
+          </Box>
+          <Box gridArea='category'>
+            <Heading textAlign='end' margin={{ vertical: 'xsmall' }} level='4'>
+              {categoryName.name}
+            </Heading>
+          </Box>
+          <Box gridArea='time'>
+            <Text size='large' textAlign='center' margin={{ vertical: 'auto' }}>
+              {new Date(event.date).toLocaleString()}
+            </Text>
+          </Box>
+          <Box gridArea='desc'>
+            <Text
+              size='medium'
+              margin={{ vertical: 'auto' }}
+              textAlign='center'
+            >
+              {event.description}
+            </Text>
+          </Box>
+          <Box
+            gridArea='buttons'
+            gap='medium'
+            margin={{ top: 'large', left: '13%' }}
+            direction='row'
+          >
+            <Box>
+              <Button
+                responsive='true'
+                label='Update'
+                onClick={handleShow}
+                color='#6AB8E0'
+              />
+            </Box>
+            <Box>
+              <Button
+                responsive='true'
+                label='Delete'
+                onClick={removeEvent}
+                color='#6AB8E0'
+              />
+            </Box>
+            <Link to='/videoroom'>
+              <Button
+                size='medium'
+                responsive='true'
+                primary
+                label='Start SmallTalk'
+                color='#6AB8E0'
+              />
+            </Link>
+          </Box>
+        </Grid>
+>>>>>>> 3ca58e036d34674f7d364eac8c0a48fafa33229f
       </Box>
-    </>
+    </Box>
   )
 }
 
