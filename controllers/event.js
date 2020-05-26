@@ -48,6 +48,7 @@ const add = (req, res) => {
 
 const update = (req, res) => {
   const { eventId, userId, categoryId, title, description, date } = req.body
+  console.log(eventId, userId, categoryId, title, description, date)
 
   Event.update(eventId, userId, categoryId, title, description, date)
     .then(() => res.status(200).json({ message: 'Successfully updated.' }))

@@ -10,30 +10,32 @@ const UpdateEvent = props => {
   const [categoryId, setCategoryId] = useState(null)
   const stringDate = event.date
     ? event.date.slice(0, event.date.length - 1)
-    : ''
-  const [date, setDate] = useState(null)
-
-  const eventInfo = {
-    title: title,
-    description: description,
-    categoryId: categoryId,
-    date: date,
-    eventId: props.eventId
-  }
+    : Date.now()
+  const [date, setDate] = useState(stringDate)
 
   const updateEvent = e => {
     e.preventDefault()
+
+    const eventInfo = {
+      title: title,
+      description: description,
+      categoryId: categoryId,
+      date: date,
+      eventId: props.eventId
+    }
+
+    console.log(eventInfo)
     fetch('/update', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(eventInfo)
     })
-      .then(() => window.location.reload())
+      // .then(() => window.location.reload())
       .catch(err => console.log(err))
   }
 
   useEffect(() => {
-    async function getCategories() {
+    async function getCategories () {
       try {
         const response = await fetch('/api/categories')
         const data = await response.json()
@@ -43,11 +45,15 @@ const UpdateEvent = props => {
       }
     }
 
-    async function getEventById() {
+    async function getEventById () {
       try {
         const response = await fetch(`/api/event/${props.eventId}`)
         const data = await response.json()
         setEvent(data)
+        setTitle(data.title)
+        setDescription(data.description)
+        setDate(data.date)
+        setCategoryId(data.category_id)
       } catch (err) {
         console.log(err)
       }
@@ -56,8 +62,6 @@ const UpdateEvent = props => {
     getCategories()
     getEventById()
   }, [])
-
-  console.log(event)
 
   return (
     <div>
@@ -71,7 +75,7 @@ const UpdateEvent = props => {
                 onChange={e => setTitle(e.target.value)}
                 type='text'
                 placeholder='What is your SmallTalk about?'
-                defaultValue={event.title}
+                value={title}
               />
             </Form.Group>
 
@@ -81,8 +85,8 @@ const UpdateEvent = props => {
                 onChange={e => setDescription(e.target.value)}
                 as='textarea'
                 rows='3'
-                placeholder='Give a short description of your SmallTalk!'
-                defaultValue={event.description}
+                placeholder='Give a description of your SmallTalk!'
+                value={description}
               />
             </Form.Group>
 
@@ -95,13 +99,17 @@ const UpdateEvent = props => {
                 {categoryData &&
                   categoryData.map(category => {
                     if (event.category_id === category.id) {
-                      return (<option selected key={category.id} value={category.id}>
-                        {category.name}
-                      </option>)
+                      return (
+                        <option selected key={category.id} value={category.id}>
+                          {category.name}
+                        </option>
+                      )
                     }
-                    return (<option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>)
+                    return (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
+                    )
                   })}
               </Form.Control>
             </Form.Group>
