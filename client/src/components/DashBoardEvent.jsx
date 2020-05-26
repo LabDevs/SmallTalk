@@ -22,7 +22,7 @@ const DashBoardEvent = ({ event }) => {
   }
 
   useEffect(() => {
-    async function getCategoryName () {
+    async function getCategoryName() {
       const response = await fetch(`/api/categoryId/${event.category_id}`)
       const name = await response.json()
       setCategoryName(name)
@@ -52,8 +52,9 @@ const DashBoardEvent = ({ event }) => {
         width='90%'
       >
         <Grid
+          responsive='true'
           rows={['auto', 'xsmall', 'xxsmall', 'auto']}
-          columns={['small', 'small', 'small']}
+          columns={['auto', 'auto', 'auto']}
           areas={[
             { name: 'category', start: [2, 0], end: [2, 0] },
             { name: 'header', start: [0, 0], end: [1, 1] },

@@ -72,7 +72,7 @@ const CategoryEvent = ({ event }) => {
     >
       <Grid
         rows={['xxsmall', 'xsmall', 'xxsmall', 'auto']}
-        columns={['small', 'small', 'small']}
+        columns={['auto', 'auto', 'auto']}
         areas={[
           { name: 'header', start: [0, 0], end: [1, 1] },
           { name: 'time', start: [0, 1], end: [2, 1] },

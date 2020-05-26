@@ -66,7 +66,7 @@ const UpcomingEventsCard = ({ event }) => {
       >
         <Grid
           rows={['auto', 'xxsmall', 'xxsmall', 'auto']}
-          columns={['small', 'small', 'small']}
+          columns={['auto', 'auto', 'auto']}
           areas={[
             { name: 'category', start: [2, 0], end: [2, 0] },
             { name: 'header', start: [0, 0], end: [1, 1] },
