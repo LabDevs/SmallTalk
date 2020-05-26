@@ -28,12 +28,14 @@ const rooms={}
 
 io.on('connection', socket => {
   console.log('server connected',socket.id)
-  console.log(socket)
+  // console.log(socket)
   
   socket.on('video-room', (roomID) =>{
-    console.log('user has join video', roomID)
+    console.log('user has join video room', roomID)
     socket.join(roomID)
     socket.eventRoom = roomID
+    console.log('socket Event Room',socket.eventRoom)
+
     if(rooms[roomID]){
       rooms[roomID].push(socket.id)
     }else{
@@ -45,46 +47,17 @@ io.on('connection', socket => {
     io.to(roomID).emit('is-partner-here', isPartnerHere)
   })
 
-  // if (!users[socket.id]) {
-  //   users[socket.id] = socket.id
-  // }
-  socket.emit('yourID', socket.id)
+  socket.on('signal', (data) => {
+    socket.to('video-room').emit('signal',data)
+  })
   
   socket.on('disconnect', () => {
     const room = rooms[socket.eventRoom]
-    
     room.splice(room.indexOf(socket.id),1)
     console.log('id removed')
   })
-
-  socket.on('callUser', (data) => {
-    io.to(data.userToCall).emit('call', { signal: data.signalData, from: data.from })
-  })
-
-  socket.on('acceptCall', (data) => {
-    io.to(data.to).emit('callAccepted', data.signal)
-  })
-  
-  socket.on('disconnect', (data) => {
-    console.log('user left', data)
-    // socket.brodcast.emit('user left', data)
-  })
 })
 
-// io.on('connection', (socket) => {
-
-//   socket.to('video-room', (room) => {
-//     console.log('video-room', room)
-//     socket.room = room
-//     socket.join(room)
-//   })
-
-//   socket.on('signal', (data) => {
-//     console.log('Signal from Peer', socket.id)
-//     io.to(socket.room).emit('signal', data)
-//   })
-
-// })
 
 app.get('/', (req, res) => res.send('Hello World'))
 
