@@ -5,10 +5,12 @@ exports.up = function (knex) {
       .integer('user_id')
       .references('id')
       .inTable('users')
+      .onDelete('CASCADE')
     table
       .integer('event_id')
       .references('id')
       .inTable('events')
+      .onDelete('CASCADE')
   })
 }
 

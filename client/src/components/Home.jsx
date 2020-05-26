@@ -8,8 +8,8 @@ const Home = () => {
     <div className='homePage'>
       <section className='top-row'>
         <aside className='sideText'>
-          <h1>
-            Welcome to <span className='logo-text'>SMALLTALK</span>
+          <h1 className='slogan'>
+            A new way to <span className='logo-text'>SMALLTALK</span>
           </h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,

@@ -1,17 +1,14 @@
 import React, { useState } from 'react'
-import { Card, Button } from 'react-bootstrap'
-import { useParams } from 'react-router-dom'
+import { Box, Button, Heading, Text } from 'grommet'
 
 const CategoryEvent = (props) => {
   console.log(props)
   const [variant, setVariant] = useState('primary')
   const rsvpInfo = {
     userId: props.event.userId,
-    eventId: props.event.eventId,
+    eventId: props.event.id,
   }
 
-  // eventId and userId will be provided by the CategoriesEventList component, since it's making a fetch
-  // request to the server to get events by category, and will be passed down to this component
   const addRSVP = () => {
     fetch('/rsvp', {
       method: 'POST',
@@ -24,15 +21,37 @@ const CategoryEvent = (props) => {
   }
 
   return (
-    <Card id={props.event.id} className='text-center'>
-      <Card.Body>
-        <Card.Title>{props.event.title}</Card.Title>
-        <Card.Text>{props.event.description}</Card.Text>
-        <Button onClick={addRSVP} variant={variant}>
-          RSVP
-        </Button>
-      </Card.Body>
-    </Card>
+    <Box
+      margin={{ left: 'large', right: 'large' }}
+      responsive='true'
+      className='dashboardEventCard'
+      direction='column'
+      align='center'
+      alignSelf='center'
+      background='light'
+      border={{ color: 'gray' }}
+      round='small'
+      header='Your Events'
+      pad='medium'
+    >
+      <Heading level='2' textAlign='start' responsive='true'>
+        {props.event.title}
+      </Heading>
+      <Text margin={{ bottom: 'small' }} textAlign='center'>
+        {props.event.description}
+      </Text>
+
+      <Box className='eventButtons'>
+        <Button
+          className='upcomingEventsButton'
+          size='medium'
+          responsive='true'
+          gap='small'
+          label='RSVP'
+          onClick={addRSVP}
+        />
+      </Box>
+    </Box>
   )
 }
 

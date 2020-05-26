@@ -24,10 +24,14 @@ const Video = styled.video`
 `
 
 const socket = io()
+socket.emit('video-room','games')
+
+console.log({socket})
 
 function VideoChat () {
   const [stream, setStream] = useState()
-  const [callAccepted, setCallAccepted] = useState(false)
+  // const [callAccepted, setCallAccepted] = useState(false)
+  const [room,setRoom] = useState([])
 
   const userVideo = useRef()
   const partnerVideo = useRef()

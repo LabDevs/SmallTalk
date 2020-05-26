@@ -9,6 +9,7 @@ import DashBoard from './components/DashBoard'
 import Home from './components/Home'
 import Logo from './navy-logo.png'
 import VideoChat from './components/VideoChat'
+import VideoChatTwo from './components/VideoChatTwo'
 import './index.css'
 import { Anchor, Box, Header, Nav, Image } from 'grommet'
 import UpcomingEvents from './components/UpcomingEvents'
@@ -32,13 +33,13 @@ function App() {
           </Link>
           {document.cookie ? (
             <>
-              <Anchor className='navLink' href='/dash'>
+              <Anchor className='navLink' href='/dash' color='grey'>
                 Dashboard
               </Anchor>
-              <Anchor className='navLink' href='/categories'>
+              <Anchor className='navLink' href='/categories' color='grey'>
                 Categories
               </Anchor>
-              <Anchor className='navLink' href='/upcomingEvents'>
+              <Anchor className='navLink' href='/upcomingEvents' color='grey'>
                 Upcoming Events
               </Anchor>
             </>
@@ -51,7 +52,7 @@ function App() {
             <>
               <Anchor
                 href='/login'
-                color='brand'
+                color='grey'
                 id='login'
                 onClick={() => logout()}
               >
@@ -60,10 +61,10 @@ function App() {
             </>
           ) : (
             <>
-              <Anchor className='navLink' href='/login'>
+              <Anchor className='navLink' href='/login' color='grey'>
                 Login
               </Anchor>
-              <Anchor className='navLink' href='/register'>
+              <Anchor className='navLink' href='/register' color='grey'>
                 Register
               </Anchor>
             </>
@@ -87,7 +88,7 @@ function App() {
         </Route>
 
         <Route path='/videoChat'>
-          <VideoChat />
+          <VideoChatTwo />
         </Route>
 
         <Route path='/categories/:categoryId'>
