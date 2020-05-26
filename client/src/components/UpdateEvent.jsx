@@ -3,12 +3,15 @@ import { Form, Modal } from 'react-bootstrap'
 import { Button } from 'grommet'
 
 const UpdateEvent = props => {
+  const [event, setEvent] = useState('')
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [categoryData, setCategoryData] = useState(null)
   const [categoryId, setCategoryId] = useState(null)
+  const stringDate = event.date
+    ? event.date.slice(0, event.date.length - 1)
+    : ''
   const [date, setDate] = useState(null)
-  const [event, setEvent] = useState('')
 
   const eventInfo = {
     title: title,
@@ -54,10 +57,6 @@ const UpdateEvent = props => {
     getEventById()
   }, [])
 
-  const stringDate = event.date
-    ? event.date.slice(0, event.date.length - 1)
-    : ''
-
   console.log(event)
 
   return (
@@ -72,7 +71,7 @@ const UpdateEvent = props => {
                 onChange={e => setTitle(e.target.value)}
                 type='text'
                 placeholder='What is your SmallTalk about?'
-                value={event.title}
+                defaultValue={event.title}
               />
             </Form.Group>
 
@@ -83,7 +82,7 @@ const UpdateEvent = props => {
                 as='textarea'
                 rows='3'
                 placeholder='Give a short description of your SmallTalk!'
-                value={event.description}
+                defaultValue={event.description}
               />
             </Form.Group>
 
@@ -113,7 +112,7 @@ const UpdateEvent = props => {
                 onChange={e => setDate(e.target.value)}
                 type='datetime-local'
                 rows='3'
-                value={stringDate ? stringDate : null}
+                defaultValue={stringDate ? stringDate : null}
               />
             </Form.Group>
 
