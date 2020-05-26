@@ -59,21 +59,25 @@ const logout = (req, res) => {
   res.redirect('/login')
 }
 
-const getUsers = async (req,res) => {
-  try{
-    const userId = req.userId
-    console.log(userId)
-    const user = await User.getById(userId)
-    if(!user) throw Error('Usser Does Not Exist')
-    res.sendStatus(200).json(user)
-  }catch(err){
-    res.sendStatus(500)
-  }
-}
+// const getUsers =  (req,res) => {
+  
+//     const userId  = req.userId
+//     console.log(userId)
+//     User.getById(userId)
+//       .then((data) => {
+//       console.log(req.body)
+        
+//         res.status(200).json(data)
+//       })
+//       .catch((err) =>{
+//         // console.log(err)
+//         res.sendStatus(500)
+//       })
+// }
 
 module.exports = {
   register,
   login,
-  logout,
-  getUsers
+  logout
+  // getUsers
 }

@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import UpdateEvent from './UpdateEvent'
-<<<<<<< HEAD
-import { Button, Box, Heading, Text } from 'grommet'
-=======
 import { Button, Grid, Box, Heading, Text } from 'grommet'
->>>>>>> 3ca58e036d34674f7d364eac8c0a48fafa33229f
 import { Link } from 'react-router-dom'
 
 const DashBoardEvent = ({ event }) => {
@@ -39,7 +35,7 @@ const DashBoardEvent = ({ event }) => {
   const handleShow = () => setShow(true)
 
   return (
-    <Box>
+    <Box responsive='true'>
       <UpdateEvent show={show} handleClose={handleClose} eventId={event.id} />
 
       <Box
@@ -55,50 +51,6 @@ const DashBoardEvent = ({ event }) => {
         margin={{ top: '10%' }}
         width='90%'
       >
-<<<<<<< HEAD
-        <Heading level='2' textAlign='start' responsive='true'>
-          {event.title}
-        </Heading>
-        <Text margin={{ bottom: 'small' }} textAlign='center'>
-          {event.description}
-        </Text>
-        <Heading level='5'>{categoryName.name}</Heading>
-        <Text textAlign='center' margin={{ bottom: 'small' }}>
-          {new Date(event.date).toLocaleString()}
-        </Text>
-        <Box className='eventButtons'>
-          <Button
-            className='upcomingEventsButton'
-            size='medium'
-            responsive='true'
-            primary
-            gap='small'
-            label='Update Event'
-            onClick={removeEvent}
-            margin={{ bottom: 'small' }}
-          />
-          <Button
-            className='upcomingEventsButton'
-            size='medium'
-            responsive='true'
-            primary
-            gap='small'
-            label='Delete Event'
-            onClick={removeEvent}
-            margin={{ bottom: 'small' }}
-          />
-          <Link to='/videoRoom'>
-            <Button
-              className='upcomingEventsButton'
-              size='medium'
-              responsive='true'
-              primary
-              gap='small'
-              label='Start Small Talk'
-            />
-          </Link>
-        </Box>
-=======
         <Grid
           rows={['auto', 'xsmall', 'xxsmall', 'auto']}
           columns={['small', 'small', 'small']}
@@ -121,17 +73,17 @@ const DashBoardEvent = ({ event }) => {
               {event.title}
             </Heading>
           </Box>
-          <Box gridArea='category'>
+          <Box gridArea='category' responsive='true'>
             <Heading textAlign='end' margin={{ vertical: 'xsmall' }} level='4'>
               {categoryName.name}
             </Heading>
           </Box>
-          <Box gridArea='time'>
+          <Box responsive='true' gridArea='time'>
             <Text size='large' textAlign='center' margin={{ vertical: 'auto' }}>
               {new Date(event.date).toLocaleString()}
             </Text>
           </Box>
-          <Box gridArea='desc'>
+          <Box responsive='true' gridArea='desc'>
             <Text
               size='medium'
               margin={{ vertical: 'auto' }}
@@ -141,12 +93,13 @@ const DashBoardEvent = ({ event }) => {
             </Text>
           </Box>
           <Box
+            responsive='true'
             gridArea='buttons'
             gap='medium'
             margin={{ top: 'large', left: '13%' }}
             direction='row'
           >
-            <Box>
+            <Box responsive='true'>
               <Button
                 responsive='true'
                 label='Update'
@@ -154,7 +107,7 @@ const DashBoardEvent = ({ event }) => {
                 color='#6AB8E0'
               />
             </Box>
-            <Box>
+            <Box responsive='true'>
               <Button
                 responsive='true'
                 label='Delete'
@@ -162,7 +115,7 @@ const DashBoardEvent = ({ event }) => {
                 color='#6AB8E0'
               />
             </Box>
-            <Link to='/videoroom'>
+            <Link to={`/videoroom/${event.id}`}>
               <Button
                 size='medium'
                 responsive='true'
@@ -173,7 +126,6 @@ const DashBoardEvent = ({ event }) => {
             </Link>
           </Box>
         </Grid>
->>>>>>> 3ca58e036d34674f7d364eac8c0a48fafa33229f
       </Box>
     </Box>
   )

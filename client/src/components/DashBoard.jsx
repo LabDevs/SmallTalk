@@ -28,7 +28,7 @@ function DashBoard () {
 
   return (
     <>
-      <Box className='dashboard'>
+      <Box responsive='true' className='dashboard'>
         <Heading
           margin={{ bottom: 'medium' }}
           textAlign='center'

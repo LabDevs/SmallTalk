@@ -22,27 +22,43 @@ app.use(rsvpRouter)
 app.use(categoryRouter)
 app.use(eventRouter)
 
-const users = {}
+const users={}
+
+const rooms={}
 
 io.on('connection', socket => {
+  console.log('server connected',socket.id)
+  console.log(socket)
   
-  socket.on('video-room', (room) =>{
-    console.log('user has join video room', rrom)
-    socket.join(room)
+  socket.on('video-room', (roomID) =>{
+    console.log('user has join video', roomID)
+    socket.join(roomID)
+    socket.eventRoom = roomID
+    if(rooms[roomID]){
+      rooms[roomID].push(socket.id)
+    }else{
+      rooms[roomID] = [socket.id]
+    }
+    
+    let isPartnerHere = rooms[roomID] > 1 ? true : false
+    
+    io.to(roomID).emit('is-partner-here', isPartnerHere)
   })
-  
-  
-  if (!users[socket.id]) {
-    users[socket.id] = socket.id
-  }
+
+  // if (!users[socket.id]) {
+  //   users[socket.id] = socket.id
+  // }
   socket.emit('yourID', socket.id)
-  io.sockets.emit('allUsers', users)
+  
   socket.on('disconnect', () => {
-    delete users[socket.id]
+    const room = rooms[socket.eventRoom]
+    
+    room.splice(room.indexOf(socket.id),1)
+    console.log('id removed')
   })
 
   socket.on('callUser', (data) => {
-    io.to(data.userToCall).emit('hey', { signal: data.signalData, from: data.from })
+    io.to(data.userToCall).emit('call', { signal: data.signalData, from: data.from })
   })
 
   socket.on('acceptCall', (data) => {
@@ -50,7 +66,7 @@ io.on('connection', socket => {
   })
   
   socket.on('disconnect', (data) => {
-    console.log('user left', data )
+    console.log('user left', data)
     // socket.brodcast.emit('user left', data)
   })
 })

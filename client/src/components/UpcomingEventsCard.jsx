@@ -114,7 +114,7 @@ const DashBoardEvent = ({ event }) => {
                 color='#6AB8E0'
               />
             </Box>
-            <Link to='/videoroom'>
+            <Link to={`/videoroom/${event.id}`}>
               <Button
                 size='medium'
                 responsive='true'

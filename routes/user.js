@@ -8,6 +8,4 @@ router.post('/api/login', userController.login)
 
 router.get('/api/logout', userController.logout)
 
-router.get('/api/users', userController.getUsers)
-
 module.exports = router

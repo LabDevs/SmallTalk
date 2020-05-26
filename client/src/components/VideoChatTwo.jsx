@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useParams } from 'react-router-dom'
 import { Button, Box, Heading, Text } from 'grommet'
 import io from "socket.io-client";
 import SimplePeer from 'simple-peer'
@@ -23,7 +24,6 @@ const Video = styled.video`
 `;
 
 const socket = io()
-
 function VideoChatTwo() {
   const [yourID, setYourID] = useState("");
   const [users, setUsers] = useState({});
@@ -32,13 +32,15 @@ function VideoChatTwo() {
   const [caller, setCaller] = useState("");
   const [callerSignal, setCallerSignal] = useState();
   const [callAccepted, setCallAccepted] = useState(false);
+  const [room,setRoom] = useState([])
+  const roomID = useParams()
 
   const userVideo = useRef();
   const partnerVideo = useRef();
 
-
+  //check to see if anyone is in the room
   useEffect(() => {
-
+    socket.emit('video-room', roomID)
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
       setStream(stream);
       if (userVideo.current) {
@@ -54,9 +56,12 @@ function VideoChatTwo() {
     socket.on("allUsers", (users) => {
       setUsers(users);
     })
+    
+    socket.on('is-partner-here', callPeer)
+  
 
-    socket.on("hey", (data) => {
-      console.log('hey event', data)
+    socket.on("call", (data) => {
+      console.log('call event', data)
       setReceivingCall(true);
       setCaller(data.from);
       setCallerSignal(data.signal);
@@ -68,10 +73,11 @@ function VideoChatTwo() {
     })
     function getUsers(){
       fetch('/api/users')
-        .then(res => console.log(res))
+        .then(res => res.json())
+        .then(data => console.log(data))
     }
     
-    getUsers()
+    // getUsers()
   }, []);
   
 
@@ -92,13 +98,14 @@ function VideoChatTwo() {
         partnerVideo.current.srcObject = stream;
       }
     });
-
+    
+    
     socket.on("callAccepted", (signal) => {
       console.log('I got the signal', signal)
       setCallAccepted(true);
       peer.signal(signal);
     })
-
+    
   }
   
 
@@ -141,9 +148,9 @@ function VideoChatTwo() {
     incomingCall = (
       <div>
         <h1>{caller} is calling you</h1>
-        <Button onClick={acceptCall}>
+        <button onClick={acceptCall}>
           Accept
-        </Button>
+        </button>
       </div>
     )
   }
@@ -159,9 +166,9 @@ function VideoChatTwo() {
             return null;
           }
           return (
-            <Button onClick={() => callPeer(key)}>
+            <button onClick={() => callPeer(key)}>
             Call {key}
-            </Button>
+            </button>
           );
         })}
       </Row>
