@@ -60,4 +60,4 @@ io.on('connection', socket => {
 
 app.get('/', (req, res) => res.send('Hello World'))
 
-server.listen(port, () => console.log(`Listening on port ${port} `))
+server.listen(port,process.env.HOST_NAME, () => console.log(`Listening on port ${port} `))

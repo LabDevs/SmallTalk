@@ -3,35 +3,18 @@ import { useParams } from 'react-router-dom'
 import io from 'socket.io-client'
 import SimplePeer from 'simple-peer'
 import styled from 'styled-components'
-
-const Container = styled.div`
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-`
-
-const Row = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content:start;
-`
+import { Stack,Box } from 'grommet'
 
 const Video = styled.video`
-  height: 40%;
+  margin-top:3%;
+  width:10%;
 `
 const SpeakerVideo = styled.video`
-  width:90%;
-  height:70%;
+  width:45%;
+  margin-top:3%
 `
 
-const Image = styled.img`
-  width:9%;
-  height:20%;
-  margin-top:10%;
-`
-
-function VideoChatTwo () {
+function VideoChat() {
   const [stream, setStream] = useState()
   const [isPartnerHere, setIsPartnerHere] = useState(null)
   const { roomId } = useParams()
@@ -99,16 +82,10 @@ function VideoChatTwo () {
   }
 
   return (
-    <Container>
-      <Row>
-        {UserVideo}
-      </Row>
-      <Row>
-        {PartnerVideo}
-      </Row>
-    </Container>
+    <Stack>
+      <Box>{PartnerVideo}</Box>
+      <Box>{UserVideo}</Box>
+    </Stack>
   )
 }
-
-        // <Image src="https://image.flaticon.com/icons/png/512/493/493808.png"/>
-export default VideoChatTwo
+export default VideoChat
