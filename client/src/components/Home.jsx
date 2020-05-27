@@ -13,12 +13,7 @@ const Home = () => {
           <h1 className='slogan'>
             A new way to <span className='logo-text'>SMALLTALK</span>
           </h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,
-            veniam consectetur adipisci maxime ad mollitia libero obcaecati iste
-            minima eligendi ipsum dolore doloremque! Pariatur, necessitatibus
-            vero! Numquam veritatis magnam optio.
-          </p>
+          <p>Small</p>
         </aside>
         <img
           src={People}

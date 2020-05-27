@@ -33,7 +33,7 @@ const Login = () => {
         />
       </Form>
 
-      <Anchor href='/register' color='#6ab8e0'>
+      <Anchor color='#6AB8E0' href='/register'>
         Haven't made an account yet?
       </Anchor>
     </div>

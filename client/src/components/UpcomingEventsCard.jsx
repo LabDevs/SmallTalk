@@ -1,43 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import UpdateEvent from './UpdateEvent'
-import { Button, Grid, Box, Heading, Text } from 'grommet'
+import React from 'react'
+import { Box, Grid, Text, Heading, Button } from 'grommet'
 import { Link } from 'react-router-dom'
 
-const DashBoardEvent = ({ event }) => {
-  const [show, setShow] = useState(false)
-  const [categoryName, setCategoryName] = useState('')
-
-  const removeEvent = () => {
-    fetch('/remove', {
+const UpcomingEventsCard = ({ event }) => {
+  const removeRSVP = () => {
+    fetch('/rsvp/remove', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ eventId: event.id }),
+      body: JSON.stringify({ rsvpId: event.id }),
     })
       .then(() => {
         window.location.reload()
       })
-      .catch((err) => {
-        console.log(err)
-      })
+      .catch((err) => console.log(err))
   }
 
-  useEffect(() => {
-    async function getCategoryName() {
-      const response = await fetch(`/api/categoryId/${event.category_id}`)
-      const name = await response.json()
-      setCategoryName(name)
-    }
-
-    getCategoryName()
-  }, [])
-
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  console.log(event)
 
   return (
     <Box>
-      <UpdateEvent show={show} handleClose={handleClose} eventId={event.id} />
-
       <Box
         responsive='true'
         direction='column'
@@ -52,8 +33,8 @@ const DashBoardEvent = ({ event }) => {
         width='90%'
       >
         <Grid
-          rows={['auto', 'xsmall', 'xxsmall', 'auto']}
-          columns={['small', 'small', 'small']}
+          rows={['auto', 'xxsmall', 'xxsmall', 'auto']}
+          columns={['auto', 'auto', 'auto']}
           areas={[
             { name: 'category', start: [2, 0], end: [2, 0] },
             { name: 'header', start: [0, 0], end: [1, 1] },
@@ -75,7 +56,7 @@ const DashBoardEvent = ({ event }) => {
           </Box>
           <Box gridArea='category'>
             <Heading textAlign='end' margin={{ vertical: 'xsmall' }} level='4'>
-              {categoryName.name}
+              {event.name}
             </Heading>
           </Box>
           <Box gridArea='time'>
@@ -95,31 +76,24 @@ const DashBoardEvent = ({ event }) => {
           <Box
             gridArea='buttons'
             gap='medium'
-            margin={{ top: 'large', left: '13%' }}
+            margin={{ top: 'large', left: '24%' }}
             direction='row'
           >
-            <Box>
-              <Button
-                responsive='true'
-                label='Update'
-                onClick={handleShow}
-                color='#6AB8E0'
-              />
-            </Box>
-            <Box>
-              <Button
-                responsive='true'
-                label='Delete'
-                onClick={removeEvent}
-                color='#6AB8E0'
-              />
-            </Box>
-            <Link to={`/videoroom/${event.id}`}>
+            <Button
+              size='medium'
+              responsive='true'
+              gap='small'
+              label='Un-RSVP'
+              onClick={removeRSVP}
+              color='#6AB8E0'
+            />
+            <Link to={`/videoroom/${event.event_id}`}>
               <Button
                 size='medium'
                 responsive='true'
                 primary
-                label='Start SmallTalk'
+                gap='small'
+                label='Join SmallTalk'
                 color='#6AB8E0'
               />
             </Link>
@@ -130,4 +104,4 @@ const DashBoardEvent = ({ event }) => {
   )
 }
 
-export default DashBoardEvent
+export default UpcomingEventsCard

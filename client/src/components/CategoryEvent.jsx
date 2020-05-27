@@ -25,38 +25,6 @@ const CategoryEvent = ({ event }) => {
   }
 
   return (
-  // <Box
-  //   margin={{ left: 'large', right: 'large' }}
-  //   responsive='true'
-  //   className='dashboardEventCard'
-  //   direction='column'
-  //   align='center'
-  //   alignSelf='center'
-  //   background='light'
-  //   border={{ color: 'gray' }}
-  //   round='small'
-  //   header='Your Events'
-  //   pad='medium'
-  // >
-  //   <Heading level='2' textAlign='start' responsive='true'>
-  //     {props.event.title}
-  //   </Heading>
-  //   <Text margin={{ bottom: 'small' }} textAlign='center'>
-  //     {props.event.description}
-  //   </Text>
-
-  //   <Box className='eventButtons'>
-  //     <Button
-  //       className='upcomingEventsButton'
-  //       size='medium'
-  //       responsive='true'
-  //       gap='small'
-  //       label='RSVP'
-  //       onClick={addRSVP}
-  //     />
-  //   </Box>
-  // </Box>
-
     <Box
       responsive='true'
       direction='column'
@@ -71,8 +39,9 @@ const CategoryEvent = ({ event }) => {
       width='90%'
     >
       <Grid
+        responsive='true'
         rows={['xxsmall', 'xsmall', 'xxsmall', 'auto']}
-        columns={['small', 'small', 'small']}
+        columns={['auto', 'auto', 'auto']}
         areas={[
           { name: 'header', start: [0, 0], end: [1, 1] },
           { name: 'time', start: [0, 1], end: [2, 1] },
@@ -91,23 +60,27 @@ const CategoryEvent = ({ event }) => {
             {event.title}
           </Heading>
         </Box>
-        <Box gridArea='time'>
+        <Box responsive='true' gridArea='time'>
           <Text size='large' textAlign='center' margin={{ vertical: 'auto' }}>
             {new Date(event.date).toLocaleString()}
           </Text>
         </Box>
-        <Box gridArea='desc'>
+        <Box responsive='true' gridArea='desc'>
           <Text size='medium' margin={{ vertical: 'auto' }} textAlign='center'>
             {event.description}
           </Text>
         </Box>
         <Box
           gridArea='buttons'
-          gap='medium'
-          margin={{ top: 'large', left: '41%' }}
+          margin={{ top: 'large' }}
+          alignContent='center'
+          align='center'
+          alignSelf='center'
+          flex='true'
           direction='row'
+          justify='evenly'
         >
-          <Box>
+          <Box responsive='true'>
             <Button
               responsive='true'
               label='RSVP'

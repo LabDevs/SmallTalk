@@ -25,6 +25,7 @@ const DashBoardEvent = ({ event }) => {
     async function getCategoryName() {
       const response = await fetch(`/api/categoryId/${event.category_id}`)
       const name = await response.json()
+      console.log(name)
       setCategoryName(name)
     }
 
@@ -35,7 +36,7 @@ const DashBoardEvent = ({ event }) => {
   const handleShow = () => setShow(true)
 
   return (
-    <Box responsive='true'>
+    <Box>
       <UpdateEvent show={show} handleClose={handleClose} eventId={event.id} />
 
       <Box
@@ -52,8 +53,9 @@ const DashBoardEvent = ({ event }) => {
         width='90%'
       >
         <Grid
+          responsive='true'
           rows={['auto', 'xsmall', 'xxsmall', 'auto']}
-          columns={['small', 'small', 'small']}
+          columns={['auto', 'auto', 'auto']}
           areas={[
             { name: 'category', start: [2, 0], end: [2, 0] },
             { name: 'header', start: [0, 0], end: [1, 1] },
@@ -73,17 +75,17 @@ const DashBoardEvent = ({ event }) => {
               {event.title}
             </Heading>
           </Box>
-          <Box gridArea='category' responsive='true'>
+          <Box gridArea='category'>
             <Heading textAlign='end' margin={{ vertical: 'xsmall' }} level='4'>
               {categoryName.name}
             </Heading>
           </Box>
-          <Box responsive='true' gridArea='time'>
+          <Box gridArea='time'>
             <Text size='large' textAlign='center' margin={{ vertical: 'auto' }}>
               {new Date(event.date).toLocaleString()}
             </Text>
           </Box>
-          <Box responsive='true' gridArea='desc'>
+          <Box gridArea='desc'>
             <Text
               size='medium'
               margin={{ vertical: 'auto' }}
@@ -93,13 +95,16 @@ const DashBoardEvent = ({ event }) => {
             </Text>
           </Box>
           <Box
-            responsive='true'
             gridArea='buttons'
-            gap='medium'
-            margin={{ top: 'large', left: '13%' }}
+            margin={{ top: 'large' }}
+            alignContent='center'
+            align='center'
+            alignSelf='center'
+            flex='true'
             direction='row'
+            justify='evenly'
           >
-            <Box responsive='true'>
+            <Box flex='true' align='center'>
               <Button
                 responsive='true'
                 label='Update'
@@ -107,7 +112,7 @@ const DashBoardEvent = ({ event }) => {
                 color='#6AB8E0'
               />
             </Box>
-            <Box responsive='true'>
+            <Box flex='true' align='center'>
               <Button
                 responsive='true'
                 label='Delete'
@@ -115,15 +120,17 @@ const DashBoardEvent = ({ event }) => {
                 color='#6AB8E0'
               />
             </Box>
-            <Link to={`/videoroom/${event.id}`}>
-              <Button
-                size='medium'
-                responsive='true'
-                primary
-                label='Start SmallTalk'
-                color='#6AB8E0'
-              />
-            </Link>
+            <Box flex='true' align='center'>
+              <Link to={`/videoroom/${event.id}`}>
+                <Button
+                  size='medium'
+                  responsive='true'
+                  primary
+                  label='Join SmallTalk'
+                  color='#6AB8E0'
+                />
+              </Link>
+            </Box>
           </Box>
         </Grid>
       </Box>

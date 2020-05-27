@@ -10,8 +10,14 @@ class Event {
   }
 
   static getAllByUser(userId) {
-    const queryText = 'SELECT * FROM events WHERE user_id=$1;'
+    const queryText =
+      'SELECT events.*, users.username FROM events JOIN users ON events.user_id = users.id WHERE user_id=$1;'
     return db.query(queryText, [userId]).then((response) => response.rows)
+  }
+
+  static getById(eventId) {
+    const queryText = 'SELECT * FROM events WHERE id=$1;'
+    return db.query(queryText, [eventId]).then((response) => response.rows[0])
   }
 
   static add(userId, categoryId, title, description, date) {

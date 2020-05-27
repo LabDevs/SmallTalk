@@ -40,7 +40,7 @@ const Register = () => {
         />
       </Form>
 
-      <Anchor href='/login' color='#6ab8e0'>
+      <Anchor color='#6AB8E0' href='/login'>
         Already have an account?
       </Anchor>
     </div>
