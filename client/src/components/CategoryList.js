@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { CardGroup } from 'react-bootstrap'
 import CategoryCard from '../components/CategoryCard'
 import { Gamepad, Group, Spa, Bike, Cafeteria } from 'grommet-icons'
-
+import { Heading } from 'grommet'
 const CategoryList = () => {
   const [categories, setCategories] = useState(null)
 
@@ -21,11 +21,14 @@ const CategoryList = () => {
     <Gamepad size='large' />,
     <Spa size='large' />,
     <Bike size='large' />,
-    <Cafeteria size='large' />
+    <Cafeteria size='large' />,
   ]
 
   return (
     <div className='categories'>
+      <Heading className='categoryHeading' textAlign='center'>
+        Pick a Category
+      </Heading>
       <CardGroup>
         {categories &&
           categories.map((category, i) => (

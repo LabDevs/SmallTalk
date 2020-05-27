@@ -9,7 +9,7 @@ exports.seed = function (knex) {
         { name: 'Gaming' },
         { name: 'Beauty' },
         { name: 'Sports' },
-        { name: 'Food' }
+        { name: 'Food' },
       ])
     })
 }
