@@ -14,12 +14,21 @@ const Container = styled.div`
 const Row = styled.div`
   display: flex;
   width: 100%;
+  justify-content: start;
 `
 
 const Video = styled.video`
-  border: 1px solid blue;
-  width: 50%;
-  height: 50%;
+  height: 40%;
+`
+const SpeakerVideo = styled.video`
+  width: 90%;
+  height: 70%;
+`
+
+const Image = styled.img`
+  width: 9%;
+  height: 20%;
+  margin-top: 10%;
 `
 
 function VideoChatTwo() {
@@ -49,6 +58,7 @@ function VideoChatTwo() {
             stream: stream,
           })
           if (userVideo.current) {
+            console.log({ userVideo })
             userVideo.current.srcObject = stream
           }
 
@@ -58,6 +68,7 @@ function VideoChatTwo() {
           })
 
           peer.on('stream', (partnerStream) => {
+            setIsPartnerHere(true)
             console.log({ partnerStream })
             if (partnerVideo.current) {
               partnerVideo.current.srcObject = partnerStream
@@ -80,19 +91,18 @@ function VideoChatTwo() {
 
   let PartnerVideo
   if (isPartnerHere) {
-    PartnerVideo = <Video playsInline ref={partnerVideo} autoPlay />
+    PartnerVideo = <SpeakerVideo playsInline ref={partnerVideo} autoPlay />
   } else {
     PartnerVideo = <h2> Waiting for a partner...</h2>
   }
 
   return (
     <Container>
-      <Row>
-        {UserVideo}
-        {PartnerVideo}
-      </Row>
+      <Row>{UserVideo}</Row>
+      <Row>{PartnerVideo}</Row>
     </Container>
   )
 }
 
+// <Image src="https://image.flaticon.com/icons/png/512/493/493808.png"/>
 export default VideoChatTwo
