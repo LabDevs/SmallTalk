@@ -25,11 +25,16 @@ const Video = styled.video`
 function VideoChatTwo () {
   const [stream, setStream] = useState()
   const [isPartnerHere, setIsPartnerHere] = useState(null)
+  const [peer, setPeer] = useState()
   const { roomId } = useParams()
 
   const userVideo = useRef()
   const partnerVideo = useRef()
   const socket = useRef()
+  
+  useEffect(() => {
+    
+  })
 
   useEffect(() => {
     socket.current = io()
@@ -47,6 +52,7 @@ function VideoChatTwo () {
           stream: stream
         })
         if (userVideo.current) {
+          console.log({ userVideo })
           userVideo.current.srcObject = stream
         }
 
@@ -56,6 +62,7 @@ function VideoChatTwo () {
         })
 
         peer.on('stream', (partnerStream) => {
+          setIsPartnerHere(true)
           console.log({ partnerStream })
           if (partnerVideo.current) {
             partnerVideo.current.srcObject = partnerStream
