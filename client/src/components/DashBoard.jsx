@@ -12,6 +12,15 @@ function DashBoard () {
   const handleShow = () => setShow(true)
   const handleClose = () => setShow(false)
 
+  const getUsers = () => {
+    fetch('/api/users')
+      .then(response => {
+        console.log(response)
+        response.json()
+      })
+      .catch(err => console.log(err))
+  }
+
   useEffect(() => {
     setIsLoading(true)
     fetch('/api/getEvents')
@@ -24,6 +33,8 @@ function DashBoard () {
       .catch(err => {
         console.log(err)
       })
+
+    getUsers()
   }, [])
 
   return (

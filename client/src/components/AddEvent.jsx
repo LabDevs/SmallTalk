@@ -60,7 +60,7 @@ const AddEvent = props => {
                 onChange={e => setDescription(e.target.value)}
                 as='textarea'
                 rows='3'
-                placeholder='Give a short description of your SmallTalk!'
+                placeholder='Give a description of your SmallTalk!'
               />
             </Form.Group>
 

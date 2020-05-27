@@ -3,28 +3,34 @@ import { Form, Modal } from 'react-bootstrap'
 import { Button } from 'grommet'
 
 const UpdateEvent = props => {
+  const [event, setEvent] = useState('')
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [categoryData, setCategoryData] = useState(null)
   const [categoryId, setCategoryId] = useState(null)
-  const [date, setDate] = useState(null)
-
-  const eventInfo = {
-    title: title,
-    description: description,
-    categoryId: categoryId,
-    date: date,
-    eventId: props.eventId
-  }
+  const stringDate = event.date
+    ? event.date.slice(0, event.date.length - 1)
+    : Date.now()
+  const [date, setDate] = useState(stringDate)
 
   const updateEvent = e => {
     e.preventDefault()
+
+    const eventInfo = {
+      title: title,
+      description: description,
+      categoryId: categoryId,
+      date: date,
+      eventId: props.eventId
+    }
+
+    console.log(eventInfo)
     fetch('/update', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(eventInfo)
     })
-      .then(() => window.location.reload())
+      // .then(() => window.location.reload())
       .catch(err => console.log(err))
   }
 
@@ -39,7 +45,22 @@ const UpdateEvent = props => {
       }
     }
 
+    async function getEventById () {
+      try {
+        const response = await fetch(`/api/event/${props.eventId}`)
+        const data = await response.json()
+        setEvent(data)
+        setTitle(data.title)
+        setDescription(data.description)
+        setDate(data.date)
+        setCategoryId(data.category_id)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
     getCategories()
+    getEventById()
   }, [])
 
   return (
@@ -54,6 +75,7 @@ const UpdateEvent = props => {
                 onChange={e => setTitle(e.target.value)}
                 type='text'
                 placeholder='What is your SmallTalk about?'
+                value={title}
               />
             </Form.Group>
 
@@ -63,7 +85,8 @@ const UpdateEvent = props => {
                 onChange={e => setDescription(e.target.value)}
                 as='textarea'
                 rows='3'
-                placeholder='Give a short description of your SmallTalk!'
+                placeholder='Give a description of your SmallTalk!'
+                value={description}
               />
             </Form.Group>
 
@@ -74,11 +97,20 @@ const UpdateEvent = props => {
                 as='select'
               >
                 {categoryData &&
-                  categoryData.map(category => (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  ))}
+                  categoryData.map(category => {
+                    if (event.category_id === category.id) {
+                      return (
+                        <option selected key={category.id} value={category.id}>
+                          {category.name}
+                        </option>
+                      )
+                    }
+                    return (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
+                    )
+                  })}
               </Form.Control>
             </Form.Group>
 
@@ -88,6 +120,7 @@ const UpdateEvent = props => {
                 onChange={e => setDate(e.target.value)}
                 type='datetime-local'
                 rows='3'
+                defaultValue={stringDate ? stringDate : null}
               />
             </Form.Group>
 

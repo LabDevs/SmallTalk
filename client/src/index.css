@@ -1,5 +1,5 @@
 body {
-  padding-bottom: 3%;
+  padding-bottom: 10%;
 }
 
 .cards {
@@ -16,17 +16,6 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
-/* .eventTable {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 20%;
-}
-
-.eventHeader {
-  width: 100%;
-} */
 
 .loginForm {
   display: flex;
@@ -55,7 +44,8 @@ body {
 }
 
 .upcomingEventHeader {
-  margin-left: 8%;
+  /* text-align: center; */
+  margin-left: 30%;
   margin-top: 2%;
 }
 
@@ -78,7 +68,7 @@ body {
   margin-top: 8%;
 }
 
-#categoryHeader {
+.categoryHeader {
   margin-left: 43.1%;
   margin-top: 2%;
   margin-bottom: 2%;

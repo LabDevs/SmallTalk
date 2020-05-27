@@ -59,25 +59,8 @@ const logout = (req, res) => {
   res.redirect('/login')
 }
 
-// const getUsers =  (req,res) => {
-
-//     const userId  = req.userId
-//     console.log(userId)
-//     User.getById(userId)
-//       .then((data) => {
-//       console.log(req.body)
-
-//         res.status(200).json(data)
-//       })
-//       .catch((err) =>{
-//         // console.log(err)
-//         res.sendStatus(500)
-//       })
-// }
-
 module.exports = {
   register,
   login,
   logout
-  // getUsers
 }

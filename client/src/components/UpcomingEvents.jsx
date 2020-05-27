@@ -35,7 +35,6 @@ function UpcomingEvents () {
       <Box>
         <Heading
           className='upcomingEventHeader'
-          textAlign='center'
           responsive='true'
           label='Your Upcoming Events'
           color='#444444'
