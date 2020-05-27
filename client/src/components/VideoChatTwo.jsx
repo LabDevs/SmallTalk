@@ -14,28 +14,32 @@ const Container = styled.div`
 const Row = styled.div`
   display: flex;
   width: 100%;
+  justify-content:start;
 `
 
 const Video = styled.video`
-  border: 1px solid blue;
-  width: 50%;
-  height: 50%;
+  height: 40%;
+`
+const SpeakerVideo = styled.video`
+  width:90%;
+  height:70%;
+`
+
+const Image = styled.img`
+  width:9%;
+  height:20%;
+  margin-top:10%;
 `
 
 function VideoChatTwo () {
   const [stream, setStream] = useState()
   const [isPartnerHere, setIsPartnerHere] = useState(null)
-  const [peer, setPeer] = useState()
   const { roomId } = useParams()
 
   const userVideo = useRef()
   const partnerVideo = useRef()
   const socket = useRef()
   
-  useEffect(() => {
-    
-  })
-
   useEffect(() => {
     socket.current = io()
     socket.current.emit('video-room', roomId)
@@ -88,7 +92,7 @@ function VideoChatTwo () {
   let PartnerVideo
   if (isPartnerHere) {
     PartnerVideo = (
-      <Video playsInline ref={partnerVideo} autoPlay />
+      <SpeakerVideo playsInline ref={partnerVideo} autoPlay />
     )
   } else {
     PartnerVideo = (<h2> Waiting for a partner...</h2>)
@@ -98,10 +102,13 @@ function VideoChatTwo () {
     <Container>
       <Row>
         {UserVideo}
+      </Row>
+      <Row>
         {PartnerVideo}
       </Row>
     </Container>
   )
 }
 
+        // <Image src="https://image.flaticon.com/icons/png/512/493/493808.png"/>
 export default VideoChatTwo
