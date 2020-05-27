@@ -74,12 +74,12 @@ const DashBoardEvent = ({ event }) => {
               {event.title}
             </Heading>
           </Box>
-          <Box responsive='true' gridArea='category'>
+          <Box gridArea='category' responsive='true'>
             <Heading textAlign='end' margin={{ vertical: 'xsmall' }} level='4'>
               {categoryName.name}
             </Heading>
           </Box>
-          <Box gridArea='time'>
+          <Box responsive='true' gridArea='time'>
             <Text size='large' textAlign='center' margin={{ vertical: 'auto' }}>
               {new Date(event.date).toLocaleString()}
             </Text>
@@ -94,6 +94,7 @@ const DashBoardEvent = ({ event }) => {
             </Text>
           </Box>
           <Box
+            responsive='true'
             gridArea='buttons'
             responsive='true'
             gap='medium'
@@ -108,7 +109,7 @@ const DashBoardEvent = ({ event }) => {
                 color='#6AB8E0'
               />
             </Box>
-            <Box>
+            <Box responsive='true'>
               <Button
                 responsive='true'
                 label='Delete'
@@ -116,7 +117,7 @@ const DashBoardEvent = ({ event }) => {
                 color='#6AB8E0'
               />
             </Box>
-            <Link to='/videoroom'>
+            <Link to={`/videoroom/${event.id}`}>
               <Button
                 size='medium'
                 responsive='true'

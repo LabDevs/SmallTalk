@@ -13,7 +13,11 @@ class User {
   }
 
   static getById (userId) {
+<<<<<<< HEAD
     const queryText = 'SELECT * FROM users WHERE id = $1;'
+=======
+    const queryText = 'SELECT * FROM users where id = $1'
+>>>>>>> abab09ec301d116d033ad06a9541122c55cd88ad
     return db.query(queryText, [userId]).then(data => data.rows)
   }
 }

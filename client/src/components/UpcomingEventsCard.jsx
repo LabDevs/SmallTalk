@@ -1,56 +1,43 @@
-import React from 'react'
-import { Box, Grid, Text, Heading, Button } from 'grommet'
+import React, { useState, useEffect } from 'react'
+import UpdateEvent from './UpdateEvent'
+import { Button, Grid, Box, Heading, Text } from 'grommet'
 import { Link } from 'react-router-dom'
 
-const UpcomingEventsCard = ({ event }) => {
-  const removeRSVP = () => {
-    fetch('/rsvp/remove', {
+const DashBoardEvent = ({ event }) => {
+  const [show, setShow] = useState(false)
+  const [categoryName, setCategoryName] = useState('')
+
+  const removeEvent = () => {
+    fetch('/remove', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ rsvpId: event.id })
+      body: JSON.stringify({ eventId: event.id })
     })
       .then(() => {
         window.location.reload()
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err)
+      })
   }
 
-  return (
-    //   <Box
-    //     responsive='true'
-    //     className='upcomingEventCard'
-    //     direction='column'
-    //     align='center'
-    //     alignSelf='center'
-    //     background='light'
-    //     border={{ color: 'gray' }}
-    //     round='small'
-    //     header='Upcoming Events'
-    //     pad='medium'
-    //   >
-    //     <h2>{event.title}</h2>
-    //     <Button
-    //       className='upcomingEventsButton'
-    //       size='medium'
-    //       responsive='true'
-    //       primary
-    //       gap='small'
-    //       label='Chat!'
-    //       href='/videoroom'
-    //     />
-    //     <Button
-    //       className='upcomingEventsButton'
-    //       size='medium'
-    //       responsive='true'
-    //       primary
-    //       gap='small'
-    //       label='Un-RSVP'
-    //       onClick={removeRSVP}
-    //     />
-    //   </Box>
-    // )
+  useEffect(() => {
+    async function getCategoryName () {
+      const response = await fetch(`/api/categoryId/${event.category_id}`)
+      const name = await response.json()
+      setCategoryName(name)
+    }
 
-    <Box responsive='true'>
+    getCategoryName()
+  }, [])
+
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+
+  return (
+    <Box>
+      <UpdateEvent show={show} handleClose={handleClose} eventId={event.id} />
+
       <Box
         responsive='true'
         direction='column'
@@ -89,7 +76,7 @@ const UpcomingEventsCard = ({ event }) => {
           </Box>
           <Box responsive='true' gridArea='category'>
             <Heading textAlign='end' margin={{ vertical: 'xsmall' }} level='4'>
-              {event.name}
+              {categoryName.name}
             </Heading>
           </Box>
           <Box responsive='true' gridArea='time'>
@@ -109,24 +96,31 @@ const UpcomingEventsCard = ({ event }) => {
           <Box
             gridArea='buttons'
             gap='medium'
-            margin={{ top: 'large', left: '24%' }}
+            margin={{ top: 'large', left: '13%' }}
             direction='row'
           >
-            <Button
-              size='medium'
-              responsive='true'
-              gap='small'
-              label='Un-RSVP'
-              onClick={removeRSVP}
-              color='#6AB8E0'
-            />
-            <Link to='/videoroom'>
+            <Box>
+              <Button
+                responsive='true'
+                label='Update'
+                onClick={handleShow}
+                color='#6AB8E0'
+              />
+            </Box>
+            <Box>
+              <Button
+                responsive='true'
+                label='Delete'
+                onClick={removeEvent}
+                color='#6AB8E0'
+              />
+            </Box>
+            <Link to={`/videoroom/${event.id}`}>
               <Button
                 size='medium'
                 responsive='true'
                 primary
-                gap='small'
-                label='Join SmallTalk'
+                label='Start SmallTalk'
                 color='#6AB8E0'
               />
             </Link>
@@ -137,4 +131,4 @@ const UpcomingEventsCard = ({ event }) => {
   )
 }
 
-export default UpcomingEventsCard
+export default DashBoardEvent
