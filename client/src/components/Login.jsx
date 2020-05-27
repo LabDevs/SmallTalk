@@ -29,10 +29,12 @@ const Login = () => {
           primary
           type='submit'
           label='Submit'
+          color='#6AB8E0'
         />
       </Form>
 
-      <Anchor href='/register'>Haven't made an account yet?</Anchor>
+      <Anchor color='#6AB8E0'
+        href='/register'>Haven't made an account yet?</Anchor>
     </div>
   )
 }

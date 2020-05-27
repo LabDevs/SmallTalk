@@ -22,8 +22,20 @@ const getAllByUser = (req, res) => {
     )
 }
 
+const getById = (req, res) => {
+  const { eventId } = req.params
+
+  Event.getById(eventId)
+    .then(response => res.json(response))
+    .catch(err => {
+      console.log(err)
+      res.sendStatus(500).json({ message: 'Could not get event by ID.' })
+    })
+}
+
 const add = (req, res) => {
   const { userId, categoryId, title, description, date } = req.body
+  console.log(userId, categoryId, title, description, date)
 
   Event.add(userId, categoryId, title, description, date)
     .then(() => res.status(200).json({ message: 'Successfully added.' }))
@@ -37,6 +49,7 @@ const add = (req, res) => {
 
 const update = (req, res) => {
   const { eventId, userId, categoryId, title, description, date } = req.body
+  console.log(eventId, userId, categoryId, title, description, date)
 
   Event.update(eventId, userId, categoryId, title, description, date)
     .then(() => res.status(200).json({ message: 'Successfully updated.' }))
@@ -61,6 +74,7 @@ const remove = (req, res) => {
 module.exports = {
   getAllByCategory,
   getAllByUser,
+  getById,
   add,
   update,
   show,
