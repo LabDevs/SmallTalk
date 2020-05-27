@@ -46,6 +46,14 @@ exports.seed = function (knex) {
           date: '2020-10-3 10:29:00-04'
         },
         {
+          category_id: 6,
+          user_id: 3,
+          title: 'Ready Player One?',
+          description:
+            'I finished reading the book and I absolutely love it! I was just confused about one chapter, so if anyone would like to discuss, that would be awesome!',
+          date: '2020-10-3 10:29:00-04'
+        },
+        {
           category_id: 1,
           user_id: 4,
           title: 'Dealing With COVID',
@@ -54,11 +62,27 @@ exports.seed = function (knex) {
           date: '2020-10-2 18:33:00-04'
         },
         {
+          category_id: 6,
+          user_id: 4,
+          title: 'The Fault In Our Stars Chat',
+          description:
+            "This book is really good so far, but I did have a few things I wanted to clarify about it, since I've been a bit confused about a lot of things.",
+          date: '2020-10-2 18:33:00-04'
+        },
+        {
           category_id: 2,
           user_id: 5,
           title: 'Super Smash Is Getting Boring',
           description:
             "I don't really know why, I've always loved Smash as a kid. Perhaps I need someone who shares the same passion about it as I do to find it fun again?",
+          date: '2020-10-2 20:30:00-04'
+        },
+        {
+          category_id: 3,
+          user_id: 5,
+          title: 'Biore Thoughts?',
+          description:
+            "I just recently used one of Biore's products, and I must say, for the reviews I've seen, it hasn't been that good to me. I'd like to hear some thoughts about it!",
           date: '2020-10-2 20:30:00-04'
         }
       ])
