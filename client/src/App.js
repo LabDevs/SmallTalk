@@ -28,7 +28,7 @@ function App () {
           align='center'
           gap='small'
         >
-          <Link to='/home'>
+          <Link to='/'>
             <Image src={Logo} fit='contain' className='logo' />
           </Link>
           {document.cookie ? (
@@ -77,7 +77,7 @@ function App () {
       </Header>
 
       <Switch>
-        <Route path='/home'>
+        <Route exact path='/'>
           <Home />
         </Route>
         <Route path='/register'>

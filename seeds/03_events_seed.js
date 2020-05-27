@@ -43,7 +43,15 @@ exports.seed = function (knex) {
           title: 'Animal Crossing Fans?',
           description:
             "I've been playing Animal Crossing New Horizons for months now, and I have never seen the Animal Crossing fandom act so poorly. Was wondering if someone could explain why that is!",
-          date: '2020-10-3 10:29:00-04'
+          date: '2020-10-3 10:30:00-04'
+        },
+        {
+          category_id: 6,
+          user_id: 3,
+          title: 'Ready Player One?',
+          description:
+            'I finished reading the book and I absolutely love it! I was just confused about one chapter, so if anyone would like to discuss, that would be awesome!',
+          date: '2020-10-3 10:30:00-04'
         },
         {
           category_id: 1,
@@ -51,7 +59,15 @@ exports.seed = function (knex) {
           title: 'Dealing With COVID',
           description:
             "It's hard dealing with something unknown and seeing the world go into disarray, so I'm holding this event for someone who just wants to talk about how they're feeling :)",
-          date: '2020-10-2 18:33:00-04'
+          date: '2020-10-2 18:30:00-04'
+        },
+        {
+          category_id: 6,
+          user_id: 4,
+          title: 'The Fault In Our Stars Chat',
+          description:
+            "This book is really good so far, but I did have a few things I wanted to clarify about it, since I've been a bit confused about a lot of things.",
+          date: '2020-10-2 18:30:00-04'
         },
         {
           category_id: 2,
@@ -59,6 +75,14 @@ exports.seed = function (knex) {
           title: 'Super Smash Is Getting Boring',
           description:
             "I don't really know why, I've always loved Smash as a kid. Perhaps I need someone who shares the same passion about it as I do to find it fun again?",
+          date: '2020-10-2 20:30:00-04'
+        },
+        {
+          category_id: 3,
+          user_id: 5,
+          title: 'Biore Thoughts?',
+          description:
+            "I just recently used one of Biore's products, and I must say, for the reviews I've seen, it hasn't been that good to me. I'd like to hear some thoughts about it!",
           date: '2020-10-2 20:30:00-04'
         }
       ])
