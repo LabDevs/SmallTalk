@@ -128,7 +128,7 @@ b {
 
 .middle-row-title {
   text-align: center;
-  padding-top: 12%;
+  padding-top: 5%;
   font-size: 80px;
   color: #17539d;
 }
@@ -138,7 +138,7 @@ b {
   align-items: center;
   justify-content: center;
   background-color: #447dcc;
-  padding: 20% 5%;
+  padding: 10% 5%;
   color: white;
   font-size: 25px;
 }
@@ -170,4 +170,8 @@ b {
 
 .categoryHeading {
   padding-top: 5%;
+}
+
+FormField {
+  color: #304258;
 }

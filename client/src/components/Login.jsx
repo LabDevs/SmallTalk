@@ -1,11 +1,11 @@
 import React from 'react'
 import { Form } from 'react-bootstrap'
-import { FormField, TextInput, Button, Anchor } from 'grommet'
+import { FormField, TextInput, Button, Anchor, Heading } from 'grommet'
 
 const Login = () => {
   return (
     <div className='loginForm'>
-      <h1>Login</h1>
+      <Heading color='#304258'>Login</Heading>
 
       <Form action='/api/login' method='post'>
         <FormField required className='loginField' label='Username'>
