@@ -28,7 +28,7 @@ function DashBoard() {
 
   return (
     <>
-      <Box className='dashboard'>
+      <Box responsive='true' className='dashboard'>
         <Heading
           margin={{ bottom: 'medium' }}
           textAlign='center'
@@ -61,7 +61,7 @@ function DashBoard() {
             <></>
           )}
           <Grid
-            rows={'medium'}
+            rows='medium'
             columns={['auto', '1/2']}
             gap='small'
             responsive='true'

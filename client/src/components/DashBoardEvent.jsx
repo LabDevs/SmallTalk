@@ -35,7 +35,7 @@ const DashBoardEvent = ({ event }) => {
   const handleShow = () => setShow(true)
 
   return (
-    <Box>
+    <Box responsive='true'>
       <UpdateEvent show={show} handleClose={handleClose} eventId={event.id} />
 
       <Box
@@ -73,17 +73,17 @@ const DashBoardEvent = ({ event }) => {
               {event.title}
             </Heading>
           </Box>
-          <Box gridArea='category'>
+          <Box gridArea='category' responsive='true'>
             <Heading textAlign='end' margin={{ vertical: 'xsmall' }} level='4'>
               {categoryName.name}
             </Heading>
           </Box>
-          <Box gridArea='time'>
+          <Box responsive='true' gridArea='time'>
             <Text size='large' textAlign='center' margin={{ vertical: 'auto' }}>
               {new Date(event.date).toLocaleString()}
             </Text>
           </Box>
-          <Box gridArea='desc'>
+          <Box responsive='true' gridArea='desc'>
             <Text
               size='medium'
               margin={{ vertical: 'auto' }}
@@ -93,12 +93,13 @@ const DashBoardEvent = ({ event }) => {
             </Text>
           </Box>
           <Box
+            responsive='true'
             gridArea='buttons'
             gap='medium'
             margin={{ top: 'large', left: '13%' }}
             direction='row'
           >
-            <Box>
+            <Box responsive='true'>
               <Button
                 responsive='true'
                 label='Update'
@@ -106,7 +107,7 @@ const DashBoardEvent = ({ event }) => {
                 color='#6AB8E0'
               />
             </Box>
-            <Box>
+            <Box responsive='true'>
               <Button
                 responsive='true'
                 label='Delete'
@@ -114,7 +115,7 @@ const DashBoardEvent = ({ event }) => {
                 color='#6AB8E0'
               />
             </Box>
-            <Link to='/videoroom'>
+            <Link to={`/videoroom/${event.id}`}>
               <Button
                 size='medium'
                 responsive='true'

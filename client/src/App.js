@@ -91,7 +91,7 @@ function App() {
           <DashBoard />
         </Route>
 
-        <Route path='/videoroom'>
+        <Route path='/videoroom/:roomId'>
           <VideoChatTwo />
         </Route>
 

@@ -14,8 +14,7 @@ const CategoryCard = props => {
           gap='medium'
           hoverIndicator
           onClick={() =>
-            window.location.replace(`/categories/${props.category.id}`)
-          }
+            window.location.replace(`/categories/${props.category.id}`)}
         >
           {props.icon}
           <Text textAlign='end'>{props.category.name}</Text>

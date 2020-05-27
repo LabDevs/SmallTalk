@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import io from 'socket.io-client'
-
+import { Button, Box, Heading, Text } from 'grommet'
 import SimplePeer from 'simple-peer'
 
 import styled from 'styled-components'
@@ -24,14 +24,14 @@ const Video = styled.video`
 `
 
 const socket = io()
-socket.emit('video-room','games')
+socket.emit('video-room', 'games')
 
-console.log({socket})
+console.log({ socket })
 
 function VideoChat () {
   const [stream, setStream] = useState()
   // const [callAccepted, setCallAccepted] = useState(false)
-  const [room,setRoom] = useState([])
+  const [room, setRoom] = useState([])
 
   const userVideo = useRef()
   const partnerVideo = useRef()

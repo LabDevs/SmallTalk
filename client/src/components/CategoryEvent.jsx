@@ -25,37 +25,37 @@ const CategoryEvent = ({ event }) => {
   }
 
   return (
-    // <Box
-    //   margin={{ left: 'large', right: 'large' }}
-    //   responsive='true'
-    //   className='dashboardEventCard'
-    //   direction='column'
-    //   align='center'
-    //   alignSelf='center'
-    //   background='light'
-    //   border={{ color: 'gray' }}
-    //   round='small'
-    //   header='Your Events'
-    //   pad='medium'
-    // >
-    //   <Heading level='2' textAlign='start' responsive='true'>
-    //     {props.event.title}
-    //   </Heading>
-    //   <Text margin={{ bottom: 'small' }} textAlign='center'>
-    //     {props.event.description}
-    //   </Text>
+  // <Box
+  //   margin={{ left: 'large', right: 'large' }}
+  //   responsive='true'
+  //   className='dashboardEventCard'
+  //   direction='column'
+  //   align='center'
+  //   alignSelf='center'
+  //   background='light'
+  //   border={{ color: 'gray' }}
+  //   round='small'
+  //   header='Your Events'
+  //   pad='medium'
+  // >
+  //   <Heading level='2' textAlign='start' responsive='true'>
+  //     {props.event.title}
+  //   </Heading>
+  //   <Text margin={{ bottom: 'small' }} textAlign='center'>
+  //     {props.event.description}
+  //   </Text>
 
-    //   <Box className='eventButtons'>
-    //     <Button
-    //       className='upcomingEventsButton'
-    //       size='medium'
-    //       responsive='true'
-    //       gap='small'
-    //       label='RSVP'
-    //       onClick={addRSVP}
-    //     />
-    //   </Box>
-    // </Box>
+  //   <Box className='eventButtons'>
+  //     <Button
+  //       className='upcomingEventsButton'
+  //       size='medium'
+  //       responsive='true'
+  //       gap='small'
+  //       label='RSVP'
+  //       onClick={addRSVP}
+  //     />
+  //   </Box>
+  // </Box>
 
     <Box
       responsive='true'

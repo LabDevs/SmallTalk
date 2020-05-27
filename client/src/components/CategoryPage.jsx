@@ -32,7 +32,7 @@ const CategoryPage = () => {
 
       <Box direction='column'>
         <Grid
-          rows={'medium'}
+          rows='medium'
           columns={['auto', '1/2']}
           gap='small'
           responsive='true'
