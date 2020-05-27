@@ -60,13 +60,13 @@ const logout = (req, res) => {
 }
 
 // const getUsers =  (req,res) => {
-  
+
 //     const userId  = req.userId
 //     console.log(userId)
 //     User.getById(userId)
 //       .then((data) => {
 //       console.log(req.body)
-        
+
 //         res.status(200).json(data)
 //       })
 //       .catch((err) =>{

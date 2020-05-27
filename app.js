@@ -22,43 +22,42 @@ app.use(rsvpRouter)
 app.use(categoryRouter)
 app.use(eventRouter)
 
-const users={}
-
-const rooms={}
+const rooms = {}
 
 io.on('connection', socket => {
-  console.log('server connected',socket.id)
+  console.log('server connected', socket.id)
   // console.log(socket)
-  
-  socket.on('video-room', (roomID) =>{
-    console.log('user has join video room', roomID)
-    socket.join(roomID)
-    socket.eventRoom = roomID
-    console.log('socket Event Room',socket.eventRoom)
 
-    if(rooms[roomID]){
-      rooms[roomID].push(socket.id)
-    }else{
-      rooms[roomID] = [socket.id]
+  socket.on('video-room', (roomId) => {
+    console.log('user has join video room', roomId)
+    socket.join(roomId)
+    socket.eventRoom = roomId
+    console.log('socket Event Room', socket.eventRoom)
+
+    if (rooms[roomId]) {
+      rooms[roomId].push(socket.id)
+    } else {
+      rooms[roomId] = [socket.id]
     }
-    
-    let isPartnerHere = rooms[roomID] > 1 ? true : false
-    
-    io.to(roomID).emit('is-partner-here', isPartnerHere)
+
+    console.log({ rooms })
+
+    const isPartnerHere = rooms[roomId].length > 1
+    socket.emit('is-partner-here', isPartnerHere)
   })
 
   socket.on('signal', (data) => {
-    socket.to('video-room').emit('signal',data)
+    socket.to(socket.eventRoom).emit('signal', data)
   })
-  
+
   socket.on('disconnect', () => {
     const room = rooms[socket.eventRoom]
-    room.splice(room.indexOf(socket.id),1)
-    console.log('id removed')
+    if (room) {
+      room.splice(room.indexOf(socket.id), 1)
+    }
   })
 })
 
-
 app.get('/', (req, res) => res.send('Hello World'))
 
-server.listen(port,process.env.HOST_NAME, () => console.log(`Listening on port ${port} `))
+server.listen(port, process.env.HOST_NAME, () => console.log(`Listening on port ${port} `))
