@@ -121,12 +121,12 @@ const DashBoardEvent = ({ event }) => {
               />
             </Box>
             <Box flex='true' align='center'>
-              <Link to='/videoroom'>
+              <Link to={`/videoroom/${event.id}`}>
                 <Button
                   size='medium'
                   responsive='true'
                   primary
-                  label='Start SmallTalk'
+                  label='Join SmallTalk'
                   color='#6AB8E0'
                 />
               </Link>

@@ -1,43 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import UpdateEvent from './UpdateEvent'
-import { Button, Grid, Box, Heading, Text } from 'grommet'
+import React from 'react'
+import { Box, Grid, Text, Heading, Button } from 'grommet'
 import { Link } from 'react-router-dom'
 
-const DashBoardEvent = ({ event }) => {
-  const [show, setShow] = useState(false)
-  const [categoryName, setCategoryName] = useState('')
-
-  const removeEvent = () => {
-    fetch('/remove', {
+const UpcomingEventsCard = ({ event }) => {
+  const removeRSVP = () => {
+    fetch('/rsvp/remove', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ eventId: event.id })
+      body: JSON.stringify({ rsvpId: event.id })
     })
       .then(() => {
         window.location.reload()
       })
-      .catch(err => {
-        console.log(err)
-      })
+      .catch(err => console.log(err))
   }
 
-  useEffect(() => {
-    async function getCategoryName () {
-      const response = await fetch(`/api/categoryId/${event.category_id}`)
-      const name = await response.json()
-      setCategoryName(name)
-    }
-
-    getCategoryName()
-  }, [])
-
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  console.log(event)
 
   return (
     <Box>
-      <UpdateEvent show={show} handleClose={handleClose} eventId={event.id} />
-
       <Box
         responsive='true'
         direction='column'
@@ -52,7 +33,6 @@ const DashBoardEvent = ({ event }) => {
         width='90%'
       >
         <Grid
-          responsive='true'
           rows={['auto', 'xxsmall', 'xxsmall', 'auto']}
           columns={['auto', 'auto', 'auto']}
           areas={[
@@ -74,17 +54,17 @@ const DashBoardEvent = ({ event }) => {
               {event.title}
             </Heading>
           </Box>
-          <Box responsive='true' gridArea='category'>
+          <Box gridArea='category'>
             <Heading textAlign='end' margin={{ vertical: 'xsmall' }} level='4'>
-              {categoryName.name}
+              {event.name}
             </Heading>
           </Box>
-          <Box responsive='true' gridArea='time'>
+          <Box gridArea='time'>
             <Text size='large' textAlign='center' margin={{ vertical: 'auto' }}>
               {new Date(event.date).toLocaleString()}
             </Text>
           </Box>
-          <Box responsive='true' gridArea='desc'>
+          <Box gridArea='desc'>
             <Text
               size='medium'
               margin={{ vertical: 'auto' }}
@@ -95,36 +75,25 @@ const DashBoardEvent = ({ event }) => {
           </Box>
           <Box
             gridArea='buttons'
-            margin={{ top: 'large' }}
-            alignContent='center'
-            align='center'
-            alignSelf='center'
-            flex='true'
+            gap='medium'
+            margin={{ top: 'large', left: '24%' }}
             direction='row'
-            justify='evenly'
           >
-            <Box>
-              <Button
-                responsive='true'
-                label='Update'
-                onClick={handleShow}
-                color='#6AB8E0'
-              />
-            </Box>
-            <Box>
-              <Button
-                responsive='true'
-                label='Delete'
-                onClick={removeEvent}
-                color='#6AB8E0'
-              />
-            </Box>
-            <Link to={`/videoroom/${event.id}`}>
+            <Button
+              size='medium'
+              responsive='true'
+              gap='small'
+              label='Un-RSVP'
+              onClick={removeRSVP}
+              color='#6AB8E0'
+            />
+            <Link to={`/videoroom/${event.event_id}`}>
               <Button
                 size='medium'
                 responsive='true'
                 primary
-                label='Start SmallTalk'
+                gap='small'
+                label='Join SmallTalk'
                 color='#6AB8E0'
               />
             </Link>
@@ -135,4 +104,4 @@ const DashBoardEvent = ({ event }) => {
   )
 }
 
-export default DashBoardEvent
+export default UpcomingEventsCard
