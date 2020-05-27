@@ -3,7 +3,7 @@ const db = require('../db')
 class Event {
   static getAllByCategory(categoryId, userId) {
     const queryText =
-      'SELECT * FROM events WHERE category_id=$1 AND user_id!=$2;'
+      'SELECT events.*, categories.name FROM events JOIN categories ON events.category_id = categories.id WHERE category_id=$1 AND user_id!=$2;'
     return db
       .query(queryText, [categoryId, userId])
       .then((response) => response.rows)

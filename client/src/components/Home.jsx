@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import People from '../people.jpg'
 import { Chrome } from 'grommet-icons'
 import { User, Search, Chat } from 'grommet-icons'
@@ -28,9 +30,13 @@ const Home = () => {
       <h1 className='middle-row-title'>Join SmallTalk</h1>
       <section className='middle-row'>
         <div className='iconCard'>
-          <User className='userIcon' color='#6AB8E0' size='xlarge' />
+          <Link to='/register'>
+            <User className='userIcon' color='#6AB8E0' size='xlarge' />
+          </Link>
           <div className='cardContent'>
-            <b>Sign-Up</b>
+            <Link to='/register'>
+              <b>Sign-Up</b>
+            </Link>
             <p>Create a profile to join SmallTalks!</p>
           </div>
         </div>

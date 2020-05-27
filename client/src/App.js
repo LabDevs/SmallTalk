@@ -33,14 +33,18 @@ function App() {
           </Link>
           {document.cookie ? (
             <>
-              <Anchor className='navLink' href='/dash' color='grey'>
+              <Anchor color='#304258' className='navLink' href='/dash'>
                 Dashboard
               </Anchor>
-              <Anchor className='navLink' href='/categories' color='grey'>
+              <Anchor color='#304258' className='navLink' href='/categories'>
                 Categories
               </Anchor>
-              <Anchor className='navLink' href='/upcomingEvents' color='grey'>
-                Upcoming Events
+              <Anchor
+                color='#304258'
+                className='navLink'
+                href='/upcomingEvents'
+              >
+                Upcoming SmallTalk's
               </Anchor>
             </>
           ) : (
@@ -52,7 +56,7 @@ function App() {
             <>
               <Anchor
                 href='/login'
-                color='grey'
+                color='#304258'
                 id='login'
                 onClick={() => logout()}
               >
@@ -61,10 +65,10 @@ function App() {
             </>
           ) : (
             <>
-              <Anchor className='navLink' href='/login' color='grey'>
+              <Anchor color='#304258' className='navLink' href='/login'>
                 Login
               </Anchor>
-              <Anchor className='navLink' href='/register' color='grey'>
+              <Anchor color='#304258' className='navLink' href='/register'>
                 Register
               </Anchor>
             </>
@@ -87,7 +91,7 @@ function App() {
           <DashBoard />
         </Route>
 
-        <Route path='/videoChat'>
+        <Route path='/videoroom'>
           <VideoChatTwo />
         </Route>
 

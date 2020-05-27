@@ -8,7 +8,7 @@ const Register = () => {
       <h1>Register</h1>
 
       <Form action='/api/register' method='post'>
-        <FormField className='loginField' label='Username'>
+        <FormField required className='loginField' label='Username'>
           <TextInput
             type='text'
             placeholder='Enter your username!'
@@ -24,7 +24,7 @@ const Register = () => {
           />
         </FormField>
 
-        <FormField className='loginField' label='Password'>
+        <FormField required className='loginField' label='Password'>
           <TextInput
             type='password'
             placeholder='Enter your password!'
