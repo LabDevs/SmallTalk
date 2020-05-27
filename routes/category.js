@@ -4,6 +4,6 @@ const router = express.Router()
 
 router.get('/api/categories', categoryController.getAll)
 
-router.get('/api/categoryId/:id', categoryController.getById)
+// router.get('/api/categoryId/:id', categoryController.getById)
 
 module.exports = router
