@@ -1,3 +1,8 @@
+body * {
+  font-family: 'Karla', sans-serif;
+  box-sizing: border-box;
+}
+
 .cards {
   padding: 0 5% 0 5%;
 }
@@ -45,6 +50,38 @@
   margin-top: 2%;
 }
 
+.logo {
+  width: 150px;
+}
+
+.logo-text {
+  color: #17539d;
+}
+
+.sideText {
+  display: inline-block;
+  padding-left: 10%;
+  color: grey;
+}
+
+.people {
+  width: 60%;
+}
+
+.top-row,
+.sideText {
+  background-color: rgb(211, 235, 249);
+}
+
+.top-row {
+  height: 140%;
+  color: white;
+  display: flex;
+}
+
+.slogan {
+  padding-top: 20%;
+}
 .eventButtons {
   display: inline-block;
 }
@@ -54,6 +91,55 @@
   margin-left: 28.5%;
 }
 
+.middle-row {
+  display: flex;
+  margin: 7%;
+  text-align: center;
+}
+
+.iconCard {
+  width: 40%;
+  padding: 5%;
+}
+
+.userIcon,
+.searchIcon,
+.chatIcon {
+  padding-bottom: 10%;
+}
+
+b {
+  color: #17539d;
+}
+
+.cardContent > p {
+  padding-top: 5%;
+}
+
+.middle-row-title {
+  text-align: center;
+  padding-top: 5%;
+  font-size: 80px;
+  color: #17539d;
+}
+
+.bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #447dcc;
+  padding: 10% 5%;
+  color: white;
+  font-size: 25px;
+}
+
+.bottom-row > p {
+  height: 30px;
+}
+
+.navLink {
+  color: #bec3c3;
+}
 .loading {
   margin-left: 49%;
   margin-top: 10%;
@@ -62,10 +148,26 @@
 #emptyHeadingDash {
   margin-left: 28.5%;
   margin-top: 8%;
+  display: flex;
+  align-items: center;
 }
 
 .categoryHeader {
   margin-left: 43.1%;
   margin-top: 2%;
   margin-bottom: 2%;
+}
+
+.categoryHeading {
+  padding-top: 5%;
+}
+
+FormField {
+  color: #304258;
+}
+
+footer > p {
+  padding: 2% 2% 0%;
+  display: flex;
+  justify-content: flex-end;
 }

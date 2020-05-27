@@ -11,7 +11,7 @@ const CategoryPage = () => {
   const [categoryName, setCategoryName] = useState('')
 
   useEffect(() => {
-    async function getEventsByCategory () {
+    async function getEventsByCategory() {
       const response = await fetch(`/api/categories/${categoryId}`)
       const json = await response.json()
       setCategoryEvents(json)
@@ -62,7 +62,7 @@ const CategoryPage = () => {
           align='center'
         >
           {categoryEvents &&
-            categoryEvents.map(event => <CategoryEvent event={event} />)}
+            categoryEvents.map((event) => <CategoryEvent event={event} />)}
         </Grid>
       </Box>
     </Box>

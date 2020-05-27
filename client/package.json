@@ -8,6 +8,7 @@
     "bootstrap": "^4.5.0",
     "grommet": "^2.13.0",
     "grommet-icons": "^4.4.0",
+    "polished": "^3.6.3",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
