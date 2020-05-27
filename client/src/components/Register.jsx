@@ -37,10 +37,13 @@ const Register = () => {
           primary
           type='submit'
           label='Submit'
+          color='#6AB8E0'
         />
       </Form>
 
-      <Anchor href='/login'>Already have an account?</Anchor>
+      <Anchor href='/login' color='#6ab8e0'>
+        Already have an account?
+      </Anchor>
     </div>
   )
 }

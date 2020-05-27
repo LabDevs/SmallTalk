@@ -31,7 +31,7 @@ const Home = () => {
       <section className='middle-row'>
         <div className='iconCard'>
           <Link to='/register'>
-            <User className='userIcon' color='#6AB8E0' size='xlarge' />
+            <User className='userIcon' color='#3E92CC' size='xlarge' />
           </Link>
           <div className='cardContent'>
             <Link to='/register'>
@@ -41,14 +41,14 @@ const Home = () => {
           </div>
         </div>
         <div className='iconCard'>
-          <Search className='searchIcon' color='#6AB8E0' size='xlarge' />
+          <Search className='searchIcon' color='#3E92CC' size='xlarge' />
           <div className='cardContent'>
             <b>Find events</b>
             <p>Find events based on categories that interest you!</p>
           </div>
         </div>
         <div className='iconCard'>
-          <Chat className='chatIcon' color='#6AB8E0' size='xlarge' />
+          <Chat className='chatIcon' color='#3E92CC' size='xlarge' />
           <div className='cardContent'>
             <b>Chat it up!</b>
             <p>

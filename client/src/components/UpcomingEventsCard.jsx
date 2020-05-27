@@ -11,18 +11,18 @@ const DashBoardEvent = ({ event }) => {
     fetch('/remove', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ eventId: event.id })
+      body: JSON.stringify({ eventId: event.id }),
     })
       .then(() => {
         window.location.reload()
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err)
       })
   }
 
   useEffect(() => {
-    async function getCategoryName () {
+    async function getCategoryName() {
       const response = await fetch(`/api/categoryId/${event.category_id}`)
       const name = await response.json()
       setCategoryName(name)
@@ -59,7 +59,7 @@ const DashBoardEvent = ({ event }) => {
             { name: 'header', start: [0, 0], end: [1, 1] },
             { name: 'time', start: [0, 1], end: [2, 1] },
             { name: 'desc', start: [0, 2], end: [2, 2] },
-            { name: 'buttons', start: [0, 3], end: [2, 3] }
+            { name: 'buttons', start: [0, 3], end: [2, 3] },
           ]}
         >
           <Box responsive='true' gridArea='header'>
