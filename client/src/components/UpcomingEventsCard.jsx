@@ -33,7 +33,8 @@ const UpcomingEventsCard = ({ event }) => {
         width='90%'
       >
         <Grid
-          rows={['auto', 'xxsmall', 'xxsmall', 'auto']}
+          fill='true'
+          rows={['auto', 'xsmall', 'xxsmall', 'auto']}
           columns={['auto', 'auto', 'auto']}
           areas={[
             { name: 'category', start: [2, 0], end: [2, 0] },

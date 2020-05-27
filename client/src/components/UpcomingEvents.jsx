@@ -36,7 +36,6 @@ function UpcomingEvents () {
         <Heading
           className='upcomingEventHeader'
           responsive='true'
-          label='Your Upcoming Events'
           color='#444444'
         >
           Your Upcoming SmallTalk's

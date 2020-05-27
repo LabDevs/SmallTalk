@@ -45,7 +45,6 @@ body * {
 }
 
 .upcomingEventHeader {
-  /* text-align: center; */
   margin-left: 30%;
   margin-top: 2%;
 }
@@ -93,7 +92,6 @@ body * {
 
 .middle-row {
   display: flex;
-  margin: 7%;
   text-align: center;
 }
 
@@ -128,13 +126,9 @@ b {
   align-items: center;
   justify-content: center;
   background-color: #447dcc;
-  padding: 10% 5%;
+  padding: 5% 0 4% 0;
   color: white;
   font-size: 25px;
-}
-
-.bottom-row > p {
-  height: 30px;
 }
 
 .navLink {
@@ -167,7 +161,7 @@ FormField {
 }
 
 footer > p {
-  padding: 2% 2% 0%;
+  padding: 1% 2% 0 0;
   display: flex;
   justify-content: flex-end;
 }

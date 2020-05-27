@@ -10,6 +10,7 @@ exports.seed = function (knex) {
         { name: 'Beauty' },
         { name: 'Sports' },
         { name: 'Food' },
+        { name: 'Literature' }
       ])
     })
 }
