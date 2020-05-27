@@ -30,7 +30,7 @@ const UpdateEvent = props => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(eventInfo)
     })
-      // .then(() => window.location.reload())
+      .then(() => window.location.reload())
       .catch(err => console.log(err))
   }
 

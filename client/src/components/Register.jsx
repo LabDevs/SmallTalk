@@ -1,11 +1,10 @@
 import React from 'react'
 import { Form } from 'react-bootstrap'
-import { FormField, TextInput, Button, Anchor } from 'grommet'
-
+import { FormField, TextInput, Button, Anchor, Heading } from 'grommet'
 const Register = () => {
   return (
     <div className='loginForm'>
-      <h1>Register</h1>
+      <Heading color='#304258'>Register</Heading>
 
       <Form action='/api/register' method='post'>
         <FormField required className='loginField' label='Username'>
@@ -41,8 +40,9 @@ const Register = () => {
         />
       </Form>
 
-      <Anchor color='#6AB8E0'
-        href='/login'>Already have an account?</Anchor>
+      <Anchor color='#6AB8E0' href='/login'>
+        Already have an account?
+      </Anchor>
     </div>
   )
 }

@@ -6,7 +6,10 @@ import CategoryList from './components/CategoryList'
 import Register from './components/Register'
 import Login from './components/Login'
 import DashBoard from './components/DashBoard'
-import VideoChat from './components/VideoChatTwo'
+import VideoChat from './components/VideoChat'
+
+import Home from './components/Home'
+import Logo from './navy-logo.png'
 import './index.css'
 import { Anchor, Box, Header, Nav, Image } from 'grommet'
 import UpcomingEvents from './components/UpcomingEvents'
@@ -25,13 +28,13 @@ function App () {
           align='center'
           gap='small'
         >
-          <Link to='/'>
-            <Image src='https://via.placeholder.com/50' fit='contain' />
+          <Link to='/home'>
+            <Image src={Logo} fit='contain' className='logo' />
           </Link>
           {document.cookie ? (
             <>
               <Anchor color='#304258' className='navLink' href='/dash'>
-                Dashboard
+                Your SmallTalk's
               </Anchor>
               <Anchor color='#304258' className='navLink' href='/categories'>
                 Categories
@@ -74,6 +77,9 @@ function App () {
       </Header>
 
       <Switch>
+        <Route path='/home'>
+          <Home />
+        </Route>
         <Route path='/register'>
           <Register />
         </Route>
@@ -90,7 +96,9 @@ function App () {
         </Route>
 
         <Route path='/categories/:categoryId'>
-          <CategoryPage />
+          <CategoriesContextProvider>
+            <CategoryPage />
+          </CategoriesContextProvider>
         </Route>
 
         <Route path='/upcomingEvents'>
@@ -98,9 +106,7 @@ function App () {
         </Route>
 
         <Route path='/categories'>
-          <CategoriesContextProvider>
-            <CategoryList />
-          </CategoriesContextProvider>
+          <CategoryList />
         </Route>
       </Switch>
     </Router>

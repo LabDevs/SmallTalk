@@ -11,18 +11,18 @@ const DashBoardEvent = ({ event }) => {
     fetch('/remove', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ eventId: event.id })
+      body: JSON.stringify({ eventId: event.id }),
     })
       .then(() => {
         window.location.reload()
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err)
       })
   }
 
   useEffect(() => {
-    async function getCategoryName() {
+    async function getCategoryName () {
       const response = await fetch(`/api/categoryId/${event.category_id}`)
       const name = await response.json()
       console.log(name)
@@ -47,21 +47,21 @@ const DashBoardEvent = ({ event }) => {
         background='#D3EBF9'
         border={{ color: '#17539D', size: 'medium' }}
         round='xsmall'
-        header='Your Events'
         pad='medium'
         margin={{ top: '10%' }}
         width='90%'
       >
         <Grid
+          fill='true'
           responsive='true'
-          rows={['auto', 'xsmall', 'xxsmall', 'auto']}
+          rows={['xsmall', 'xxsmall', 'xsmall', 'auto']}
           columns={['auto', 'auto', 'auto']}
           areas={[
             { name: 'category', start: [2, 0], end: [2, 0] },
             { name: 'header', start: [0, 0], end: [1, 1] },
             { name: 'time', start: [0, 1], end: [2, 1] },
             { name: 'desc', start: [0, 2], end: [2, 2] },
-            { name: 'buttons', start: [0, 3], end: [2, 3] }
+            { name: 'buttons', start: [0, 3], end: [2, 3] },
           ]}
         >
           <Box responsive='true' gridArea='header'>
@@ -96,7 +96,7 @@ const DashBoardEvent = ({ event }) => {
           </Box>
           <Box
             gridArea='buttons'
-            margin={{ top: 'large' }}
+            margin={{ top: 'medium' }}
             alignContent='center'
             align='center'
             alignSelf='center'

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { CardGroup } from 'react-bootstrap'
 import CategoryCard from '../components/CategoryCard'
-import { Gamepad, Group, Spa, Bike, Cafeteria } from 'grommet-icons'
+import { Gamepad, Group, Spa, Bike, Cafeteria, Catalog } from 'grommet-icons'
+import { Grid, Box, Heading, Text } from 'grommet'
 
 const CategoryList = () => {
   const [categories, setCategories] = useState(null)
@@ -21,12 +21,32 @@ const CategoryList = () => {
     <Gamepad size='large' />,
     <Spa size='large' />,
     <Bike size='large' />,
-    <Cafeteria size='large' />
+    <Cafeteria size='large' />,
+    <Catalog size='large' />
   ]
 
   return (
-    <div className='categories'>
-      <CardGroup>
+    <Box>
+      <Heading
+        margin={{ left: '8%', bottom: 'medium', top: 'medium' }}
+        textAlign='center'
+        responsive='true'
+        color='#444444'
+      >
+        Categories
+      </Heading>
+      <Text size='large' textAlign='center'>
+        Select a category that you would like to focus your conversation starter
+        on!
+      </Text>
+      <Grid
+        justify='center'
+        alignContent='center'
+        responsive='true'
+        rows='medium'
+        margin={{ bottom: 'medium' }}
+        columns={['auto', '1/2']}
+      >
         {categories &&
           categories.map((category, i) => (
             <CategoryCard
@@ -36,8 +56,8 @@ const CategoryList = () => {
               id={category.id}
             />
           ))}
-      </CardGroup>
-    </div>
+      </Grid>
+    </Box>
   )
 }
 
