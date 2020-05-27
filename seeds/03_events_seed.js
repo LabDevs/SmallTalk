@@ -43,7 +43,7 @@ exports.seed = function (knex) {
           title: 'Animal Crossing Fans?',
           description:
             "I've been playing Animal Crossing New Horizons for months now, and I have never seen the Animal Crossing fandom act so poorly. Was wondering if someone could explain why that is!",
-          date: '2020-10-3 10:29:00-04'
+          date: '2020-10-3 10:30:00-04'
         },
         {
           category_id: 6,
@@ -51,7 +51,7 @@ exports.seed = function (knex) {
           title: 'Ready Player One?',
           description:
             'I finished reading the book and I absolutely love it! I was just confused about one chapter, so if anyone would like to discuss, that would be awesome!',
-          date: '2020-10-3 10:29:00-04'
+          date: '2020-10-3 10:30:00-04'
         },
         {
           category_id: 1,
@@ -59,7 +59,7 @@ exports.seed = function (knex) {
           title: 'Dealing With COVID',
           description:
             "It's hard dealing with something unknown and seeing the world go into disarray, so I'm holding this event for someone who just wants to talk about how they're feeling :)",
-          date: '2020-10-2 18:33:00-04'
+          date: '2020-10-2 18:30:00-04'
         },
         {
           category_id: 6,
@@ -67,7 +67,7 @@ exports.seed = function (knex) {
           title: 'The Fault In Our Stars Chat',
           description:
             "This book is really good so far, but I did have a few things I wanted to clarify about it, since I've been a bit confused about a lot of things.",
-          date: '2020-10-2 18:33:00-04'
+          date: '2020-10-2 18:30:00-04'
         },
         {
           category_id: 2,
