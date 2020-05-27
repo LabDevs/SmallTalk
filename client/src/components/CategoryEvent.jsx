@@ -39,6 +39,7 @@ const CategoryEvent = ({ event }) => {
       width='90%'
     >
       <Grid
+        fill='true'
         responsive='true'
         rows={['xxsmall', 'xsmall', 'xxsmall', 'auto']}
         columns={['auto', 'auto', 'auto']}

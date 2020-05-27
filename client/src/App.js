@@ -31,7 +31,7 @@ function App () {
           {document.cookie ? (
             <>
               <Anchor color='#304258' className='navLink' href='/dash'>
-                Dashboard
+                Your SmallTalk's
               </Anchor>
               <Anchor color='#304258' className='navLink' href='/categories'>
                 Categories

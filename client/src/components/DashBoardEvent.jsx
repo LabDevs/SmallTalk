@@ -47,14 +47,15 @@ const DashBoardEvent = ({ event }) => {
         background='#D3EBF9'
         border={{ color: '#17539D', size: 'medium' }}
         round='xsmall'
-        header='Your Events'
         pad='medium'
         margin={{ top: '10%' }}
         width='90%'
       >
         <Grid
+          // className='cardGrid'
+          fill='true'
           responsive='true'
-          rows={['auto', 'xsmall', 'xxsmall', 'auto']}
+          rows={['xsmall', 'xxsmall', 'xsmall', 'auto']}
           columns={['auto', 'auto', 'auto']}
           areas={[
             { name: 'category', start: [2, 0], end: [2, 0] },
