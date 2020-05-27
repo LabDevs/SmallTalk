@@ -1,19 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
 import People from '../people.jpg'
-import { Chrome } from 'grommet-icons'
 import { User, Search, Chat } from 'grommet-icons'
+import { Text, Heading } from 'grommet'
 
 const Home = () => {
   return (
     <div className='homePage'>
       <section className='top-row'>
         <aside className='sideText'>
-          <h1 className='slogan'>
+          <Heading className='slogan'>
             A new way to <span className='logo-text'>SMALLTALK</span>
-          </h1>
-          <p>Small</p>
+          </Heading>
+          <Text color='#304258' size='large' textAlign='start'>
+            SmallTalk is meant for just that: small talks! SmallTalk aims to
+            help ease the pressure that sometimes occurs when starting
+            conversations. With categories for starting points and events
+            created by users, there's tons of opportunities to join in!
+          </Text>
         </aside>
         <img
           src={People}
@@ -61,7 +65,7 @@ const Home = () => {
         </p>
       </section>
       <footer>
-        <p>© SMALLTALK</p>
+        <p>© SMALLTALK 2020</p>
       </footer>
     </div>
   )

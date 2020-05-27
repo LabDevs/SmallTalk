@@ -8,15 +8,14 @@ import Login from './components/Login'
 import DashBoard from './components/DashBoard'
 import Home from './components/Home'
 import Logo from './navy-logo.png'
-import VideoChat from './components/VideoChat'
 import VideoChatTwo from './components/VideoChatTwo'
 import './index.css'
 import { Anchor, Box, Header, Nav, Image } from 'grommet'
 import UpcomingEvents from './components/UpcomingEvents'
 
-function App() {
+function App () {
   const logout = () => {
-    fetch('/api/logout').catch((err) => console.log(err))
+    fetch('/api/logout').catch(err => console.log(err))
   }
   return (
     <Router>
