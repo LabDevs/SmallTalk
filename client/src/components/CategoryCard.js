@@ -13,13 +13,13 @@ const CategoryCard = props => {
           width='medium'
           round='small'
           border={{ color: '#17539D', size: 'medium' }}
-          hoverIndicator={{ color: '#F3CBB6' }}
+          hoverIndicator={{ color: '#D3EBF9' }}
           onClick={() =>
             window.location.replace(`/categories/${props.category.id}`)
           }
         >
           {props.icon}
-          <Text size='xlarge' textAlign='end'>
+          <Text margin={{ top: 'small' }} size='xlarge' textAlign='end'>
             {props.category.name}
           </Text>
         </Box>

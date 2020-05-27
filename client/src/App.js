@@ -90,7 +90,9 @@ function App () {
         </Route>
 
         <Route path='/categories/:categoryId'>
-          <CategoryPage />
+          <CategoriesContextProvider>
+            <CategoryPage />
+          </CategoriesContextProvider>
         </Route>
 
         <Route path='/upcomingEvents'>
@@ -98,9 +100,7 @@ function App () {
         </Route>
 
         <Route path='/categories'>
-          <CategoriesContextProvider>
-            <CategoryList />
-          </CategoriesContextProvider>
+          <CategoryList />
         </Route>
       </Switch>
     </Router>

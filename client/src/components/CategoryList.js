@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { CardGroup } from 'react-bootstrap'
 import CategoryCard from '../components/CategoryCard'
-import { Gamepad, Group, Spa, Bike, Cafeteria } from 'grommet-icons'
-import { Grid, Box, Heading } from 'grommet'
+import { Gamepad, Group, Spa, Bike, Cafeteria, Catalog } from 'grommet-icons'
+import { Grid, Box, Heading, Text } from 'grommet'
 
 const CategoryList = () => {
   const [categories, setCategories] = useState(null)
@@ -22,7 +21,8 @@ const CategoryList = () => {
     <Gamepad size='large' />,
     <Spa size='large' />,
     <Bike size='large' />,
-    <Cafeteria size='large' />
+    <Cafeteria size='large' />,
+    <Catalog size='large' />
   ]
 
   return (
@@ -35,6 +35,10 @@ const CategoryList = () => {
       >
         Categories
       </Heading>
+      <Text size='large' textAlign='center'>
+        Select a category that you would like to focus your conversation starter
+        on!
+      </Text>
       <Grid
         justify='center'
         alignContent='center'
