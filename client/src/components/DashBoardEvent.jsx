@@ -22,7 +22,7 @@ const DashBoardEvent = ({ event }) => {
   }
 
   useEffect(() => {
-    async function getCategoryName() {
+    async function getCategoryName () {
       const response = await fetch(`/api/categoryId/${event.category_id}`)
       const name = await response.json()
       console.log(name)
@@ -96,7 +96,7 @@ const DashBoardEvent = ({ event }) => {
           </Box>
           <Box
             gridArea='buttons'
-            margin={{ top: 'large' }}
+            margin={{ top: 'medium' }}
             alignContent='center'
             align='center'
             alignSelf='center'

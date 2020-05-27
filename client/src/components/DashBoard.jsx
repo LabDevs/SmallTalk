@@ -44,7 +44,6 @@ function DashBoard () {
           margin={{ bottom: 'medium' }}
           textAlign='center'
           responsive='true'
-          label='Your Events'
           color='#444444'
         >
           Your SmallTalk's
@@ -74,7 +73,7 @@ function DashBoard () {
           <Grid
             rows='medium'
             columns={['auto', '1/2']}
-            gap='small'
+            gap='large'
             responsive='true'
             align='center'
           >
