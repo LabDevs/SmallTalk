@@ -44,7 +44,8 @@ body {
 }
 
 .upcomingEventHeader {
-  margin-left: 8%;
+  /* text-align: center; */
+  margin-left: 30%;
   margin-top: 2%;
 }
 

@@ -71,11 +71,14 @@ const CategoryEvent = ({ event }) => {
           </Text>
         </Box>
         <Box
-          responsive='true'
           gridArea='buttons'
-          gap='medium'
-          margin={{ top: 'large', left: '41%' }}
+          margin={{ top: 'large' }}
+          alignContent='center'
+          align='center'
+          alignSelf='center'
+          flex='true'
           direction='row'
+          justify='evenly'
         >
           <Box responsive='true'>
             <Button

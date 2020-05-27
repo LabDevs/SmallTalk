@@ -95,9 +95,13 @@ const DashBoardEvent = ({ event }) => {
           </Box>
           <Box
             gridArea='buttons'
-            gap='medium'
-            margin={{ top: 'large', left: '13%' }}
+            margin={{ top: 'large' }}
+            alignContent='center'
+            align='center'
+            alignSelf='center'
+            flex='true'
             direction='row'
+            justify='evenly'
           >
             <Box>
               <Button
