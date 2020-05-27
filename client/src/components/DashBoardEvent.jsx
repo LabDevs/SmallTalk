@@ -52,7 +52,6 @@ const DashBoardEvent = ({ event }) => {
         width='90%'
       >
         <Grid
-          // className='cardGrid'
           fill='true'
           responsive='true'
           rows={['xsmall', 'xxsmall', 'xsmall', 'auto']}

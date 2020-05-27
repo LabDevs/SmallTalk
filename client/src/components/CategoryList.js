@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { CardGroup } from 'react-bootstrap'
 import CategoryCard from '../components/CategoryCard'
 import { Gamepad, Group, Spa, Bike, Cafeteria } from 'grommet-icons'
+import { Grid, Box, Heading } from 'grommet'
 
 const CategoryList = () => {
   const [categories, setCategories] = useState(null)
@@ -25,8 +26,23 @@ const CategoryList = () => {
   ]
 
   return (
-    <div className='categories'>
-      <CardGroup>
+    <Box>
+      <Heading
+        margin={{ left: '8%', bottom: 'medium', top: 'medium' }}
+        textAlign='center'
+        responsive='true'
+        color='#444444'
+      >
+        Categories
+      </Heading>
+      <Grid
+        justify='center'
+        alignContent='center'
+        responsive='true'
+        rows='medium'
+        margin={{ bottom: 'medium' }}
+        columns={['auto', '1/2']}
+      >
         {categories &&
           categories.map((category, i) => (
             <CategoryCard
@@ -36,8 +52,8 @@ const CategoryList = () => {
               id={category.id}
             />
           ))}
-      </CardGroup>
-    </div>
+      </Grid>
+    </Box>
   )
 }
 
