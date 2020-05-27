@@ -1,5 +1,5 @@
 body * {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Karla', sans-serif;
   box-sizing: border-box;
 }
 
@@ -174,4 +174,10 @@ b {
 
 FormField {
   color: #304258;
+}
+
+footer > p {
+  padding: 2% 2% 0%;
+  display: flex;
+  justify-content: flex-end;
 }

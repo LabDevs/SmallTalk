@@ -65,7 +65,9 @@ const Home = () => {
           silence reducers!
         </p>
       </section>
-      <footer> this is a placeholder for the real footer</footer>
+      <footer>
+        <p>© SMALLTALK</p>
+      </footer>
     </div>
   )
 }
