@@ -53,37 +53,14 @@ const login = async (req, res) => {
   }
 }
 
-<<<<<<< HEAD
-const logout = async (req, res) => {
-  await res.clearCookie('userToken')
-  await res.clearCookie('io')
-=======
 const logout = (req, res) => {
   res.clearCookie('userToken')
   res.clearCookie('io')
->>>>>>> abab09ec301d116d033ad06a9541122c55cd88ad
   res.redirect('/login')
 }
-
-// const getUsers =  (req,res) => {
-
-//     const userId  = req.userId
-//     console.log(userId)
-//     User.getById(userId)
-//       .then((data) => {
-//       console.log(req.body)
-
-//         res.status(200).json(data)
-//       })
-//       .catch((err) =>{
-//         // console.log(err)
-//         res.sendStatus(500)
-//       })
-// }
 
 module.exports = {
   register,
   login,
   logout
-  // getUsers
 }
