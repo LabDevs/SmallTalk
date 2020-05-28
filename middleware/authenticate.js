@@ -2,8 +2,6 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 
 const authenticate = async (req, res, next) => {
-  console.log('This is the cookie:', req.cookies.userToken)
-
   if (!req.cookies.userToken) return res.sendStatus(401)
   try {
     const payload = await jwt.verify(req.cookies.userToken, process.env.JWT_KEY)
