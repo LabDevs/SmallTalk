@@ -28,7 +28,6 @@ function VideoChat () {
     socket.current.emit('video-room', roomId)
     let peer
     socket.current.on('is-partner-here', isPartnerHere => {
-      console.log({ isPartnerHere })
       setIsPartnerHere(isPartnerHere)
 
       navigator.mediaDevices
@@ -41,27 +40,22 @@ function VideoChat () {
             stream: stream
           })
           if (userVideo.current) {
-            console.log({ userVideo })
             userVideo.current.srcObject = stream
           }
 
           peer.on('signal', data => {
-            console.log('Data was just sent', data)
             socket.current.emit('signal', data)
           })
 
           peer.on('stream', partnerStream => {
             setIsPartnerHere(true)
-            console.log({ partnerStream })
             if (partnerVideo.current) {
               partnerVideo.current.srcObject = partnerStream
             }
           })
 
           socket.current.on('signal', data => {
-            console.log('I just received data', data)
             peer.signal(data)
-            console.log({ peer })
           })
         })
     })

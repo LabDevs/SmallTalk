@@ -3,7 +3,7 @@ const RSVP = require('../models/RSVP')
 const add = (req, res) => {
   const { userId, eventId } = req.body
   RSVP.add(userId, eventId)
-    .then(response => res.sendStatus(200))
+    .then(() => res.sendStatus(200))
     .catch(err => {
       console.log(err)
       res.sendStatus(500)
@@ -22,12 +22,8 @@ const getByUser = (req, res) => {
 
 const cancel = (req, res) => {
   const { rsvpId } = req.body
-  console.log(rsvpId)
   RSVP.cancel(rsvpId)
-    .then(response => {
-      console.log(response)
-      res.status(200).json({ message: 'Removed RSVP.' })
-    })
+    .then(() => res.status(200).json({ message: 'Removed RSVP.' }))
     .catch(err => {
       console.log(err)
       res.status(500).json({ message: 'Could not remove RSVP.' })

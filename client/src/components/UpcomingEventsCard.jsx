@@ -12,7 +12,9 @@ const UpcomingEventsCard = ({ event }) => {
       .then(() => {
         window.location.reload()
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   return (

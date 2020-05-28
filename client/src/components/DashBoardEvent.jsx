@@ -25,7 +25,6 @@ const DashBoardEvent = ({ event }) => {
     async function getCategoryName () {
       const response = await fetch(`/api/categoryId/${event.category_id}`)
       const name = await response.json()
-      console.log(name)
       setCategoryName(name)
     }
 

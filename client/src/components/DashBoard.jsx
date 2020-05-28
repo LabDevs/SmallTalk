@@ -15,10 +15,11 @@ function DashBoard () {
   const getUsers = () => {
     fetch('/api/users')
       .then(response => {
-        console.log(response)
         response.json()
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   useEffect(() => {
@@ -46,7 +47,7 @@ function DashBoard () {
           responsive='true'
           color='#444444'
         >
-          Your SmallTalk's
+          Your SmallTalks
         </Heading>
         <Button
           alignSelf='center'
@@ -65,7 +66,7 @@ function DashBoard () {
         <Stack>
           {events.length === 0 ? (
             <Heading level='3' id='emptyHeadingDash' textAlign='center'>
-              No SmallTalk's here! Try creating one!
+              No SmallTalks here! Try creating one!
             </Heading>
           ) : (
             <></>

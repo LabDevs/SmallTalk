@@ -31,21 +31,15 @@ app.get('*', (req, res) => {
 const rooms = {}
 
 io.on('connection', socket => {
-  console.log('server connected', socket.id)
-
   socket.on('video-room', roomId => {
-    console.log('user has join video room', roomId)
     socket.join(roomId)
     socket.eventRoom = roomId
-    console.log('socket Event Room', socket.eventRoom)
 
     if (rooms[roomId]) {
       rooms[roomId].push(socket.id)
     } else {
       rooms[roomId] = [socket.id]
     }
-
-    console.log({ rooms })
 
     const isPartnerHere = rooms[roomId].length > 1
     socket.emit('is-partner-here', isPartnerHere)
