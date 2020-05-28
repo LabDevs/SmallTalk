@@ -7,11 +7,12 @@ const rsvpRouter = require('./routes/rsvp')
 const eventRouter = require('./routes/event')
 const categoryRouter = require('./routes/category')
 const path = require('path')
-
 const express = require('express')
+
 const app = express()
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
+
 const port = process.env.PORT || 8000
 
 app.use(bodyParser.json())
@@ -20,7 +21,6 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'client/build')))
 
 app.use(userRouter)
-// app.use(authenticate)
 app.use(rsvpRouter)
 app.use(categoryRouter)
 app.use(eventRouter)
@@ -32,7 +32,6 @@ const rooms = {}
 
 io.on('connection', socket => {
   console.log('server connected', socket.id)
-  // console.log(socket)
 
   socket.on('video-room', roomId => {
     console.log('user has join video room', roomId)
@@ -63,7 +62,5 @@ io.on('connection', socket => {
     }
   })
 })
-
-app.get('/', (req, res) => res.send('Hello World'))
 
 server.listen(port, () => console.log(`Listening on port ${port} `))
