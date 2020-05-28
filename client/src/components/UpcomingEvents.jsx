@@ -57,7 +57,7 @@ function UpcomingEvents () {
           )}
           <Grid
             rows='medium'
-            columns={['auto', '1/2']}
+            columns={['auto', 'auto']}
             gap='small'
             responsive='true'
             align='center'

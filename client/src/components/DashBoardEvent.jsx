@@ -11,12 +11,12 @@ const DashBoardEvent = ({ event }) => {
     fetch('/remove', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ eventId: event.id }),
+      body: JSON.stringify({ eventId: event.id })
     })
       .then(() => {
         window.location.reload()
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err)
       })
   }
@@ -54,23 +54,22 @@ const DashBoardEvent = ({ event }) => {
         <Grid
           fill='true'
           responsive='true'
-          rows={['xsmall', 'xxsmall', 'xsmall', 'auto']}
+          rows={['xxsmall', 'xxsmall', 'xsmall', 'auto']}
           columns={['auto', 'auto', 'auto']}
           areas={[
             { name: 'category', start: [2, 0], end: [2, 0] },
             { name: 'header', start: [0, 0], end: [1, 1] },
             { name: 'time', start: [0, 1], end: [2, 1] },
             { name: 'desc', start: [0, 2], end: [2, 2] },
-            { name: 'buttons', start: [0, 3], end: [2, 3] },
+            { name: 'buttons', start: [0, 3], end: [2, 3] }
           ]}
         >
-          <Box responsive='true' gridArea='header'>
+          <Box responsive='true' gridArea='time'>
             <Heading
-              alignSelf='start'
-              textAlign='start'
+              alignSelf='center'
+              textAlign='center'
               level='2'
               responsive='true'
-              margin={{ top: 'small' }}
             >
               {event.title}
             </Heading>
@@ -80,8 +79,12 @@ const DashBoardEvent = ({ event }) => {
               {categoryName.name}
             </Heading>
           </Box>
-          <Box gridArea='time'>
-            <Text size='large' textAlign='center' margin={{ vertical: 'auto' }}>
+          <Box gridArea='header'>
+            <Text
+              size='large'
+              textAlign='start'
+              margin={{ vertical: 'small', top: 'xsmall', bottom: 'small' }}
+            >
               {new Date(event.date).toLocaleString()}
             </Text>
           </Box>

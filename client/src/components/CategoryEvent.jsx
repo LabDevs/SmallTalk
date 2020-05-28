@@ -7,19 +7,19 @@ const CategoryEvent = ({ event }) => {
 
   const rsvpInfo = {
     userId: event.userId,
-    eventId: event.id,
+    eventId: event.id
   }
 
   const addRSVP = () => {
     fetch('/rsvp', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(rsvpInfo),
+      body: JSON.stringify(rsvpInfo)
     })
       .then(() => {
         setIcon(<Checkmark />)
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err)
       })
   }
@@ -41,28 +41,28 @@ const CategoryEvent = ({ event }) => {
       <Grid
         fill='true'
         responsive='true'
-        rows={['xxsmall', 'xsmall', 'xxsmall', 'auto']}
+        rows={['xxsmall', 'xxsmall', 'xsmall', 'auto']}
         columns={['auto', 'auto', 'auto']}
         areas={[
           { name: 'header', start: [0, 0], end: [1, 1] },
           { name: 'time', start: [0, 1], end: [2, 1] },
           { name: 'desc', start: [0, 2], end: [2, 2] },
-          { name: 'buttons', start: [0, 3], end: [2, 3] },
+          { name: 'buttons', start: [0, 3], end: [2, 3] }
         ]}
       >
-        <Box responsive='true' gridArea='header'>
+        <Box responsive='true' gridArea='time'>
           <Heading
-            alignSelf='start'
-            textAlign='start'
+            alignSelf='center'
+            textAlign='center'
             level='2'
             responsive='true'
-            margin={{ top: 'small' }}
+            margin={{ top: 'xsmall' }}
           >
             {event.title}
           </Heading>
         </Box>
-        <Box responsive='true' gridArea='time'>
-          <Text size='large' textAlign='center' margin={{ vertical: 'auto' }}>
+        <Box responsive='true' gridArea='header'>
+          <Text size='large' textAlign='center'>
             {new Date(event.date).toLocaleString()}
           </Text>
         </Box>
@@ -73,7 +73,6 @@ const CategoryEvent = ({ event }) => {
         </Box>
         <Box
           gridArea='buttons'
-          margin={{ top: 'large' }}
           alignContent='center'
           align='center'
           alignSelf='center'

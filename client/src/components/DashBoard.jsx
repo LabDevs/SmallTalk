@@ -4,7 +4,7 @@ import AddEvent from './AddEvent'
 import { Box, Button, Heading, Grid, Stack } from 'grommet'
 import { Spinner } from 'react-bootstrap'
 
-function DashBoard() {
+function DashBoard () {
   const [events, setEvent] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [show, setShow] = useState(false)
@@ -24,13 +24,13 @@ function DashBoard() {
   useEffect(() => {
     setIsLoading(true)
     fetch('/api/getEvents')
-      .then((res) => res.json())
-      .then((event) => {
+      .then(res => res.json())
+      .then(event => {
         const newEvents = [...event]
         setEvent(newEvents)
         setIsLoading(false)
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err)
       })
 
@@ -72,13 +72,13 @@ function DashBoard() {
           )}
           <Grid
             rows='medium'
-            columns={['auto', '1/2']}
+            columns={['auto', 'auto']}
             gap='large'
             responsive='true'
             align='center'
           >
             {events &&
-              events.map((event) => {
+              events.map(event => {
                 return <DashBoardEvent key={event.id} event={event} />
               })}
           </Grid>
