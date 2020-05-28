@@ -7,15 +7,13 @@ const UpcomingEventsCard = ({ event }) => {
     fetch('/rsvp/remove', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ rsvpId: event.id }),
+      body: JSON.stringify({ rsvpId: event.id })
     })
       .then(() => {
         window.location.reload()
       })
-      .catch((err) => console.log(err))
+      .catch(err => console.log(err))
   }
-
-  console.log(event)
 
   return (
     <Box>
@@ -27,21 +25,21 @@ const UpcomingEventsCard = ({ event }) => {
         background='#D3EBF9'
         border={{ color: '#17539D', size: 'medium' }}
         round='xsmall'
-        header='Your Events'
         pad='medium'
         margin={{ top: '10%' }}
         width='90%'
       >
         <Grid
           fill='true'
-          rows={['auto', 'xsmall', 'xxsmall', 'auto']}
+          responsive='true'
+          rows={['xsmall', 'xxsmall', 'xsmall', 'auto']}
           columns={['auto', 'auto', 'auto']}
           areas={[
             { name: 'category', start: [2, 0], end: [2, 0] },
             { name: 'header', start: [0, 0], end: [1, 1] },
             { name: 'time', start: [0, 1], end: [2, 1] },
             { name: 'desc', start: [0, 2], end: [2, 2] },
-            { name: 'buttons', start: [0, 3], end: [2, 3] },
+            { name: 'buttons', start: [0, 3], end: [2, 3] }
           ]}
         >
           <Box responsive='true' gridArea='header'>
@@ -76,28 +74,33 @@ const UpcomingEventsCard = ({ event }) => {
           </Box>
           <Box
             gridArea='buttons'
-            gap='medium'
-            margin={{ top: 'large', left: '24%' }}
+            margin={{ top: 'medium' }}
+            alignContent='center'
+            align='center'
+            alignSelf='center'
+            flex='true'
             direction='row'
+            justify='evenly'
           >
-            <Button
-              size='medium'
-              responsive='true'
-              gap='small'
-              label='Un-RSVP'
-              onClick={removeRSVP}
-              color='#6AB8E0'
-            />
-            <Link to={`/videoroom/${event.event_id}`}>
+            <Box flex='true' align='center'>
               <Button
-                size='medium'
                 responsive='true'
-                primary
-                gap='small'
-                label='Join SmallTalk'
+                label='Update'
+                onClick={removeRSVP}
                 color='#6AB8E0'
               />
-            </Link>
+            </Box>
+            <Box flex='true' align='center'>
+              <Link to={`/videoroom/${event.id}`}>
+                <Button
+                  size='medium'
+                  responsive='true'
+                  primary
+                  label='Join SmallTalk'
+                  color='#6AB8E0'
+                />
+              </Link>
+            </Box>
           </Box>
         </Grid>
       </Box>
