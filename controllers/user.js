@@ -18,7 +18,7 @@ const register = async (req, res) => {
     return jwt.sign(payload, process.env.JWT_KEY, (err, encryptedPayload) => {
       if (err) return res.sendStatus(500)
       res.cookie('userToken', encryptedPayload)
-      res.redirect('/dash')
+      // res.redirect('/dash')
     })
   } catch (err) {
     console.log(err)
@@ -43,6 +43,7 @@ const login = async (req, res) => {
       expiresIn: '2hr'
     }
     return jwt.sign(payload, process.env.JWT_KEY, (err, encryptedPayload) => {
+      console.log('bruh')
       if (err) return res.sendStatus(500)
       res.cookie('userToken', encryptedPayload)
       res.redirect('/dash')

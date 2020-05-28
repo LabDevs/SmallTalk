@@ -21,14 +21,38 @@ const staticFiles = express.static(path.join(__dirname, 'client', 'build'))
 app.use(staticFiles)
 
 app.use(userRouter)
-// app.use(authenticate)
-app.use(rsvpRouter)
-app.use(categoryRouter)
-app.use(eventRouter)
-app.get('*', (req, res) => {
+app.get('/login', (req, res) => {
   console.log(req.url)
   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
 })
+app.get('/dash', (req, res) => {
+  console.log(req.url)
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+})
+app.get('/register', (req, res) => {
+  console.log(req.url)
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+})
+app.get('/categories', (req, res) => {
+  console.log(req.url)
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+})
+app.get('/videoroom', (req, res) => {
+  console.log(req.url)
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+})
+app.get('/upcomingEvents', (req, res) => {
+  console.log(req.url)
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+})
+app.get('/categories/:categoriesId', (req, res) => {
+  console.log(req.url)
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+})
+app.use(authenticate)
+app.use(rsvpRouter)
+app.use(categoryRouter)
+app.use(eventRouter)
 
 const rooms = {}
 
