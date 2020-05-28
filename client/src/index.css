@@ -1,4 +1,3 @@
-
 body * {
   font-family: 'Karla', sans-serif;
   box-sizing: border-box;
@@ -165,4 +164,8 @@ footer > p {
   padding: 1% 2% 0 0;
   display: flex;
   justify-content: flex-end;
+}
+
+.separator {
+  margin: 0 4% 0 3%;
 }
