@@ -21,7 +21,7 @@ const staticFiles = express.static(path.join(__dirname, 'client', 'build'))
 app.use(staticFiles)
 
 app.use(userRouter)
-app.use(authenticate)
+// app.use(authenticate)
 app.use(rsvpRouter)
 app.use(categoryRouter)
 app.use(eventRouter)
