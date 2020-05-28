@@ -6,13 +6,13 @@ router.get('/api/categories/:categoryId', eventController.getAllByCategory)
 
 router.get('/api/getEvents', eventController.getAllByUser)
 
-router.post('/add', eventController.add)
+router.post('/api/add', eventController.add)
 
-router.put('/update', eventController.update)
+router.put('/api/update', eventController.update)
 
 router.get('/api/event', eventController.show)
 
-router.delete('/remove', eventController.remove)
+router.delete('/api/remove', eventController.remove)
 
 router.get('/api/event/:eventId', eventController.getById)
 
