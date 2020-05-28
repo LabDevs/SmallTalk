@@ -1,9 +1,6 @@
 const express = require('express')
 const eventController = require('../controllers/event')
 const router = express.Router()
-const authentication = require('../middleware/authenticate')
-
-router.use(authentication)
 
 router.get('/api/categories/:categoryId', eventController.getAllByCategory)
 

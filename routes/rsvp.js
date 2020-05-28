@@ -1,9 +1,6 @@
 const express = require('express')
 const rsvpController = require('../controllers/rsvp')
 const router = express.Router()
-const authentication = require('../middleware/authenticate')
-
-router.use(authentication)
 
 router.post('/api/rsvp', rsvpController.add)
 

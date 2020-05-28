@@ -17,7 +17,7 @@ const AddEvent = props => {
 
   const addEvent = e => {
     e.preventDefault()
-    fetch('/api/add', {
+    fetch('/add', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(eventInfo)

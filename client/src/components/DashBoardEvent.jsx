@@ -8,15 +8,15 @@ const DashBoardEvent = ({ event }) => {
   const [categoryName, setCategoryName] = useState('')
 
   const removeEvent = () => {
-    fetch('/api/remove', {
+    fetch('/remove', {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ eventId: event.id })
+      body: JSON.stringify({ eventId: event.id }),
     })
       .then(() => {
         window.location.reload()
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err)
       })
   }
@@ -61,7 +61,7 @@ const DashBoardEvent = ({ event }) => {
             { name: 'header', start: [0, 0], end: [1, 1] },
             { name: 'time', start: [0, 1], end: [2, 1] },
             { name: 'desc', start: [0, 2], end: [2, 2] },
-            { name: 'buttons', start: [0, 3], end: [2, 3] }
+            { name: 'buttons', start: [0, 3], end: [2, 3] },
           ]}
         >
           <Box responsive='true' gridArea='header'>

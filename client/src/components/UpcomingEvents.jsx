@@ -11,7 +11,7 @@ function UpcomingEvents () {
   useEffect(() => {
     function getRSVPEvents () {
       setIsLoading(true)
-      fetch('/api/rsvp/user')
+      fetch('/rsvp/user')
         .then(res => res.json())
         .then(event => {
           const newEvents = [...event]
