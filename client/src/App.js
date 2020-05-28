@@ -66,7 +66,7 @@ function App () {
           ) : (
             <>
               <Anchor color='#304258' className='navLink' href='/login'>
-                Login
+                Login |
               </Anchor>
               <Anchor color='#304258' className='navLink' href='/register'>
                 Register
