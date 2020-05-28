@@ -43,7 +43,10 @@ const login = async (req, res) => {
       expiresIn: '2hr'
     }
     return jwt.sign(payload, process.env.JWT_KEY, (err, encryptedPayload) => {
-      if (err) return res.sendStatus(500)
+      if (err) {
+        console.log(err)
+        return res.sendStatus(500)
+      }
       res.cookie('userToken', encryptedPayload)
       res.redirect('/dash')
     })
