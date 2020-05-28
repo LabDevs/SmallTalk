@@ -85,7 +85,7 @@ const UpcomingEventsCard = ({ event }) => {
             <Box flex='true' align='center'>
               <Button
                 responsive='true'
-                label='Update'
+                label='Un-RSVP'
                 onClick={removeRSVP}
                 color='#6AB8E0'
               />
