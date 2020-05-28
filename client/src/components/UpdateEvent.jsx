@@ -25,7 +25,7 @@ const UpdateEvent = props => {
     }
 
     console.log(eventInfo)
-    fetch('/update', {
+    fetch('/api/update', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(eventInfo)
