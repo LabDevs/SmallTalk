@@ -7,7 +7,8 @@ const rsvpRouter = require('./routes/rsvp')
 const eventRouter = require('./routes/event')
 const categoryRouter = require('./routes/category')
 
-const app = require('express')()
+const express = require('express')
+const app = express()
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
 const port = process.env.PORT || 8000
@@ -15,6 +16,11 @@ const port = process.env.PORT || 8000
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
+app.use(express.static(path.join(__dirname, 'client/build')))
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/build/index.html'))
+})
 
 app.use(userRouter)
 app.use(authenticate)
@@ -28,7 +34,7 @@ io.on('connection', socket => {
   console.log('server connected', socket.id)
   // console.log(socket)
 
-  socket.on('video-room', (roomId) => {
+  socket.on('video-room', roomId => {
     console.log('user has join video room', roomId)
     socket.join(roomId)
     socket.eventRoom = roomId
@@ -46,7 +52,7 @@ io.on('connection', socket => {
     socket.emit('is-partner-here', isPartnerHere)
   })
 
-  socket.on('signal', (data) => {
+  socket.on('signal', data => {
     socket.to(socket.eventRoom).emit('signal', data)
   })
 
