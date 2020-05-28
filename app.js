@@ -6,6 +6,7 @@ const authenticate = require('./middleware/authenticate')
 const rsvpRouter = require('./routes/rsvp')
 const eventRouter = require('./routes/event')
 const categoryRouter = require('./routes/category')
+const path = require('path')
 
 const express = require('express')
 const app = express()
