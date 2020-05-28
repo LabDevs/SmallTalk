@@ -1,19 +1,24 @@
 const express = require('express')
 const eventController = require('../controllers/event')
 const router = express.Router()
+const auth = require('../middleware/authenticate')
 
-router.get('/api/categories/:categoryId', eventController.getAllByCategory)
+router.get(
+  '/api/categories/:categoryId',
+  auth,
+  eventController.getAllByCategory
+)
 
-router.get('/api/getEvents', eventController.getAllByUser)
+router.get('/api/getEvents', auth, eventController.getAllByUser)
 
-router.post('/add', eventController.add)
+router.post('/add', auth, eventController.add)
 
-router.put('/update', eventController.update)
+router.put('/update', auth, eventController.update)
 
-router.get('/api/event', eventController.show)
+router.get('/api/event', auth, eventController.show)
 
-router.delete('/remove', eventController.remove)
+router.delete('/remove', auth, eventController.remove)
 
-router.get('/api/event/:eventId', eventController.getById)
+router.get('/api/event/:eventId', auth, eventController.getById)
 
 module.exports = router
