@@ -91,7 +91,7 @@ const UpcomingEventsCard = ({ event }) => {
               />
             </Box>
             <Box flex='true' align='center'>
-              <Link to={`/videoroom/${event.id}`}>
+              <Link to={`/videoroom/${event.event_id}`}>
                 <Button
                   size='medium'
                   responsive='true'
