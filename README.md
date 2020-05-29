@@ -28,6 +28,7 @@
 - PostgreSQL 9.1.x
 - Express 4.17.1.x
 - PG 8.1.0.x
+- Knex 0.21.x
 
 ## Development
 
