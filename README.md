@@ -20,15 +20,14 @@
 
 ## Usage
 
-> Clone this repo. Run `npm i`, go into the project directory, then run `npm start`.
+> Clone this repo. Run `npm i`, then `npm start`. Go into the client directory, run `npm i`, then run `npm start`.
 
 ## Requirements
 
 - Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- React
-- Express
+- PostgreSQL 9.1.x
+- Express 4.17.1.x
+- PG 8.1.0.x
 
 ## Development
 
@@ -38,6 +37,13 @@ From within the root directory:
 
 ```sh
 npm i
+npm start
+```
+
+From within the client directory:
+```sh
+npm i
+npm start
 ```
 
 ### Roadmap
