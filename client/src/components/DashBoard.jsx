@@ -4,7 +4,7 @@ import AddEvent from './AddEvent'
 import { Box, Button, Heading, Grid, Stack } from 'grommet'
 import { Spinner } from 'react-bootstrap'
 
-function DashBoard() {
+function DashBoard () {
   const [events, setEvent] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [show, setShow] = useState(false)
@@ -15,22 +15,23 @@ function DashBoard() {
   const getUsers = () => {
     fetch('/api/users')
       .then(response => {
-        console.log(response)
         response.json()
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   useEffect(() => {
     setIsLoading(true)
     fetch('/api/getEvents')
-      .then((res) => res.json())
-      .then((event) => {
+      .then(res => res.json())
+      .then(event => {
         const newEvents = [...event]
         setEvent(newEvents)
         setIsLoading(false)
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err)
       })
 
@@ -46,7 +47,7 @@ function DashBoard() {
           responsive='true'
           color='#444444'
         >
-          Your SmallTalk's
+          Your SmallTalks
         </Heading>
         <Button
           alignSelf='center'
@@ -65,20 +66,20 @@ function DashBoard() {
         <Stack>
           {events.length === 0 ? (
             <Heading level='3' id='emptyHeadingDash' textAlign='center'>
-              No SmallTalk's here! Try creating one!
+              No SmallTalks here! Try creating one!
             </Heading>
           ) : (
             <></>
           )}
           <Grid
             rows='medium'
-            columns={['auto', '1/2']}
+            columns={['auto', 'auto']}
             gap='large'
             responsive='true'
             align='center'
           >
             {events &&
-              events.map((event) => {
+              events.map(event => {
                 return <DashBoardEvent key={event.id} event={event} />
               })}
           </Grid>

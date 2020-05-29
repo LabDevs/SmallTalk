@@ -31,7 +31,9 @@ const UpdateEvent = props => {
       body: JSON.stringify(eventInfo)
     })
       .then(() => window.location.reload())
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   useEffect(() => {

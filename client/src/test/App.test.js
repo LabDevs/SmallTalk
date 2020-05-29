@@ -13,9 +13,4 @@ describe('render App Component', () => {
     const el = screen.getByText('Categories')
     expect(el).toHaveTextContent('Categories')
   })
-  // test('expect Add Event to be on the page', () => {
-  //   render(<App />)
-  //   const el = screen.getByText('Add Event')
-  //   expect(el).toHaveTextContent('Add Event')
-  // })
 })

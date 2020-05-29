@@ -6,7 +6,6 @@ import { Spinner } from 'react-bootstrap'
 function UpcomingEvents () {
   const [upcomingEvents, setUpComingEvents] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-  const [err, setErr] = useState(null)
 
   useEffect(() => {
     function getRSVPEvents () {
@@ -20,15 +19,11 @@ function UpcomingEvents () {
         })
         .catch(err => {
           console.log(err)
-          err = 'Sorry there was an error, please try again'
-          setErr(err)
         })
     }
 
     getRSVPEvents()
   }, [])
-
-  console.log(upcomingEvents)
 
   return (
     <>
@@ -38,7 +33,7 @@ function UpcomingEvents () {
           responsive='true'
           color='#444444'
         >
-          Your Upcoming SmallTalk's
+          Your Upcoming SmallTalks
         </Heading>
       </Box>
 
@@ -57,7 +52,7 @@ function UpcomingEvents () {
           )}
           <Grid
             rows='medium'
-            columns={['auto', '1/2']}
+            columns={['auto', 'auto']}
             gap='small'
             responsive='true'
             align='center'

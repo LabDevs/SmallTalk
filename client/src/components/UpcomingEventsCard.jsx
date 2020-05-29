@@ -12,7 +12,9 @@ const UpcomingEventsCard = ({ event }) => {
       .then(() => {
         window.location.reload()
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   return (
@@ -32,7 +34,7 @@ const UpcomingEventsCard = ({ event }) => {
         <Grid
           fill='true'
           responsive='true'
-          rows={['xsmall', 'xxsmall', 'xsmall', 'auto']}
+          rows={['xxsmall', 'xxsmall', 'xsmall', 'auto']}
           columns={['auto', 'auto', 'auto']}
           areas={[
             { name: 'category', start: [2, 0], end: [2, 0] },
@@ -42,13 +44,12 @@ const UpcomingEventsCard = ({ event }) => {
             { name: 'buttons', start: [0, 3], end: [2, 3] }
           ]}
         >
-          <Box responsive='true' gridArea='header'>
+          <Box responsive='true' gridArea='time'>
             <Heading
-              alignSelf='start'
-              textAlign='start'
+              alignSelf='center'
+              textAlign='center'
               level='2'
               responsive='true'
-              margin={{ top: 'small' }}
             >
               {event.title}
             </Heading>
@@ -58,8 +59,12 @@ const UpcomingEventsCard = ({ event }) => {
               {event.name}
             </Heading>
           </Box>
-          <Box gridArea='time'>
-            <Text size='large' textAlign='center' margin={{ vertical: 'auto' }}>
+          <Box gridArea='header'>
+            <Text
+              size='large'
+              textAlign='start'
+              margin={{ vertical: 'small', top: 'xsmall', bottom: 'small' }}
+            >
               {new Date(event.date).toLocaleString()}
             </Text>
           </Box>
